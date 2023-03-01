@@ -1,0 +1,33 @@
+  <div id="divCommissionList" class="list-tab commission gray02">
+  <ul class="listTitle">
+            <li class="w25">时间</li>
+            
+            <li class="w25">金额</li>
+            <li class="w25">手续费</li>
+            <li class="w25">审核状态</li>
+            </ul>
+               {wc:if $recount!=0}
+			              {wc:loop $recordarr $val}
+                    
+                    <ul class="listconfufen">
+                        <li class="w25">{wc:fun:date('Y-m-d',$val['time'])}</li>
+                       
+                        <li class="w25">{wc:$val['ygmoney']}</li>
+                        <li class="w25 orange">{wc:$val['money']}</li>
+                        <li class="w25">{wc:if $val['money']>=100} 0 {wc:else} {wc:$fufen['fufen_yongjintx']} {wc:if:end}</li>
+                        <li class="w25">{wc:if $val['auditstatus']==1}审核通过{wc:else}待审核{wc:if:end}</li>
+                        
+                    </ul>
+                   {wc:loop:end}
+			              {wc:else}		
+                       
+			    
+			             {wc:if:end}
+                         </div>
+    {wc:if $recount==0}
+    <section class="clearfix">
+        <ul >
+	      <div class="haveNot z-minheight"><s></s><p>未有相应提现记录！</p></div>
+        </ul>
+    </section>
+    {wc:if:end}

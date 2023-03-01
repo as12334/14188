@@ -1,0 +1,75 @@
+{wc:templates "index","header"}
+<link href="{G_TEMPLATES_STYLE}/js/style.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_STYLE}/js/demo.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_STYLE}/newcss/reg_shop.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/jquery.Validform.min.js"></script>
+<script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/passwordStrength-min.js"></script>
+<script type="text/javascript">
+$(function(){		
+	var demo=$(".login_ConInput").Validform({
+		tiptype:2,
+		usePlugin:{
+			passwordstrength:{
+				minLen:6,
+				maxLen:20,
+				trigger:function(obj,error){
+					if(error){
+						obj.parent().next().find(".Validform_checktip").show();
+						obj.parent().next().find(".passwordStrength").hide();
+					}else{
+						obj.parent().next().find(".Validform_checktip").hide();
+						obj.parent().next().find(".passwordStrength").show();	
+					}
+				}
+			}
+		}
+
+	});	
+})
+</script>
+<div class="login_layouts">
+	<div class="login_title">
+		<h2>新商家入驻</h2>
+		<ul class="login_process">
+			<li class="login_processCur"><b>1</b>商家入驻须知</li>
+			<li class="login_arrow"></li>
+			<li><b>2</b>验证商家身份</li>
+            <li class="login_arrow"></li>
+			<li><b>3</b>{wc:fun:_cfg('web_name_two')}平台审核</li>
+            <li class="login_arrow"></li>
+			<li ><b>4</b>交纳保证金</li>
+            <li class="login_arrow"></li>
+			<li><b>5</b>入驻成功</li>
+		</ul>
+		<!--<span>已经是商家？<a id="hylinkLoginPage" class="blue Fb" href="{WEB_PATH}/member/user/login">进入>></a></span> -->
+	</div>
+	<div class="prompt orange" >
+   <p>1、新商家入驻需要有店铺，目前只招京东、淘宝和天猫。</p>
+    
+   <p>2、淘宝C店需要满足（开店两年以上的皇冠金牌卖家）。</p>
+   
+   <p>3、验证商家身份。</p>
+    
+   <p>4、交纳保证金（除发布汽车之处，其它的交1万，入驻发汽车的保证金按发布产品的单个价格来交，比如发布一辆汽车价格为50万，那么须交70万，
+        <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果你交的保证金为70万那么您只能发布价格在50万以下的产品）。</p>
+   
+   <p>5、会员中奖后需要按时给客户发货，如有违反者，将下架所有产品并取消发布产品资格。</p>
+   
+   <p>6、关于平台技术费：平台开奖、商家发货、客户确认收到货后，系统自动扣除每期价格的5%，扣除的金额在第二天系统自动打进商家的账号中。</p>
+   
+   <p>7、关于申请退店，商家申请退店，我们确认后；保证金将在7天内打进商家的账号。</p>
+   
+   <p>8、商家主动退店，一年内无法再次入驻；平台强制清退，永久无法入驻。</p>
+   <br />
+   
+   <div class="login_Membut">		
+   <form method="post" action="{WEB_PATH}/member/home/check_shop" enctype="application/x-www-form-urlencoded">	
+   <input type="hidden" name="code" value="{wc:$code}" >
+			<input name="submit" type="submit" class="Mem_orangebut" value="入 驻">
+   </form>         
+		</div>
+    </div>
+	
+	
+</div><div class="clear" style="clear:0"></div>
+{wc:templates "index","footer"}

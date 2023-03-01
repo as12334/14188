@@ -1,0 +1,33 @@
+<div class="R-content">
+
+  <div id="divCommissionList" class="list-tab commission gray02 clearfix">
+            <ul class="listTitle">
+            <li class="w40">充值时间</li>
+            <li class="w30">资金渠道</li>
+            <li class="w30">充入</li>
+           
+            </ul>
+               {wc:if $total!=0}
+{wc:loop $account $at}
+                    
+                    <ul class="listconfufen">
+                        <li class="w40">{wc:fun:date("Y-m-d H:i:s",$at['time'])}</li>
+                        <li class="w30">{wc:$at['content']}</li>
+                        <li class="w30">{wc:if $at['type'] == 1}
+			<font color="#0c0">￥{wc:$at['money']}</font>
+		{wc:else}
+			<font color="red">￥{wc:$at['money']}</font>
+		{wc:if:end}	</li>      
+                    </ul>
+                    
+{wc:loop:end}
+{wc:if:end}
+</div>
+</div>
+    {wc:if $total==0}
+    <section class="clearfix">
+        <ul >
+	      <div class="haveNot z-minheight"><s></s><p>未有相应充值记录！</p></div>
+        </ul>
+    </section>
+    {wc:if:end}

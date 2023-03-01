@@ -1,0 +1,242 @@
+{wc:templates "index","header"}
+<link href="{G_TEMPLATES_STYLE}/js/style.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_STYLE}/js/demo.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_STYLE}/newcss/reg_shop.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_STYLE}/newcss/check_shop.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/jquery.Validform.min.js"></script>
+<script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/passwordStrength-min.js"></script>
+
+<script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/js.min.js"></script>
+
+<script type="text/javascript">
+$(function(){		
+	var demo=$(".login_ConInput").Validform({
+		tiptype:2,
+		usePlugin:{
+			passwordstrength:{
+				minLen:6,
+				maxLen:20,
+				trigger:function(obj,error){
+					if(error){
+						obj.parent().next().find(".Validform_checktip").show();
+						obj.parent().next().find(".passwordStrength").hide();
+					}else{
+						obj.parent().next().find(".Validform_checktip").hide();
+						obj.parent().next().find(".passwordStrength").show();	
+					}
+				}
+			}
+		}
+
+	});	
+})
+</script>
+<style>
+        .code{ font-size:16px}
+		 .goods-message li .select-01{ width: 250px; font-size: 12px;}
+ .content-landing li { width: 650px;}
+ .content-landing li .txt {
+  border-color: #e5e5e5; 
+  border-style: solid;
+  border-width: 1px;
+  color: #333;
+ 
+  font-size: 12px;
+  height: 34px;
+  padding-left: 5px;
+  line-height: 34px\9;
+  background: #fff;
+  border-radius: 2px;
+  border:1px solid #c6c6c6;
+}
+#tburl{border:1px solid #c6c6c6;}
+
+.content-landing li .txt-02{ width: 550px}
+
+.content-landing li .txt-01{ width: 250px}
+#codebg{ background:url({G_TEMPLATES_STYLE}/newimages/houzhe/emp.jpg) no-repeat; width:639px; height:217px;}
+.codep{ padding:19px 0px 0px 313px;}
+.ling{ line-height:30px;}
+        </style>
+<div class="check_shop">
+	<div class="login_title">
+		<h2>新商家入驻</h2>
+		<ul class="login_process">
+			<li ><b>1</b>商家入驻须知</li>
+			<li class="login_arrow"></li>
+			<li class="login_processCur"><b>2</b>验证商家身份</li>
+			<li class="login_arrow"></li>
+			<li><b>3</b>{wc:fun:_cfg('web_name_two')}平台审核</li>
+            <li class="login_arrow"></li>
+			<li ><b>4</b>交纳保证金</li>
+            <li class="login_arrow"></li>
+			<li><b>5</b>入驻成功</li>
+		</ul>
+		<!--<span>已经是商家？<a id="hylinkLoginPage" class="blue Fb" href="{WEB_PATH}/member/user/login">进入>></a></span> -->
+	</div>
+	<div class="prompt orange" >
+   
+       <div class="title"><span class="hd" style="font-size:16px; color:#000">商家身份认证</span></div>
+            
+            <div class="content-landing " >
+                <form action="" method="post" name="form">
+                    <ul>
+                       <!--<li class="ling">进行身份认证前请先完成店铺认证。选取您店铺里的任意一件商品，把验证码编辑到商品标题内（如下截图），提交后台把该商品的链接输入到下方商品链接输入框中，提交完成验证。完成认证后即可删除标题中的验证码。 </li>
+                       <li class="code"><b>添加验证码示意图：</b></li>
+      <li id="codebg"><p class="codep"><b>{wc:$codecheck}</b></p></li>
+      
+      <li>验 证 码：<span class="gre">{wc:$codecheck}</span></li> -->
+                        
+                        <li>
+                            <label class="normal">商品链接：</label>
+                            <input type="text" class="txt txt-02" id="tburl" placeholder="请输入url" name="tburl" autocomplete="off" onfocus="style.border='1px solid red ';" onblur="style.border='1px solid #c6c6c6';"  >
+                             
+                        </li>
+                        
+                      
+                         
+                       <br /> 
+                        <li>
+                            <label class="normal">开店掌柜：</label>
+                            
+                            <input type="text" class="txt txt-01" id="shopid" placeholder="" name="shopid" autocomplete="off" onfocus="style.border='1px solid red ';" onblur="style.border='1px solid #c6c6c6';" value="{wc:$member_dealer['shopid']}">
+                             
+                             
+                            
+                            
+                        </li>
+                        
+                        <br />
+                        <li>
+                            <label class="normal">联系电话：</label>
+                            <input type="text" class="txt txt-01" id="mobile1" placeholder="" name="mobile" autocomplete="off" onfocus="style.border='1px solid red ';" onblur="style.border='1px solid #c6c6c6';" maxlength="11" value="{wc:$member_dealer['mobile']}">
+                            
+                        </li>
+                        <br />
+                        <li>
+                            <label class="normal">联系邮箱：</label>
+                            <input type="text" class="txt txt-01" id="emails" placeholder="" name="email" autocomplete="off" onfocus="style.border='1px solid red ';" onblur="style.border='1px solid #c6c6c6';" value="{wc:$member_dealer['email']}">
+                            
+                        </li>
+                        <br />
+                        
+                    <li class="normal">
+                   
+                     京东链接：http://item.jd.com/410027264.html<br />
+                     淘宝链接：http://item.taobao.com/item.htm?id=410027264<br />
+                     天猫链接：https://detail.tmall.com/item.htm?id=410027264   
+                    </li>
+                        
+                        <li>
+                        <label class="normal">&nbsp;</label>
+                         <span style="display: none; vertical-align:middle; color:#F00" class="wap-tips" id="tb_auth"></span>
+                        </li>
+                       
+                       
+                        
+                        <li>
+                        <label class="normal">&nbsp;</label>
+                         <a class="Mem_orangebut"  id="btn_auth">提 交</a>
+                        </li>
+                        <input type="hidden"  value="{wc:$codecheck}" id="code" name="code"/>
+                        </ul>
+                </form>
+            </div>
+            
+       
+
+    
+   <br />
+   
+   <div class="login_Membut">		
+  
+			
+     
+		</div>
+    </div>
+	
+	
+</div><div class="clear" style="clear:0"></div>
+<script type="text/javascript">
+        $(function () {
+            var base_url = '{WEB_PATH}/member/home/check_Ajax';
+             var ehtml = '<i><img src="{G_TEMPLATES_STYLE}/newimages/tips-ico.png" width="15" sytle="vertical-align:middle"/></i> ';
+			 
+			 function checktburl() {
+                var value = $("#tburl").val();
+                var length = len(value);
+				
+				
+                if (value == '' || value.length == 0) {
+					
+                    $(".wap-tips").html(ehtml + "你还没有输商品链接哦~").show();
+					setTimeout(function () {
+					$(".wap-tips").hide();
+                                }, 2000);
+                    return false;
+                }
+                
+               
+                return true;
+				
+            }
+			 function len(value) {
+                var total = 0;
+                for (i = 0; i < value.length; i++) {
+                    var char = value.charCodeAt(i);
+                    if ((char >= 0x0001 && char <= 0x007e) || (0xff60 <= char && char <= 0xff9f)) {
+                        total++;
+                    }
+                    else {
+                        total += 2;
+                    }
+                }
+                return total;
+            }
+
+			
+			$("#tburl").on('blur', function () {
+				
+                checktburl();
+				
+            });
+			
+            $("#btn_auth").click(function () {
+                if (checktburl()) {
+                    shopid = $("#shopid").val();
+                    tburl = $("#tburl").val();
+					code = $("#code").val();
+					 mobile1 = $("#mobile1").val();
+					emails = $("#emails").val();
+					$("#btn_auth").addClass("letter-noSpac").html("正在提交...");
+                    $.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {type: 'tburl', shopid: shopid, tburl: tburl, code: code, mobile: mobile1, emails: emails},
+                        success: function (data) {
+							
+							$("#tb_auth").html('<p class="content" style=" text-align:content; padding:0px 0px 0px 50px;"><img src="{G_TEMPLATES_STYLE}/newimages/houzhe/loading.gif" /></p>').show(); 
+							
+                            if (data != '1000') {
+                                $('.wap-tips').html(ehtml + data).show();
+								setTimeout(function () {
+					$(".wap-tips").hide();
+                                }, 2000);
+								$("#btn_auth").removeClass("letter-noSpac").html("提交");
+                            } else {
+								location.href = "{WEB_PATH}/member/home/check_shop1";
+                            }
+                        },
+                        error: function () {
+                            $('.wap-tips').html(ehtml + "数据提交失败,请重试!").show();
+							setTimeout(function () {
+					$(".wap-tips").hide();
+                                }, 2000);
+                        }
+                    });
+				}
+            });
+        });
+    </script>
+{wc:templates "index","footer"}

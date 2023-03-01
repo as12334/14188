@@ -1,0 +1,207 @@
+{wc:templates "index","header"}
+
+
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/newcss/Detail.css"/>
+
+<!--晒单详情-->
+<!--内容部分-->
+    <div class="g-main-con clrfix" id="loadingPicBlock">
+        <div class="w1190">
+            <div class="m-position">当前位置：<a href="{WEB_PATH}" title="首页">首页</a><span class="f-tran f-tran-prev f-tran-next">&gt;</span><a href="{WEB_PATH}/go/shaidan" title="晒单列表">晒单列表</a><span class="f-tran f-tran-prev f-tran-next">&gt;</span>晒单详情</div>
+            <div class="g-detailCon clrfix">
+                <!--左边部分-->
+                <div class="m-detail-left clrfix">
+                    <!--会员和商品信息宽屏-->
+                    <div class="winners-info gray9 clrfix"><ul>
+                    <li class="win-head"><a href="{WEB_PATH}/uname/{wc:fun:idjia($shaidan['sd_userid'])}" target="_blank"><img src="{G_UPLOAD_PATH}/{wc:fun:get_user_key($shaidan['sd_userid'],'img','')}" width="80"><s class="transparent-png"></s></a></li>
+                    <li class="win-name"><a href="{WEB_PATH}/uname/{wc:fun:idjia($shaidan['sd_userid'])}" target="_blank">{wc:fun:get_user_name($shaidan['sd_userid'],'username')}</a></li>
+                    <li><i>{wc:fun:_cfg('web_name_two')}参与：</i><em class="orange f-tran-prev">{wc:fun:get_user_goods_num($shaidan['sd_userid'],$shaidan['sd_shopid'])}</em>人次</li>
+                    {wc:php:start}
+						$jikxiao = get_shop_if_jiexiao($shaidan['sd_shopid']);						
+						{wc:php:end}
+						{wc:if $jikxiao['q_uid']}
+                    <li><i>幸运{wc:fun:_cfg('web_name_two')}码：</i><span class="orange">
+                        {wc:$jikxiao['q_user_code']}</span></li>
+                    <li><i>揭晓时间：</i><cite>{wc:fun:microt($jikxiao['q_end_time'])}</cite></li>
+                           {wc:else}<li>
+							{wc:php:start}
+								$jikxiao = $goods;
+							{wc:php:end}
+                            </li>
+						   {wc:if:end}
+                        
+                    </ul><b class="point-out"><s></s></b></div><br />
+                    <div class="next-period"><dl><dt><a rel="nofollow" href="{WEB_PATH}/dataserver/{wc:$shaidan['sd_shopid']}" target="_blank"><img src="{G_UPLOAD_PATH}/{wc:$goods['thumb']}"></a></dt><dd class="comm-name "><p><a href="{WEB_PATH}/dataserver/{wc:$jikxiao['id']}" target="_blank">(第{wc:$jikxiao['qishu']}期){wc:$jikxiao['title']}</a></p></dd><dd class="gray9">商品价值：￥{wc:$jikxiao['money']}</dd><dd class="have-in"><a rel="nofollow" href="{WEB_PATH}/goods/{wc:$goods['id']}" target="_blank">
+                        {wc:if !empty($goods['q_uid'])}
+						已揭晓
+						{wc:else}
+						第{wc:$goods['qishu']}期正在进行中...
+						{wc:if:end}</a></dd></dl><span class="publicly-get transparent-png"></span></div>
+                    <!--他的其他晒单-->
+                    {wc:if $shaidanself['sd_pass']==1}
+                        <div class="other-single">
+                            <dl>
+                                <dt class="gray3"><i>TA</i>的其他晒单</dt>
+                                <dd class="sig-xmjdh"><p><a href="{wc:$shaidanself['sd_id']}" >{wc:$shaidanself['sd_title']}</a></p><span class="sig-xmjdh"><a rel="nofollow" href="{wc:$shaidanself['sd_id']}"  class="xianmu"><i class="transparent-png"></i>{wc:$shaidanself['sd_zhan']}</a><a rel="nofollow" href="{wc:$shaidanself['sd_id']}"  class="pinglun"><i class="transparent-png"></i>{wc:$totalself}</a></span></dd>
+                            </dl>
+                        </div>
+                     {wc:if:end}
+                </div>
+                <!--中间部分-->
+                <div class="m-detail-middle clrfix">
+                    <!--会员和商品信息窄屏-->
+                   
+                    <!--晒单内容-->
+                    <div class="single-info clrfix">
+                        <dl><dt class="gray3">{wc:$shaidan['sd_title']}</dt><dd class="single-fufen"><cite>{wc:fun:date("Y-m-d H:i",$shaidan['sd_time'])}</cite><cite><em>{wc:$shaidan['sd_read_num']}</em>人阅读</cite><cite><em id="b_ReplayCount">{wc:$total}</em>人评论</cite><span class="transparent-png"><b>{wc:$shaidan['sd_fufen']}</b></span></dd><dd class="gray6"><p>{wc:$shaidan['sd_content']}</p></dd>
+                        
+                       <dd>{wc:loop $sd_photolist $sdimg}<img src="{G_UPLOAD_PATH}/{wc:$sdimg}" border="0">{wc:loop:end}</dd></dl>
+                    </div>
+                    <!--回复总数-->
+                    <script>
+					
+$(function(){
+	if($.cookie('xianmu')=={wc:$shaidan['sd_id']}){
+		$("#p_xianmu").addClass("u-xianmu-past");
+		$("#emHits em").html("已羡慕");
+		return false;
+	}
+	$(".emHits").click(function(){		
+		$.post(
+			"{WEB_PATH}/go/shaidan/xianmu",
+			{id:"{wc:$shaidan['sd_id']}"},
+			function(data){
+				
+				if($.cookie('xianmu')=={wc:$shaidan['sd_id']}){
+		       $("#p_xianmu").addClass("u-xianmu-past");
+		        $("#emHits em").html("已羡慕");
+		        return false;
+		
+	           }else{$(".gray9 cite").text(data);}
+				
+				$("#p_xianmu").addClass("u-xianmu-past");
+				$("#emHits em").html("已羡慕");
+				
+				$.cookie("xianmu","{wc:$shaidan['sd_id']}", { expires:7,path: '/'});
+	
+			}
+		);
+	})
+})
+</script>
+                    <div class="reply-total clrfix" >
+                        <ul>
+                            <li class="m-gxhf gray6 fl"><i></i>共<em class="orange" id="em_ReplayCount">{wc:$total}</em>条评论</li>
+                            <li class="m-share fr" id="li_share" style="display:;">
+                                <p id="p_xianmu" class="u-xianmu ">
+                                    <a href="javascript:;" id="emHits" class="emHits">
+                                        <i class="transparent-png"></i>
+                                        <em>羡慕</em>
+                                        <span class="gray9" ><cite>
+                                            {wc:$shaidan['sd_zhan']}</cite><b><s></s></b>
+                                        </span>
+                                     </a>
+                                </p>
+
+						<!-- Baidu Button BEGIN -->
+						
+						<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=671207" ></script>
+						<script type="text/javascript" id="bdshell_js"></script>
+						<script type="text/javascript">
+						document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+						</script>
+                                <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" ><span class="bds_more"><cite></cite>分享</span></div>
+                              
+                                <!-- Baidu Button END -->
+                            </li>
+                        </ul>
+                    </div>
+                    <!--晒单评论开始-->
+                    <!--输入框-->
+                    <script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/js.min.js"></script>
+                    
+                   
+
+                    <div id="commentList" class=" clrfix" style="display:none;">
+
+                    </div>
+                    <!--晒单评论结束-->
+
+                </div>
+                <!--右边-->
+                <div class="m-detail-right clrfix">
+                    <!--其他获得者-->
+                    
+                        <div class="other-get clrfix">
+                            <dl id="dl_otherget">
+                                <dt>
+                                    <cite class="gray3 fl">其他获得者</cite>
+                                    <span class="fr">
+                                        <!--<a rel="nofollow" id="otherleft" href="javascript:;"  class="other-left "></a><a id="otherright" href="javascript:;" class="other-right other-right-none"></a> -->
+                                    </span>
+                                </dt>
+                                {wc:loop $shaidanother $sd}
+                                <dd><cite class="fl"><a rel="nofollow" href="{WEB_PATH}/uname/{wc:fun:idjia($sd['sd_userid'])}" target="_blank"><img src="{G_UPLOAD_PATH}/{wc:fun:get_user_key($sd['sd_userid'],'img','')}" width="80"><s class="transparent-png"></s></a></cite>
+                                <span class="fl"><p><em><a href="{WEB_PATH}/uname/{wc:fun:idjia($sd['sd_userid'])}" target="_blank">{wc:fun:get_user_name($sd['sd_userid'],'username')} </a></em>&nbsp;获得了第{wc:$sd['sd_qishu']}期</p><a rel="nofollow" href="{WEB_PATH}/go/shaidan/detail/{wc:$sd['sd_id']}"  class="link-btn see-btn">查看晒单</a></span>
+                                </dd>
+                                {wc:loop:end}
+                                
+                            </dl>
+                        </div>
+
+                    
+                    <!--最新晒单-->
+                    <div class="new-single">
+                        <h4 class="gray3">最新晒单</h4>
+                        <ul>
+                        {wc:loop $shaidannew $sd}
+                        {wc:php:start}
+                        
+                         $sd_content = strip_tags($sd['sd_content']);
+        	             $substrnew=substr($sd['sd_photolist'],0,-1);
+                         
+                         $sd_photolistnew1=explode(";",$substrnew);
+                   
+                     
+                       {wc:php:end}
+                        <li><cite><i></i><em><a  href="{WEB_PATH}/go/shaidan/detail/{wc:$sd['sd_id']}"  title="{wc:$sd['sd_title']}">{wc:$sd['sd_title']}</a></em></cite><a rel="nofollow" href="{WEB_PATH}/go/shaidan/detail/{wc:$sd['sd_id']}" ><span class="gray9">{wc:fun:_strcut($sd_content,66)}</span></a><p>
+                        {wc:loop $sd_photolistnew1 $sdimg}<a rel="nofollow" href="{WEB_PATH}/go/shaidan/detail/{wc:$sd['sd_id']}" ><img src="{G_UPLOAD_PATH}/{wc:$sdimg}" border="0"></a>{wc:loop:end}
+                        </p></li>
+                        {wc:loop:end}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<script type="text/javascript">
+       
+            var base_url = "{WEB_PATH}/go/shaidan/shaidan_ping_iframe/{wc:$shaidan['sd_id']}";
+            var ehtml = '<div id="divTopicShow"  style="text-align:center; padding:20px 0;" ><img src="{G_TEMPLATES_STYLE}/images/global/loading.gif" width="30" sytle="vertical-align:middle"/></div>';
+			$("#commentList").html(ehtml).show();
+
+
+
+            var getAllp = function(){
+                    
+					$("#commentList").html(ehtml);
+                    $.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {action: 'login_user'},
+                        success: function (data) {
+                           $('#commentList').html(data).show();
+                        },
+                        error: function () {
+                            $('#commentList').html("数据加载失败,请重试!").show();
+                        }
+                    });
+             	
+};
+getAllp();
+        
+    </script>
+    <!--底部-->
+{wc:templates "index","footer"}

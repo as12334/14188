@@ -1,0 +1,109 @@
+.footerdi ul li{ font-size:12px}
+.footerdi{clear:both;width:100%;background:#f7f7f7;border-top:1px solid #ddd;height:48px;position:absolute;position:fixed;bottom:0;z-index:100;}
+.footerdi a{width:20%;height:44px;padding-top:5px;text-align:center;float:left;display:block;color:#888;}
+.footerdi a.hover{color:#C40000;}
+.footerdi a i{display:block;background:url(../../images/mobile/f_set.png);background-size:28px auto;margin:0 auto;margin-bottom:1px;}
+.footerdi li.f_home i{width:27px;height:25px;background-position:0 -26px;}
+.footerdi li.f_home a.hover i{width:27px;height:25px;background-position:0 0;}
+.footerdi li.f_whole i{width:25px;height:25px;background-position:0 -78px;position:relative;top:1px;}
+.footerdi li.f_whole a.hover i{width:23px;height:25px;background-position:0 -78px;position:relative;top:1px;}
+.footerdi li.f_whole em{position:relative;top:2px;}
+.footerdi li.f_jiexiao i{width:28px;height:23px;background-position:0 -198px;position:relative;top:2px;margin-bottom:3px;position:relative;}
+.footerdi li.f_car i{width:28px;height:23px;background-position:0 -128px;position:relative;top:2px;margin-bottom:3px;position:relative;}
+.footerdi li.f_car a.hover i{width:28px;height:23px;background-position:0 -128px;position:relative;top:2px;margin-bottom:3px;}
+.footerdi li.f_car b{background:#C40000;padding:1px;width:16px;height:16px;line-height:16px;border-radius:16px;color:#fff;position:absolute;top:-5px;font-family:Arial;text-align:center;font-size:10px;overflow:hidden;}
+.footerdi li.f_personal i{width:23px;height:22px;background-position:0 -175px;position:relative;top:3px;margin-bottom:4px;}
+.footerdi li.f_personal a.hover i{width:20px;height:22px;background-position:0 -175px;position:relative;top:3px;margin-bottom:4px;}
+.footerdi .f_home i.cur{
+	background-position: 0 0 !important;
+}
+.footerdi .f_whole i.cur{
+	background-position: 0 -52px !important;
+}
+.footerdi .f_jiexiao i.cur{
+	background-position: 0 -222px !important;
+}
+.footerdi .f_car i.cur{
+	background-position: 0 -105px !important;
+}
+.footerdi .f_personal i.cur{
+	background-position: 0 -152px !important;
+}
+.footers {
+	text-align:center;
+	position:relative;
+	padding-bottom:50px;
+}
+.footers .z-top {
+	width:40px;
+	height:40px;
+	display:inline-block;
+	position:fixed;
+	right:5px;
+	bottom:7px;
+	background:rgba(0,0,0,0.2);
+	border-radius:3px;
+}
+.footers .z-top .z-arrow {
+	width:10px;
+	height:10px;
+	margin-top:17px;
+	margin-right:1px;
+	margin-left:2px;
+	border-color:#fff;
+	border-width:2px 0 0 2px;
+}
+.footers a {
+	color:#999;
+}
+.footers .m-ftA {
+	padding-top:5px;
+}
+.footers .m-ftA a {
+	padding:8px 15px;
+	display:inline-block;
+}
+.footers p.grayc span {
+	margin-left:3px;
+	margin-right:8px;
+}
+.footers .u-ft-nav {
+	width:100%;
+	border-top:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+	margin:0 auto;
+	background:#fafafa;
+	display:box;
+	display:-webkit-box;
+	display:-moz-box;
+}
+.footers .u-ft-nav span {
+	height:30px;
+	line-height:30px;
+	-webkit-box-flex:1;
+	-moz-box-flex:1;
+	box-flex:1;
+	display:block;
+	position:relative;
+}
+.footers .u-ft-nav span b {
+	height:30px;
+	width:1px;
+	position:absolute;
+	top:0;
+	right:0;
+	overflow:hidden;
+	background:#DDD;
+}
+.footers .u-ft-nav span a {
+	display:block;
+}
+.footers .u-ft-nav span a.Exit {
+	display:inline-block;
+	color:#2af;
+	margin-left:8px;
+}
+.footers .u-ft-nav span a.Member {
+	display:inline-block;
+	color:#2af;
+}

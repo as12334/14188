@@ -1,0 +1,176 @@
+@charset "utf-8";
+html,body,div,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}
+body,button,input,select,textarea{font:12px/1.5 Tahoma,Helvetica,Arial,'宋体',sans-serif,\5b8b\4f53;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+address,cite,dfn,em,var,i{font-style:normal;}
+ul,ol,dl,li{list-style:none;}
+fieldset,img{border:0;}
+button,input,select,textarea{font-size:100%;}
+table{border-collapse:collapse;border-spacing:0;}
+a{
+    color:#5e5e5e;
+    text-decoration:none;
+}
+a:hover{
+    color:#f36;
+    text-decoration:underline;
+}
+:focus{  
+    outline: 0 none;
+}
+/*reset by mumian end*/
+body {
+   
+    color:#666;
+	background:#fff;
+    height:100%;
+    min-width:1000px;
+}
+.main{
+	width:99%;
+	margin:0px auto;
+}
+.clear{
+    clear:both;
+}
+.clear:after,
+.clear:before {
+    content:"";
+    display:table;
+}
+
+.clear:after {
+    clear:both;
+    overflow:hidden;
+}
+
+.clear {
+    zoom:1;
+    clear:both;
+}
+.my-juanpi{width: 100%;}
+.w1200 .my-juanpi{width: 100%;}
+.my-juanpi .sider-bar{width: 162px; border:1px solid #e2e2e2;padding: 12px 27px 47px 15px; float: left; background-color: #ffffff;}
+.my-juanpi .sider-bar ul li{height: 30px; padding: 12px 0; font-weight: bold;font-size: 14px; padding-left: 27px; width: 123px;line-height: 30px;font-family: "宋体"; border-bottom: 1px dashed #e2e2e2;}
+.my-juanpi .sider-bar ul li a{ color: #333; text-decoration: none;}
+.my-juanpi .sider-bar ul li.sub-menu{padding: 0 0 10px 0; height: auto; width: 150px; }
+.my-juanpi .sider-bar ul li.sub-menu span{color:#ff3366;font-weight:bold;padding-left:5px;}
+.my-juanpi .sider-bar ul li ul li a{ color: #666; }
+.my-juanpi .sider-bar ul li a:hover{color: #ff3366;}
+.my-juanpi .sider-bar ul li.active{ background: url(../images/user/sider-li-bg.jpg) no-repeat 0 12px; color: #fff; font-weight: bold;}
+.my-juanpi .sider-bar ul li ul li{font-weight: normal; color: #666; font-size: 12px; border-bottom: none; padding-top: 0; padding-bottom: 0; overflow: hidden; margin: 2px 0 8px 12px;}
+.my-juanpi .sider-bar ul li ul li.active{ background: url(../images/user/sider-li-bg.jpg) no-repeat 0 0;}
+.my-juanpi .sider-bar ul li ul li.active a,.my-juanpi .sider-bar ul li.active a,.my-juanpi .sider-bar ul li.active span{color: #fff;}
+.my-juanpi .sider-bar ul li.noboder{ border:none;}
+.my-juanpi .order-lists{width: 99%;overflow: hidden;}
+.my-juanpi .order-lists,.all-orders-top a{ float: right;}
+.my-juanpi .order-lists .all-orders{margin-bottom:20px;width: 99%;}
+.all-orders-top{height: auto; line-height: 40px;background: #fff;border: 1px solid #e2e2e2;padding:  10px 0; margin-top:10px;}
+.all-orders-top span{float: left;color: #999999;margin-right: 8px;}
+.all-orders-top span strong {font-size: 14px; font-weight: bold; padding-right: 35px; color: #f36;border-right: 1px dashed #ccc;margin-right: 20px;}
+.all-orders-top a{ display: inline-block; margin-right: 20px;color: #3399cc;}
+.my-juanpi .all-orders ul.mb10{ margin-bottom: 0;margin-bottom: 0!important;}
+.my-juanpi .all-orders ul.olh{border-bottom:1px solid #e3e3e3;}
+.my-juanpi .all-orders .olh-num, .my-juanpi .all-orders .olh-price-paid, .my-juanpi .all-orders .olh-status{border: none;}
+.my-juanpi .all-orders .olh{height: 35px; line-height: 35px; font-weight: bold; color: #666666; width: 978px; }
+.my-juanpi .order-infolist ul li a{color: #39c;}
+.my-juanpi .order-infolist ul li .con a{color: #f36;text-decoration: none;}
+.my-juanpi .oi-price, .my-juanpi .oi-num{font-family: "arial"; font-size: 14px;}
+.my-juanpi .oi-num, .my-juanpi .oi-price em{color: #666;}
+.my-juanpi .oi-status span{color: #333333;}
+.my-juanpi .order-infolist ul li.oi-button a{color: #999999;}
+.my-juanpi .order-infolist ul li.oi-button a.btn-pay,.my-juanpi .order-infolist ul li.oi-button a.get-goods{color: #fff;font-weight: normal;}
+.my-juanpi .order-infolist ul li.oi-other a.sales-return{color: #f36;display: inline-block;border-radius: 2px;-webkit-border-radius: 2px;-moz-border-radius: 2px;margin-bottom: 4px;}
+.my-juanpi a.sales-return{ background:#f1f1f1;border: #e2e2e2 solid 1px; height: 30px; line-height: 30px; width: 75px; text-decoration: none;}
+.my-juanpi a.sales-return:hover{background:#f9f9f9;}
+.my-juanpi .info-panel{float: right; border-top:1px solid #e2e2e2; border-left: 1px solid #e2e2e2;width: 979px; background-color: #ffffff;}
+.my-juanpi .info-panel .account{width: 456px; height: 89px; border-right: 1px solid #e2e2e2;border-bottom: 1px solid #e2e2e2; float: left; padding:30px 0 30px 40px;}
+.my-juanpi .account-info{float: left; margin: 10px 0 0 20px;}
+.my-juanpi .info-panel ul li{float: left; border-right: 1px solid #e2e2e2;border-bottom: 1px solid #e2e2e2; height: 74px; width: 240px;}
+.my-juanpi .info-panel .msg-num{float: left; border-right: 1px solid #e2e2e2;border-bottom: 1px solid #e2e2e2; height: 14px; line-height: 14px; width: 168px; text-align: center; background-color: #fffeee; font-size: 14px;padding:17px 0;}
+.my-juanpi .info-panel .msg-con{float: left; border-right: 1px solid #e2e2e2;border-bottom: 1px solid #e2e2e2; height: 48px; line-height: 48px;width: 789px; padding-left:20px; color: #ff3366;}
+.my-juanpi .info-panel ul li div, .tips em div, .float-siderbar a span,.my-juanpi .info-panel .msg-num span{ background: url(../images/user/panel-icon.gif) no-repeat; }
+.my-juanpi .info-panel .msg-num span{ background-position: 0 0; display: inline-block; width: 17px;color: #fff; font-family: "宋体";text-align: center;padding-left: 1px; }
+.my-juanpi .info-panel ul li .credit{height: 34px;line-height:  34px; background-position: 0 -47px; padding-left: 45px; margin:22px 0 0 43px;  font-family: arial,'宋体'}
+.my-juanpi .info-panel ul li .ticket{height: 34px;line-height: 34px; background-position: 0 -81px; padding-left: 45px;margin:22px 0 0 43px;}
+.my-juanpi .info-panel ul li .ticket a{font-family: arial,'宋体'}
+.my-juanpi .info-panel ul li .base-info{height: 14px;line-height: 14px; background-position: 0 -188px; padding-left: 28px;margin:27px 0 0 70px;}
+.my-juanpi .info-panel ul li .base-info a{color: #666;; font-size: 14px; font-weight: bold;}
+.my-juanpi .info-panel ul li .addr{height: 16px;line-height: 16px; background-position: 0 -202px; padding-left: 22px;margin:27px 0 0 70px;}
+.my-juanpi .info-panel ul li .addr a{color: #666; font-size: 14px; font-weight: bold;}
+.my-juanpi .info-panel ul li .base-info a:hover,.my-juanpi .info-panel ul li .addr a:hover{text-decoration: none;color: #ff3366 }
+.my-juanpi .ph{width: 86px; height: 86px; position: relative; float: left;}
+.my-juanpi .ph img{width: 86px; height: 86px;}
+.my-juanpi .ph-layer{ background: url("../images/user/ph-layer.gif") no-repeat 0px 0px;width: 86px; height: 91px; position: absolute; top: 0; left: 0;}
+.my-juanpi .ph-set{position: absolute;top:69px;left:71px; background: url(../images/account_setting/zh_1.gif) no-repeat;background-position: -138px -21px;width: 20px;height: 20px;}
+.my-juanpi .ph-set:hover{background-position: -159px -21px;}
+.account-info p{font-size: 16px; font-weight: bold; color: #333; margin-bottom: 20px;}
+.account-info p span{ font-size: 14px; color: #666; font-weight: normal;}
+.my-juanpi .tips a{display: inline-block;vertical-align: top;}
+.tips{font-family: "宋体";}
+.tips strong{margin-left:-5px; background: url("../images/user/tips-icon.gif") no-repeat; display: inline-block;width: 34px;}
+.tips strong.level-h{color: #008800; background-position:17px 0;}
+.tips strong.level-m{color: #ff6600; background-position:17px -104px;}
+.tips strong.level-l{color: #ff3838; background-position:17px -104px;}
+.account-info a{color: #3399cc;}
+.tips em{display: inline-block; }
+.tips em:hover{cursor: pointer;}
+.tips em .mobile{background-position: 0 -30px; width: 15px; height: 16px;}
+.tips em.active .mobile{background-position: 0 -14px;}
+.tips em .mail{background-position: -17px -30px; width: 16px; height: 16px;}
+.tips em.active .mail{background-position:-18px -14px;}
+.tips em .lock{background-position: -42px -30px; width: 18px; height: 16px;}
+.tips em.active .lock{background-position:-34px -14px;}
+.float-siderbar {width: 50px; background-color: #e2e2e2; position: absolute; left:0; top:131px;z-index: 20;}
+.float-siderbar ul{margin-top: 160px;}
+.float-siderbar ul li{width: 50px; height: 50px;}
+.float-siderbar ul li a{display: block;}
+.float-siderbar ul li a:hover{ background-color: #cccccc;}
+.float-siderbar ul li a span{display:block;}
+.float-siderbar .my-order a{ padding: 16px 15px 15px 16px;}
+.float-siderbar .my-order a span{width: 19px; height:19px; background-position: 0 -115px;}
+.float-siderbar .my-sorce a{ padding: 16px 16px 15px 17px;}
+.float-siderbar .my-sorce a span{width: 17px; height:19px; background-position: 0 -134px;}
+.float-siderbar .my-ticket a {padding: 16px 15px 15px 16px;}
+.float-siderbar .my-ticket a span{width: 19px; height:19px; background-position: 0 -153px;}
+.float-siderbar .my-favorite a {padding: 18px 10px 17px 16px;}
+.float-siderbar .my-favorite a span{width: 19px; height:15px; background-position: 0 -172px;}
+.float-siderbar a span em{ display: none; position: absolute; left:55px; width: 65px; background: url("../images/user/hover-bg.gif") no-repeat 0px 0px; height: 24px; line-height: 24px;text-align: center; color: #fff;}
+.favorite-hd{ height: 50px; line-height: 50px;background: #ffffff; margin-bottom: 20px;}
+.favorite-hd h3{ height: 50px; line-height: 50px;font-size: 14px;margin-left: 30px; width:60px; display: inline; color: #333; float: left; }
+.favorite-hd em.number{ height: 50px; line-height: 50px;font-size: 12px; padding-left: 10px; padding-right: 80px; float: left;}
+.favorite-hd a{border:1px solid #e2e2e2;height: 30px; line-height: 30px; padding:0 12px; display: inline-block;margin:0 10px; border-radius: 1px; text-decoration: none; color: #333;}
+.favorite-hd a:hover{background: #f9f9f9; color: #ff3366;}
+.more-load{margin-top: 40px;}
+.more-load a{display: block; width: 128px; height: 38px; border: 1px solid #cccccc; font-size: 14px; background: #e2e2e2; line-height: 38px; text-align: center; margin:0 auto;}
+.more-load a:hover{background-color: #f0f0f0;color: #666666; text-decoration: none;}
+.my-juanpi .main-content{width:980px; float: right;margin-top: 0;}
+.my-juanpi .cash-voucher{width:980px;min-height: 500px;}
+.header .state-show .normal-h{ font-size:14px; color:#fff;height:40px;float:left; display:inline; padding:0 15px;}
+.coupon-active{padding-left: 30px;}
+
+/*150206 adong*/
+.my-juanpi .oi-goods p{text-align: left;color: #333;}
+
+.my-juanpi .oi-status p a{display: block;}
+
+.my-juanpi .order-info-hd img{vertical-align: -3px;}
+
+.my-juanpi .oi-goods,.my-juanpi .oi-price,.my-juanpi .oi-price-paid,.my-juanpi .oi-other{
+	border-bottom: 1px solid #e2e2e2;
+}
+.my-juanpi .last-goods .oi-goods,.my-juanpi .last-goods .oi-price,.my-juanpi .last-goods .oi-price-paid,.my-juanpi .last-goods .oi-other{
+	border-bottom: 0;
+}
+.bin{background: url(../images/shopping/del.png) no-repeat 0 -23px;width: 18px;height: 18px;cursor: pointer;margin-top: 5px;float: right;}
+.bin:hover{background-position: 0px 0;}
+.account-info a.set_code{background: #999;font-size: 12px;border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px;text-align: center;color: #fff;padding: 3px 8px 4px;font-weight:normal;vertical-align: 1px;}
+.account-info a.set_code:hover{background: #666;text-decoration: none;}
+
+/*by adong tips_once*/
+.tips_once{position: relative; width: 954px;height: 30px;background: #ffffcc;color: #666;text-align: left;line-height: 30px;margin-bottom: 5px;padding-left: 24px; color: #666;}
+.tips_once i{color: #ccc;cursor: pointer;position: absolute;right: 20px;font-weight: bold;}
+.tips_once i:hover{color: #f36;}
+
+.fraud-banner{position: relative;background: url(../images/user/fraud-banner.jpg);height: 50px}
+.fraud-banner span{position: absolute;right: 7px;top: 15px;display: block;width: 20px;height: 16px;cursor: pointer;}

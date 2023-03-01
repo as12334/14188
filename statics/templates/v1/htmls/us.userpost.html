@@ -1,0 +1,35 @@
+{wc:if $shaidan==null}
+<div class="null-retips-wrapper">
+                               <div class="gth-icon transparent-png"></div>
+                               <span>{wc:if $memberself['uid']==$member['uid']}您{wc:else}TA{wc:if:end}还没有晒单哦！</span>
+                           </div>
+                           {wc:else}
+                           <div class="content">
+                                <div class="good-list-wrap">
+                                    <ul class="good-list good-share">
+                                    {wc:loop $shaidan $sd}
+                                    {wc:php:start}
+                        
+                         $sd_content = strip_tags($sd['sd_content']);
+        	             $substrnew=substr($sd['sd_photolist'],0,-1);
+                         
+                         $sd_photolistnew1=explode(";",$substrnew);
+                   
+                     
+                       {wc:php:end}
+                                    <li><h3 class="s-title"><a target="_blank" href="{WEB_PATH}/go/shaidan/detail/{wc:$sd['sd_id']}">{wc:$sd['sd_title']}</a></h3><p class="s-info"><a rel="nofollow" target="_blank" href="http://post.1yyg.com/detail-178730.html">{wc:fun:_strcut($sd_content,96)}</a></p><div class="pic-list-wrap"><ol class="pic-list" style="height:75px; overflow:hidden">
+                                    {wc:loop $sd_photolistnew1 $sdimg}
+                                    <li pic="{wc:$sdimg}" ><span><img width="71px" height="71px" src="{G_UPLOAD_PATH}/{wc:$sdimg}"></span><div class="pic-hover transparent-png" style="display: none;"></div></li>
+                                    {wc:loop:end}
+                                    
+                                    
+                                    </ol></div><i class="single"><i class="single"></i></i><div class="g-time"><div class="aricle"><div class="cir"></div></div><div class="time-str"><div class="str">{wc:fun:date("Y-m-d H:i:s",$sd['sd_time'])}</div></div></div><div class="clear"></div></li>
+                                    {wc:loop:end}
+                                    </ul>
+                                    <div class="s-line">
+                                        <div class="s-top"></div>
+                                        <div class="s-bottom"></div>
+                                    </div>
+                                </div>
+                            </div>
+                           {wc:if:end}

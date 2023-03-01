@@ -1,0 +1,50 @@
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_CSS}/Comm1.css"/>
+
+<br />
+<article class="m-share-comment m-round">
+                <h3>共<span id="ReplyCount"  class="z-user orange">{wc:$total}</span>条评论 &nbsp;&nbsp;<em>{wc:$tiezi['dianji']}</em>人阅读</h3>
+                <ul id="replyList">
+					{wc:loop $hueifu $hf}
+					<li>
+						<a class="fl u-comment-img" href="{WEB_PATH}/mobile/mobile/userindex/{wc:$hf['hueiyuan']}/{wc:$uids}/">
+                        
+							{wc:if userid($hf['hueiyuan'],'img')==null}
+				<img src="{G_TEMPLATES_STYLE}/images/prmimg.jpg" width="50" height="50" />
+				{wc:else}
+				<img id="imgUserPhoto" src="{G_UPLOAD_PATH}/{wc:fun:userid($hf['hueiyuan'],'img')}" width="50" height="50" border="0"/>
+				{wc:if:end}	
+						</a>
+						<div class="u-comment-r">
+							<p class="z-comment-name"><a href="{WEB_PATH}/mobile/mobile/userindex/{wc:$hf['hueiyuan']}/{wc:$uids}/" class="blue">{wc:fun:get_user_name($hf['hueiyuan'],'username')}</a></p>
+							<p class="gray6"><span>{wc:$hf['neirong']}</span><b>{wc:fun:date("Y-m-d H:i:s",$hf['time'])}</b></p>
+						</div>
+					</li>
+					{wc:loop:end}
+				</ul>
+                <!-- <a id="btnLoadMore" class="loading" href="javascript:void(0);" style="display:none;">点击加载更多</a>
+                <div id="divLoading" class="loading"style="display:none;"><b></b>正在加载</div> -->
+                
+</article>
+{wc:if $total>$num}
+				<div class="pagesx">{wc:page:two}</div>
+				{wc:if:end}
+<script type="text/javascript">
+function onpage(id){
+	var base_urls = "{WEB_PATH}/mobile/group/neifu/{wc:$tid}";
+	var ehtml = '<div id="divTopicShow"  style="text-align:center; padding:20px 0;" ><img src="{G_TEMPLATES_STYLE}/images/global/loading.gif" width="30" sytle="vertical-align:middle"/></div>';
+	$("#commentList").html(ehtml).show();
+	$.ajax({
+                        url: base_urls,
+                        async : true,
+		                addidvalue: true,
+                        data: {p: id},
+                        success: function (data) {
+                           $('#commentList').html(data).show();
+                        },
+                        error: function () {
+                            $('#commentList').html("数据加载失败,请重试!").show();
+                        }
+                    });
+	
+}
+    </script>

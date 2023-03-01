@@ -1,0 +1,96 @@
+{wc:templates "index","header"}
+<link href="{G_TEMPLATES_STYLE}/newcss/member_q.css?v=150728" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/layout-records.css"/>
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/layout-Frame.css"/>
+<div class="p-center-main clrfix">
+{wc:templates "member","left"}
+
+  <div class="sidebar_main clrfix fr">
+<style>
+		#wuliu_select{ padding:5px 8px; width:80px; background-color:#F60;border-radius:2px;font-family: 微软雅黑; color:#fff; font-size:12px; margin-left:30px; }		
+		.wuliubtn{ padding:3px 5px;background-color:#2af;border-radius:2px; color:#fff; font-size:12px; }
+		.wuliubtn:hover{ color:#fff; cursor:pointer}
+		.single-img .pic{ text-indent:0px;}
+		#divPageNav{ padding-top:10px;text-align:right}		
+		.listTitle .sdzt b{color: #fe6c00; font-weight:bold}
+		.message{ background:#fffce2; border:1px solid #fd9; color:#f60; padding:5px 8px; text-indent:10px;}
+		.single-xx-has span{ display:inline-block;  width:180px}
+</style>
+        
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/layout-commodity.css"/>
+<div class="g-obtain-title clrfix">
+                <ul>
+                    <li class="curr"><a href="#">中奖详情</a></li>
+                    
+                </ul>
+            </div>
+<div class="R-content">
+	
+                
+
+    
+  
+
+
+    {wc:if !$member_dizhi} 
+    <div class="message">你还没有填写收货信息,请填写收货信息！ <a href="{WEB_PATH}/member/home/address" style="font-weight:bold; color:#2af">去填写!</a></div>
+    {wc:if:end}    
+    
+    <div style="clear:both; width:100%; height:20px; display:block;"></div>
+	<div class="get-pro gray02">
+        <div class="total" style="clear:both; width:100%; line-height:30px;">
+                <div class="lulist"><a style="color: #03f; font-size:16px"> 产品信息：</a><a class="orange">{wc:$title}</a></div>
+                {wc:if $member_dizhi} 
+                <div class="lulist"><a style="color: #03f; font-size:16px">收货信息：</a>
+                姓名：<b class="orange">{wc:$member_dizhi['shouhuoren']} </b>&nbsp;&nbsp;&nbsp;&nbsp;
+                   手机号：<b class="orange">{wc:$member_dizhi['mobile']}</b>
+                   </a>
+                    <a>
+                   
+                   详细地址：<b class="orange">{wc:$member_dizhi['sheng']},{wc:$member_dizhi['shi']},{wc:$member_dizhi['xian']},{wc:$member_dizhi['jiedao']} </b>
+			    </a>
+                </div>
+                {wc:if:end}
+                {wc:if $luckynei['company']}
+               
+                   <div class="lulist">
+                  
+                   <a style="color: #03f; font-size:16px">物流信息：</a>
+                   
+                   
+                   <a>
+                   快递公司：<b class="orange">{wc:$member_dizhi['shouhuoren']} </b>&nbsp;&nbsp;&nbsp;&nbsp;
+                   快递单号：<b class="orange">{wc:$member_dizhi['mobile']}</b>
+                   </a>
+                   </div>
+			      {wc:if:end}
+                  <div class="lulist">
+                   <a style="color: #03f; font-size:16px">状态：</a>
+                  
+                  {wc:if $luckynei['pass']==1 || $luckynei['pass']==''}
+                  <a class="orange">待发货</a>
+                   {wc:if:end}
+                   {wc:if $luckynei['pass']==2}	
+                   <a class="orange">待收货</a>
+                  
+                    <a style="color:#fff" href="{WEB_PATH}/go/lucky/shouhuo/{wc:$id}" id="wuliu_select">确认收货</a>
+                   {wc:if:end}
+                  
+                   {wc:if $luckynei['pass']==3}	
+                   <a class="orange">已收货</a>
+                   
+                   
+                 
+                   {wc:if:end}
+                   </div>
+               </div> 
+                
+               
+            </div>
+    </div>	
+</div>
+</div>
+</div>
+
+<!--期数修改弹出框-->
+{wc:templates "index","footer"}

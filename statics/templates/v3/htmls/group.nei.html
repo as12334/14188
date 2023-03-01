@@ -1,0 +1,190 @@
+{wc:templates "index","header"}
+<script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/js.min.js"></script>
+<div class="groups-stripes"></div>
+<div class="layout980">
+	<div class="Topic-left">	
+		<div class="detail-Ltop">
+			<div class="detail-Himg">
+				<a href="{WEB_PATH}/group/show/{wc:$quanzi['id']}" class="fl-img"><img src="{G_UPLOAD_PATH}/{wc:$quanzi['img']}" border="0" ></a>
+			</div>
+			<div class="detail-HC"><div class="detail-Htit gray03">
+				<h2><a id="thisGroupName" href="{WEB_PATH}/group/show/{wc:$quanzi['id']}" class="orange">{wc:$quanzi['title']}</a></h2> 
+                {wc:if $tiezijoin['jiaru']=='Y'}
+					{wc:if !$addgroup}
+					<a id="btnJoinGroup" href="javascript:;" class="button04">申请加入</a>
+					{wc:else}
+					<span class="JoinOut" id="spanJoinOut"><s></s>已加入<i>|</i><a id="btnJoinOutGroup" href="javascript:;" class="blue">退出</a></span>
+					{wc:if:end}
+					{wc:if:end}
+				<span class="return"><a href="{WEB_PATH}/group/show/{wc:$quanzi['id']}" class="gray02">&lt;&lt; 返回圈子</a></span>
+				</div>
+				<p class="detail-Hinfo gray02">成员：
+				<span class="gray01">{wc:$quanzi['chengyuan']}</span>&nbsp;&nbsp;&nbsp;话题：
+				<span class="gray01">{wc:$quanzi['tiezi']}</span>&nbsp;&nbsp;&nbsp;创建时间：
+				<span class="gray01">{wc:fun:date("Y-m-d H:i:s",$quanzi['time'])}</span></p>
+			</div>
+		</div>
+		<div id="divTopicShow" class="detail-content">
+			<div class="detail-Ctitle">
+				<div class="detail-Ctimg">
+					<a href="{WEB_PATH}/uname/{wc:fun:idjia($tiezi['hueiyuan'])}" class="fl-img" type="showCard">
+					{wc:if userid($tiezi['hueiyuan'],'img')==null}
+					<img src="{G_TEMPLATES_STYLE}/images/prmimg.jpg" width="50" height="50" />
+					{wc:else}
+					<img id="imgUserPhoto" src="{G_UPLOAD_PATH}/{wc:fun:userid($tiezi['hueiyuan'],'img')}" width="50" height="50" border="0"/>
+					{wc:if:end}				
+					</a>
+				</div>
+				<div class="detail-Ctl">
+					<p class="detail-tit gray">{wc:$tiezi['title']}
+						{wc:if $tiezi['zhiding']=='Y'}
+						<i class="zhiding"></i>&nbsp;
+						{wc:if:end}
+					
+						<i id="JingHua" class="jing" style="display:none;"></i></p>
+					<div class="detail-Ctit gray03"><a href="{WEB_PATH}/uname/{wc:fun:idjia($tiezi['hueiyuan'])}" class="blue" type="showCard">{wc:fun:get_user_name($tiezi['hueiyuan'],'username')}</a> 
+						<span class="class-icon07"></span> 
+						<span class="time gray02">{wc:fun:date("Y-m-d H:i:s",$tiezi['time'])}</span>&nbsp;&nbsp;
+						<span class="gray03">人气({wc:$tiezi['dianji']})</span>
+					</div>
+				</div>
+			</div>
+			<div id="divTopicContent" class="detail-Con gray01">
+            {wc:$tiezi['neirong']}
+            {wc:if $tiezi['url']!=''}
+            <br />
+            <iframe frameborder="0" width="100%" height="355"  src="{wc:$tiezi['url']}" 
+        allowfullscreen></iframe>
+        
+        {wc:if:end}
+            
+            </div>
+		</div>
+
+		<div id="divAdminPower" class="detail-admin" style="display:none;">
+			<a href="javascript:;" id="btnSetGood" class="blue Control01"><s></s>话题加精</a>
+			<a id="btnUnshow" href="javascript:;" class="blue Control02"><s></s>屏蔽该话题</a>
+			<a href="javascript:;" id="btnCancelGood" class="blue Control03" style="display:none;"><s></s>取消加精</a>
+		</div>
+        <div id="divAdminPower" class="detail-admin" >
+			<em style="padding-left:10px;">
+                <!-- Baidu Button BEGIN -->
+						<span class="bdsharebuttonbox" data-tag="share_1" > 
+	<a class="bds_mshare" data-cmd="mshare"></a> 
+    <a class="bds_sqq" data-cmd="sqq"></a>
+	<a class="bds_qzone" data-cmd="qzone" href="#"></a>
+    <!--<a class="bds_weixin" data-cmd="weixin" href="#"></a> -->
+	<a class="bds_tsina" data-cmd="tsina"></a>
+	<a class="bds_baidu" data-cmd="baidu"></a>
+	
+	<a class="bds_tqq" data-cmd="tqq"></a>
+    <a class="bds_renren" data-cmd="renren"></a>
+	<a class="bds_more" data-cmd="more"></a>
+	<a class="bds_count" data-cmd="count"></a>
+</span>
+<script>
+	window._bd_share_config = {
+		common : {
+			bdText : '{wc:$tiezi[title]}',	
+			bdDesc : '{wc:$tiezi[neirong]}',	
+			bdUrl : '{WEB_PATH}/group/nei/{wc:$tiezi[id]}/{wc:$uids}/', 	
+			bdPic : '{G_UPLOAD_PATH}/{wc:$tiezi[image]}'
+		},
+		share : [{
+			"bdSize" : 32
+		}],
+		
+		image : [{
+			viewType : 'list',
+			viewPos : 'top',
+			viewColor : 'black',
+			viewSize : '32',
+			viewList : ['sqq','qzone','tsina','huaban','tqq','renren','weixin']
+		}],
+		selectShare : [{
+			"bdselectMiniList" : ['sqq','qzone','weixin','tqq','kaixin001','bdxc','tqf']
+		}]
+	}
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+                </em>
+		</div>
+		<div id="commentList" class=" clrfix" style="display:none;">
+
+        </div>
+	</div>
+	{wc:templates "group","right"}
+</div>
+<script>
+$(function(){
+	$("#btnJoinGroup,#btnJoinOutGroup").click(function(){
+		var uid="{wc:$uid}";
+		if(!uid){
+			alert("你未登录！");
+		}else{
+			var qzid="{wc:$quanzi['id']}";
+			var text=$("#btnJoinOutGroup").text();
+			$.ajax({
+				type:"POST",
+				url:"{WEB_PATH}/group/group/goqz",
+				data:{id:qzid,text:text},
+				success:function(){
+					location.replace(location);
+				}
+			});
+		}		
+	});
+	$("#txtTopicTitle,#btnPostTopic").click(function(){
+		var uid="{wc:fun:uidcookie('uid')}";
+		var text=$("#btnJoinOutGroup").text();
+		if(!uid){
+			alert("你未登录！");
+		}else if(!text){
+			alert("你未加入圈子！");
+		}else{
+			$("#divEditor").removeClass("hidden");
+			$(".Pub-inp-click").addClass("hidden");
+		}
+	});
+	$("#btnCancel").click(function(){
+		$("#divEditor").addClass("hidden");
+		$(".Pub-inp-click").removeClass("hidden");
+	});
+	$("form").submit(function(){
+		var text=$("#txtTopicTitleEx").val();
+		if(!text){			
+			alert("标题不能为空!");
+			return false;
+		}
+	})
+})
+</script>
+<script type="text/javascript">
+       
+            var base_url = "{WEB_PATH}/group/group/neifu/{wc:$tid}";
+            var ehtml = '<div id="divTopicShow"  style="text-align:center; padding:20px 0;" ><img src="{G_TEMPLATES_STYLE}/images/global/loading.gif" width="30" sytle="vertical-align:middle"/></div>';
+			$("#commentList").html(ehtml).show();
+
+
+
+            var getAllp = function(){
+                    
+					$("#commentList").html(ehtml);
+                    $.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {action: 'login_user'},
+                        success: function (data) {
+                           $('#commentList').html(data).show();
+                        },
+                        error: function () {
+                            $('#commentList').html("数据加载失败,请重试!").show();
+                        }
+                    });
+             	
+};
+getAllp();
+        
+    </script>
+ {wc:templates "index","footer"}

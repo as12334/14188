@@ -1,0 +1,26 @@
+                           {wc:if !$memberhuode}
+                           <div class="null-retips-wrapper">
+                               <div class="gth-icon transparent-png"></div>
+                               <span>{wc:if $memberself['uid']==$member['uid']}您{wc:else}TA{wc:if:end}还没有获得商品哦！</span>
+                           </div>
+                           {wc:else}
+                           <div class="content">
+                                <div class="good-list-wrap">
+                                    <ul class="good-list">
+                                    {wc:loop $memberhuode $go}
+        {wc:php:start}
+        	$jiexiao = get_shop_if_jiexiao($go['shopid']);
+    	{wc:php:end}
+        {wc:if $jiexiao}
+                                    <li><a class="g-pic" target="_blank" href="{WEB_PATH}/go/index/dataserver/{wc:$go['shopid']}"><img alt="" src="{G_UPLOAD_PATH}/{wc:fun:yunjl($go['shopid'])}" width="100" height="100"></a><div class="g-info"><h2 class="g-title owner"><a rel="nofollow" target="_blank" href="{WEB_PATH}/go/index/dataserver/{wc:$go['shopid']}">(第{wc:$go['shopqishu']}期){wc:$go['shopname']}</a></h2><div class="g-older"><p class="g-price">价值：￥{wc:$jiexiao['money']}</p><p>幸运{wc:fun:_cfg('web_name_two')}码：<b class="orange">{wc:$go['huode']}</b></p></div></div><div class="g-total">参与&nbsp;<span class="orange">{wc:$go['gonumber']}</span>&nbsp;人次</div><a rel="nofollow" class="g-see" target="_blank" href="{WEB_PATH}/go/index/dataserver/{wc:$go['shopid']}">查看详情</a><i class="single"><i class="single"></i></i><div class="g-time"><div class="aricle"><div class="cir"></div></div><div class="time-str"><div class="str">{wc:fun:date("Y-m-d H:i:s",$go['time'])}</div></div></div><div class="clear"></div></li>
+                                     {wc:if:end}
+                                    {wc:loop:end}
+                                    </ul>
+                                    <div class="s-line">
+                                        <div class="s-top"></div>
+                                        <div class="s-bottom"></div>
+                                    </div>
+                                </div>
+                            <!--<div class="z-look-more clrfix"><a href="javascript:;">查看更多</a></div> --></div>
+                           
+                           {wc:if:end}

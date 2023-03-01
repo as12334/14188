@@ -1,0 +1,261 @@
+@charset "utf-8";
+@import url(comm.css);
+*{margin:0;padding:0;font-family:microsoft Yahei;}
+.clear{clear:both;}
+.c_big_box{
+	
+}
+.c_header_box{
+	width:100%;
+	height:80px;
+	background:#dd2726;
+	text-align: center;
+}
+.c_header_box img{
+	margin-top:22px;
+}
+.c_banner{
+	border-bottom: 20px solid #EEE;
+}
+.c_video_box{
+	width:100%;
+	border-top:0px solid #ddd;
+}
+.c_video_box h3{
+	width:100%;
+	padding:21px 0px;
+	background:#fff;
+}
+.c_video_box h3 p{
+	height:18px;
+	font-size: 14px;
+	color:#000000;
+	border-left:6px solid #f60;
+	line-height: 18px;
+	margin:0px 7px;
+	padding-left:4px;
+}
+.c_video_box h3 p a{
+	display: block;
+	float: right;
+	font-size: 22px;
+	color:#999999;
+	background:url(../images/ji.png) no-repeat right center;
+	padding-right:20px;
+	line-height: 28px;
+	height:28px;
+}
+.c_video_boxs{
+	width:100%;
+	border-top:0px solid #d2d2d2;
+	overflow: hidden;
+	margin-bottom: 18px;
+}
+.c_video_boxs li{
+	float: left;
+	width:96%;
+	padding:7px;
+	border-right:1px solid #d2d2d2;
+	border-bottom:1px solid #d2d2d2;
+	
+}
+.c_video_boxs .c_right_border{
+	border-right:none;
+}
+.c_video_boxs li .c_video_img{
+	display: block;
+	width:100%;
+	height:163px;
+	overflow: hidden;
+	position: relative;
+}
+.c_video_img span{
+	display: block;
+	width:31px;
+	height:31px;
+	background:url(../../images/mobile/btn.png) no-repeat center center;
+	position: absolute;
+	right: 10px;
+	bottom:10px;
+}
+.c_video_boxs li .c_video_img img{
+	width:100%;
+}
+.c_video_boxs li .c_video_text{
+	width:100%;
+	font-size: 12px;
+	color:#333333;
+	line-height: 30px;
+}
+.c_video_boxs li p{
+	margin-top:10px;
+}
+.c_video_boxs li p span{
+	font-size: 14px;
+	color:#999999;
+}
+/* S 2015-12-31 修改并添加*/
+.c_play_num{
+	float: right;
+	background: url(../../images/mobile/play2.png) no-repeat left center;
+	background-size: 12px;
+	display: inline-block;
+	padding-left:20px;
+}
+.c_play_num1{
+	background-size: 22px;
+	padding-left:40px;
+}
+.c_play_num2{
+	background-size: 12px;
+	padding-left:20px;
+}
+/* E 2015-12-31 修改并添加*/
+/*S 底部菜单*/
+#c_main_menu{
+	margin:0;
+	width:640px;
+	padding:10px 0px;
+	position:fixed;
+	bottom:0;
+	border-top:1px solid #DCDCDE;
+	background:#000;
+	height:78px;
+}
+#c_main_menu li{
+	text-align:center;
+	width:20%;
+	float:left;
+}
+#c_main_menu li span{
+	display:block;
+	width:50px;
+	height:42px;
+	margin:0px auto;
+}
+#c_main_menu li a{
+	color:#333;
+}
+#c_main_menu li b{
+	font-weight:normal;
+	font-size:18px;
+	color:#fff;
+	line-height: 36px;
+}
+#c_main_menu li .c_new_know{
+	background:url(../images/icon5.png) no-repeat center center;
+}
+#c_main_menu li .c_all_good{
+	background:url(../images/icon2.png) no-repeat center center;
+}
+#c_main_menu li .c_cart_bag{
+	background:url(../images/icon4.png) no-repeat center center;
+}
+#c_main_menu li .c_publish{
+	background:url(../images/icon3.png) no-repeat center center;
+}
+#c_main_menu .c_menu_this .c_index{
+	background:url(../images/icon1.png) no-repeat center center;
+}
+#c_main_menu .c_menu_this b{color:#dd2726;}
+/*E 底部菜单*/
+/*S 全部视频*/
+.c_header{
+	width: 100%;
+	height:80px;
+	text-align: center;
+	font-size:34px;
+	color:#dd2726;
+	line-height: 80px;
+	border-bottom:1px solid #e3e3e3;
+}
+.c_header a{
+	display: block;
+	float: left;
+	margin-left:23px;
+	width:20px;
+	height:80px;
+	background:url(../images/left.png) no-repeat center center;
+}
+.c_video_list{
+	width:100%;
+	margin-bottom:118px;
+}
+.c_video_list li{
+	width:600px;
+	padding:20px;
+	height:124px;
+	border-bottom:1px solid #eeeeee;
+}
+.c_video_list li .c_video_img{
+	display:block;
+	width:160px;
+	height:120px;
+	float: left;
+	overflow: hidden;
+	position: relative;
+}
+.c_video_right{
+	float:left;
+	margin-left:20px;
+	width:420px;
+}
+.c_video_right .c_video_text{
+	font-size: 14px;
+	color:#000;
+	line-height: 38px;
+}
+.c_video_right p{
+	font-size: 22px;
+	color:#999;
+	margin-top:18px;
+}
+/*E 全部视频*/
+/*S 详情页面*/
+.c_video_name{
+	width:100%;
+}
+.c_video_name h3{
+	padding:15px 45px;
+	font-size:25px;
+	color:#333333;
+	line-height: 54px;
+}
+
+.c_play_all{
+	width:100%;
+}
+.c_video_name p{
+	height:72px;
+	padding:0px 20px;
+	line-height: 72px;
+	border-bottom:1px solid #ddd;
+}
+.c_video_name p span{
+	font-size: 16px;
+	color:#999999;
+}
+.c_video_name em{
+	display: block;
+	width:246px;
+    padding-left:80px;
+	height:94px;
+	margin:46px auto 28px;
+	font-size: 28px;
+	color:#666;
+	line-height: 94px;
+	text-align: center;
+	border:1px solid #ddd;
+	border-radius: 4px;
+	font-style: normal;
+	background: url(../images/head.png) no-repeat 100px center;
+}
+.c_big_box h2{
+	font-size:26px;
+	color:#696969;
+	height:70px;
+	background:#e9e9e9;
+	line-height: 70px;
+	padding-left:20px;
+}
+/*E 详情页面*/

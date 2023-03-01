@@ -1,0 +1,20 @@
+ <!-- 产品信息 -->
+        <div class="pro_info">
+            <h2 class="gray6">
+                
+                (第{wc:$item['qishu']}期)
+                {wc:$item['title']}<span class="o-info" style="{wc:$item['title_style']}">{wc:$item['title2']}</span>
+            </h2>
+           <div class="purchase-txt gray9 clearfix">
+                 价值：￥{wc:$item['money']}
+            </div>
+            <div class="clearfix">
+                <div class="g-goods-share fr"><a id="btnShare" href="javascript:;" onClick="index()"><p class="z-set"></p>分享</a></div>
+                <div class="gRate">
+                    <div class="Progress-bar"><p class="u-progress" title="已完成{wc:$item['canyurenshu']/$item['zongrenshu']*100}%"><span class="pgbar" style="width:{wc:$item['canyurenshu']/$item['zongrenshu']*100}%;"><span class="pging"></span></span></p><ul class="Pro-bar-li">
+                    <li class="P-bar01"><em>{wc:$item['canyurenshu']}</em>已参与</li>
+                    <li class="P-bar02"><em>{wc:$item['zongrenshu']}</em>总需人次</li>
+                    <li class="P-bar03"><em>{wc:$item['zongrenshu']-$item['canyurenshu']}</em>剩余</li></ul></div>
+                </div>
+            </div>
+            <!--本商品已结束-->

@@ -1,0 +1,322 @@
+{wc:templates "index","header"}
+
+<div class="p-center-main clrfix">
+            <!--左边导航-->
+            <link href="{G_TEMPLATES_STYLE}/newcss/member_x.css?v=150728" rel="stylesheet" type="text/css" />
+  	{wc:templates "member","left"}
+
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/layout-recharge.css"/>
+<div class="sidebar_main clrfix fr">
+                <div class="g-obtain-title clrfix">
+                    <ul id="ul_menu">
+                        <li class="curr"><a href="javascript:;">微积分提现</a></li>
+                        <li><a href="javascript:;">微积分明细</a></li>
+                         
+                      
+                    </ul>
+                </div>
+
+	     <div  class="fri-req-wrap">        
+                 <div class="x-source">
+                    <span class="first-p">可用微积分:</span>
+                    <strong class="orange">{wc:$member['score']}</strong>
+                    <span>可抵现金{wc:$mefufen}微币，100微积分=1微币 </span>
+                   <!-- <a href="/htm-userExperience.html" target="_blank" title="如何获得微积分">如何获得微积分？</a> -->
+                </div>
+                
+                <div class="mana-rules" id="divSQTX">
+                        <p class="gray9">可用微积分 <span class="orange">{wc:$member['score']}</span>， <span>可抵现金<span class="orange">{wc:$mefufen}</span>微币，100微积分=<span class="orange">1</span>微币 </span> 微积分满1000以上可以提现，提现的积分需是100的倍数，提现的金额小于100的手续费<span class="orange">{wc:$fufen['fufen_yongjintx']}</span>微币、大于100的免手续费。</p>
+                        <div class="m-info-wrap"id="d_clip_container" style="position:relative;" >
+                            <input id="t_txtInfo" class="m-info" type="text"  style="width:180px;" onKeyUp="value=value.replace(/\D/g,'')"/>
+                            <a id="t_button" href="javascript:;" >提现</a>
+
+                        </div>
+                    </div>
+
+<div class="mana-protail">
+                            <div class="title">选择提现账号</div>
+                            
+                            
+                        </div>  
+                        
+                        <div class="mana-rules" id="divSQTX">
+                       <dt>
+                </dt>
+                   <dd>
+                   {wc:if !$member_number}
+                <a href="{WEB_PATH}/member/home/numberbind/" class="orange">您还没有绑定账号哦，去绑定一个吧！》》</a>
+                <br />
+                 <br />
+                <div class="m-info-wrap"id="d_clip_container" style="position:relative;" ><a  href="{WEB_PATH}/member/home/numberbind/"  >绑定</a></div>
+                   
+                   {wc:else}		
+                 
+                   <br />
+                   {wc:loop $member_number $val}
+                   <label>
+                   <input id="numid"  name="numid" type="radio" value="{wc:$val['id']}"  {wc:if $val['type']==1} checked="checked" {wc:if:end}/>
+                   姓名：<b class="orange">{wc:$val['username']} </b>&nbsp;&nbsp;&nbsp;&nbsp;
+                   账号：<b class="orange">{wc:$val['banknumber']}</b>
+                   </label>
+                   <br />
+                 <br />
+			      {wc:loop:end}
+                  
+			      {wc:if:end}
+                   </dd>
+                    </div>
+<div class="mana-protail">
+                            <div class="title">提现记录</div>
+                            
+                            
+                        </div>  
+	<div id="divList0" class="list-tab recordList">
+	<ul class="listTitle">
+		                <li class="w140">申请时间</li>
+                        
+                        <li class="w140">账号</li>
+                        <li class="w90">提现金额(元)</li>
+                        <li class="w90">手续费(元)</li>
+                        <li class="w90">审核状态</li>
+	</ul>
+	{wc:loop $account2 $at}
+	<ul>
+		<li class="w140">{wc:fun:date("Y-m-d H:i:s",$at['time'])}</li>
+        
+        
+		<li class="w140">{wc:$at['banknumber']}</li>
+        <li class="w90">{wc:$at['money']}</li>
+		<li class="w90">
+		
+			<font color="#0c0">{wc:if $at['money']>=100} 0 {wc:else} {wc:$fufen['fufen_yongjintx']} {wc:if:end}</font>
+		
+		</li>
+        <li class="w90">
+		{wc:if $at['auditstatus']==1}
+			<font color="#0c0">已审核</font>
+		{wc:else}
+			<font color="red">未审核</font>
+		{wc:if:end}
+		</li>
+	</ul>
+	{wc:loop:end}
+	</div>
+          <style>
+			#divPageNav{ padding:10px;text-align:right}
+			#divPageNav li a{ padding:5px;}
+		</style>
+		<div id="divPageNav" class="page_nav">
+        	{wc:page:one} <li>共 {wc:$total2} 条</li>
+        </div>
+        
+    <div id="divPageNav0" class="page_nav" style="display: none;"></div>
+	<div id="divList1" class="list-tab recordList" style="display:none;"></div>
+	<div id="divPageNav1" class="page_nav" style="display:none;"></div>
+	<div id="divDetailInfo" class="count" style="display:none;"></div>
+	<div id="divbuyDetail" class="list-tab recordList buyDetail" style="display:none;"></div>
+     </div>
+ <!--提现 -->
+ 
+ <!--我的金币 -->
+ <div  class="fri-req-wrap" style="display:none;"> 
+  <div class="x-source">
+                    <span class="first-p">可用微积分:</span>
+                    <strong class="orange">{wc:$member['score']}</strong>
+                   
+                   <!-- <a href="/htm-userExperience.html" target="_blank" title="如何获得金币">如何获得金币？</a> -->
+                </div>
+                
+                <div id="divList0" class="list-tab recordList">
+	<ul class="listTitle">
+		<li class="leftTitle">时间</li>
+		<li class="price">渠道</li>
+		<li class="regard">获得/支出</li>
+        
+	</ul>
+	{wc:loop $account $at}
+	<ul>
+		<li class="leftTitle fontAri">{wc:fun:date("Y-m-d H:i:s",$at['time'])}</li>
+		<li class="price">{wc:$at['content']}</li>
+		<li class="regard">
+		{wc:if $at['type']==1}
+			<font color="#0c0">+ {wc:$at['money']}</font>
+		{wc:else}
+			<font color="red">- {wc:$at['money']}</font>
+		{wc:if:end}
+		</li>
+        
+	</ul>
+	{wc:loop:end}
+	</div>
+          <style>
+			#divPageNav{ padding:10px;text-align:right}
+			#divPageNav li a{ padding:5px;}
+		</style>
+		<!--<div id="divPageNav" class="page_nav">
+        	{wc:page:one} <li>共 {wc:$total} 条</li>
+        </div> -->
+	<div id="divPageNav0" class="page_nav" style="display: none;"></div>
+	<div id="divList1" class="list-tab recordList" style="display:none;"></div>
+	<div id="divPageNav1" class="page_nav" style="display:none;"></div>
+	<div id="divDetailInfo" class="count" style="display:none;"></div>
+	<div id="divbuyDetail" class="list-tab recordList buyDetail" style="display:none;"></div>
+ </div>   
+  <!--我的金币 -->     
+    
+</div>
+</div>
+
+<script type="text/javascript">
+       
+            
+			var submit_url = "{WEB_PATH}/member/home/txjifen";//处理提现充值
+			
+			
+		
+            var ehtml = '<div id="divTopicShow"  style="text-align:center; padding:20px 0;" ><img src="{G_TEMPLATES_STYLE}/images/global/loading.gif" width="30" sytle="vertical-align:middle"/></div>';
+			
+
+
+
+        
+
+ 
+  
+function checkt_txtInfo() {
+                var value = $("#t_txtInfo").val();
+				var total = {wc:$totalscore};
+               
+				if (value == '') {
+					
+					$(".copy-tips").show();
+                    $(".wap-tips").html("请填写提现的积分！~").show();
+					setTimeout(function () {
+					$(".copy-tips").hide();
+                                }, 2000);
+					
+                    return false;
+                }
+				if (value < 1000) { 
+					$(".copy-tips").show();
+                    $(".wap-tips").html("提现的微积分要大于1000微积分哦~").show();
+					setTimeout(function () {
+					$(".copy-tips").hide();
+                                }, 2000);
+					
+                    return false;
+                }
+				if (value%100!=0) { 
+					$(".copy-tips").show();
+                    $(".wap-tips").html("提现的微积分需要是100的倍数哦~").show();
+					setTimeout(function () {
+					$(".copy-tips").hide();
+                                }, 2000);
+					
+                    return false;
+                }
+				 if (total < value) {
+					$(".copy-tips").show();
+                    $(".wap-tips").html("提现的微积分大于总微积分！~").show();
+					setTimeout(function () {
+					$(".copy-tips").hide();
+                                }, 2000);
+					
+                    return false;
+                }
+				
+				
+
+                
+               
+                return true;
+				
+            }
+
+
+              
+   $("#t_button").click(function () {
+                 if (checkt_txtInfo()) {
+                    t_txtInfo = $("#t_txtInfo").val();
+					numid = $('input:radio[name=numid]:checked').val();
+					$("#t_button").addClass("letter-noSpac").html("正在提现...");
+                    
+					
+                    $.ajax({
+                        url: submit_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {action: 'submit1', money: t_txtInfo, numid: numid},
+                        success: function (data) {
+                            if (data != '1000') {
+                                $(".copy-tips").show();
+                                $(".wap-tips").html(data).show();
+					            setTimeout(function () {
+				             	$(".copy-tips").hide();
+                                }, 2000);
+								$("#t_button").html("提现");
+                            } else {
+								 $(".copy-tips").show();
+                                $(".wap-tips").html("申请成功！请等待审核！").show();
+								$("#t_txtInfo").val("");
+								
+								location.href = "{WEB_PATH}/member/home/userfufen/";
+								
+					            setTimeout(function () {
+				             	$(".copy-tips").hide();
+                                }, 2000);
+								
+								
+                               // $(".login-success").show();
+								//$("#btnSubmitMsg").addClass("letter-noSpac").html("登录成功");
+                                  //  location.href = "{WEB_PATH}/go/shaidan/Editor/{wc:$shaidan['sd_id']}";
+                               
+                            }
+                        },
+                        error: function () {
+                            $('.wap-tips').html(ehtml + "数据提交失败,请重试!").show();
+                        }
+                    });
+				 }
+            });  
+   
+
+
+    </script>
+        <script>
+$(function(){
+	$("#ul_menu li").click(function(){
+		var id=$("#ul_menu li").index(this);
+		$("#ul_menu li").removeClass().eq(id).addClass("curr");
+		$(".fri-req-wrap").hide().eq(id).show();
+	});
+	$("#ul_state li a").click(function(){
+		var id=$("#ul_state li a").index(this);
+		$("#ul_state li a").removeClass().eq(id).addClass("z-checked");
+		$(".mon-wrap").hide().eq(id).show();
+	});
+	
+$(".subMenu a").click(function(){
+		var id=$(".subMenu a").index(this);
+		$(".subMenu a").removeClass().eq(id).addClass("current");
+		$(".R-content .topic").hide().eq(id).show();
+	});
+	$("#linkApply").click(function(){
+	    $("#divSQTX").show();
+	    $("#divTip").show();
+		 $("#divSQCZ").hide();	
+	});	
+  $("#linkRecharge").click(function(){
+		  $("#divSQTX").hide();
+		  $("#divTip").hide();
+		  $("#divSQCZ").show();
+	
+	});
+})
+	</script>
+    <div class='copy-tips' style="display:none;"><div class='wap-tips' ></div></div>
+<style type="text/css">
+.copy-tips{position:fixed;z-index:999;bottom:50%;left:50%;margin:0 0 -50px -170px;background-color:rgba(0, 0, 0, 0.2);filter:progid:DXImageTransform.Microsoft.Gradient(startColorstr=#30000000, endColorstr=#30000000);padding:3px;}
+.wap-tips{padding:30px 80px;text-align:center;border:1px solid #F4D9A6;background-color:#FFFDEE;font-size:14px;vertical-align:middle; }
+
+</style>
+{wc:templates "index","footer"}

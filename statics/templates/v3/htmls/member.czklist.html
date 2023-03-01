@@ -1,0 +1,49 @@
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/layout-recharge.css"/>
+<div class="R-content">
+                      <div class="last">
+		<ul>
+			<li><h3>您的账户可用余额为：</h3><b class="orange">{wc:$user['money']}</b>微币 <a href="{WEB_PATH}/member/home/userrecharge" class="bluebut" title="充值">充值</a></li>
+		</ul>
+	</div>
+ </div>                   
+
+<div class="mon-wrap" >
+                    <div class="mon-inner">
+                    <div id="divMentionList" class="list-tab commission gray02">
+			            <ul class="listTitle">
+		<li class="w150">充值时间</li>
+        
+        <li class="w150">充值卡号</li>
+        
+		<li class="w150">资金渠道</li>
+       
+		<li class="w150">充入资金</li>
+	</ul>
+			  {wc:if $total!=0}
+			              {wc:loop $account $at}
+                    {wc:php:start}
+		$czk_num = $this->db->GetOne("select * from `@#_czk` where  uid='$uid' and czknum='$at[cnum]' order by `id` DESC");
+	{wc:php:end}
+                    <ul>
+                        <li class="w150">{wc:fun:date('Y-m-d H:i:s',$at['time'])}</li>
+                       
+                        <li class="w150">{wc:$czk_num['czknum']}</li>
+                       
+                        <li class="w150">{wc:$at['content']}</li>
+                       
+                        <li class="w150">{wc:if $at['type'] == 1}
+			<font color="#0c0">￥{wc:$at['money']}</font>
+		{wc:else}
+			<font color="red">￥{wc:$at['money']}</font>
+		{wc:if:end}	</li>
+                       
+                        
+                    </ul>
+                   {wc:loop:end}
+			              {wc:else}		
+
+   <div class="null-retips-wrapper"><div class="gth-icon transparent-png"></div><span>未有相应充值记录！</span></div>
+    {wc:if:end}           
+		              </div>      
+                 </div>
+                </div>

@@ -1,0 +1,87 @@
+{wc:if !$membergo}
+<div class="null-retips-wrapper">
+                               <div class="gth-icon transparent-png"></div>
+                               <span>最近三个月无记录！</span>
+                           </div>
+{wc:else}
+
+                           <!--有记录-->
+                           <div class="content">
+                                <div class="good-list-wrap">
+                                    <ul class="good-list">
+                                    {wc:loop $membergo $go}
+{wc:php:start}
+        				$jiexiao = get_shop_if_jiexiao($go['shopid']);
+						 if ($jiexiao['q_uid']){
+							$url = "dataserver";
+						 }else{
+							$url = "goods";
+						 }
+                         $itemzx=$mysql_model->GetOne("select * from `@#_shoplist` where `id`='$go[shopid]'");
+{wc:php:end}
+                                    <li><a class="g-pic" target="_blank" href="{WEB_PATH}/{wc:$url}/{wc:$go['shopid']}"><img src="{G_UPLOAD_PATH}/{wc:$jiexiao['thumb']}" width="100" height="100">
+                                    {wc:if !$jiexiao['q_uid']}
+                                    <span class="g-bg"></span>
+                                    <span class="g-txt">进行中<span class="dotting"></span></span>
+                                    {wc:else}
+                                    <span class="g-bg g-end"></span>
+                                    <span class="g-txt">已揭晓</span>
+                                    {wc:if:end}
+                                    </a>
+                                    <div class="g-info"><h2 class="g-title">
+                                    <a target="_blank" rel="nofollow" href="{WEB_PATH}/{wc:$url}/{wc:$go['shopid']}">(第{wc:$go['shopqishu']}期){wc:$go['shopname']}</a></h2><p class="g-price">价值：{wc:$jiexiao['money']}</p>
+                                     {wc:if !$jiexiao['q_uid']}
+                                    <div class="g-progress">
+                                    <dl class="m-progress">
+                                    <dt title="已完成{wc:if ($itemzx['canyurenshu'])==0}0%{wc:else}{wc:fun:percent($itemzx['canyurenshu'],$itemzx['zongrenshu'])} {wc:if:end}"><b style="width:{wc:if ($itemzx['canyurenshu'])==0}0{wc:else}{wc:fun:percent($itemzx['canyurenshu'],$itemzx['zongrenshu'])}; {wc:if:end}"><i class="cur"></i></b></dt>
+                                    <dd>
+                                    <span class="orange fl"><em>{wc:$itemzx['canyurenshu']}</em>已参与</span>
+                                    <span class="gray6 fl"><em>{wc:$itemzx['zongrenshu']}</em>总需人次</span>
+                                    <span class="blue fr"><em>{wc:$itemzx['shenyurenshu']}</em>剩余</span>
+                                    </dd>
+                                    </dl>
+                                    </div>
+                                    {wc:else}
+                                    <div class="g-older"><p>获得者：<a href="{WEB_PATH}/uname/{wc:fun:idjia($jiexiao['q_uid'])}" target="_blank">{wc:fun:get_user_name($jiexiao['q_user'])}</a></p><p>揭晓时间：{wc:fun:date("Y-m-d H:i:s",$jiexiao['q_end_time'])}</p></div>
+                                    {wc:if:end}
+                                    
+                                    </div><div class="g-total">参与&nbsp;<span class="orange">{wc:$go['gonumber']}</span>&nbsp;人次</div>
+                                    {wc:if !$jiexiao['q_uid']}
+                                    <a class="g-buy" rel="nofollow" target="_blank" href="{WEB_PATH}/{wc:$url}/{wc:$go['shopid']}">跟随{wc:fun:_cfg('web_name_two')}</a>{wc:else}
+                                    <a class="g-see" target="_blank" href="{WEB_PATH}/{wc:$url}/{wc:$go['shopid']}">查看详情</a>
+                                    {wc:if:end}
+                                    <i class="single"><i class="single"></i></i><div class="g-time"><div class="aricle"><div class="cir"></div></div><div class="time-str"><div class="str">{wc:fun:date("Y-m-d H:i:s",$go['time'])}</div></div></div><div class="clear"></div></li>
+                                    
+                                    
+                                    {wc:loop:end}
+                                    </ul>
+                                    <div class="s-line">
+                                        <div class="s-top"></div>
+                                        <div class="s-bottom"></div>
+                                    </div>
+                                </div>
+                                
+                            <!--<div class="z-look-more clrfix"><a href="javascript:;" id="buyadd">查看更多</a></div> --></div>
+<!--有记录end-->
+{wc:if:end} 
+
+<script>
+function onpage(id){
+	var buy_url = "{WEB_PATH}/userbuy/{wc:fun:idjia($member['uid'])}";
+	var ehtml = '<div id="divTopicShow"  style="text-align:center; padding:20px 0;" ><img src="{G_TEMPLATES_STYLE}/images/global/loading.gif" width="30" sytle="vertical-align:middle"/></div>';
+	$("#commentList").html(ehtml).show();
+	$.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {p: id},
+                        success: function (data) {
+                           $('#commentList').html(data).show();
+                        },
+                        error: function () {
+                            $('#commentList').html(ehtml + "数据加载失败,请重试!").show();
+                        }
+                    });
+	
+}
+</script>

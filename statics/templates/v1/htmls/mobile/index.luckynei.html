@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <title>{wc:$title} - {wc:$webname}触屏版</title>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css?v=130715" rel="stylesheet" type="text/css" />
+    <link href="{G_TEMPLATES_CSS}/mobile/member.css?v=130726" rel="stylesheet" type="text/css" />
+    <link href="{G_TEMPLATES_CSS}/mobile/invite.css?v=130726" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/js.min.js"></script>
+     
+</head>
+<body>
+<div class="h5-1yyg-v11">
+    
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+
+    <header class="g-header">
+        <div class="head-l">
+	        <a href="javascript:;" onclick="history.go(-1)" class="z-HReturn"><s></s><b>返回</b></a>
+        </div>
+        <h2>{wc:$title}</h2>
+        <div class="head-r">
+	        <a href="{WEB_PATH}/mobile/mobile/?yid={wc:$uids}" class="z-Home"></a>
+        </div>
+    </header>
+
+    <section class="clearfix g-member">
+        
+        
+        <div class="R-content">
+            
+          <div id="divlucky">
+              <div class="total">
+                <dt>
+                 </dt>
+                 <dd>
+                <a style="color: #03f; font-size:16px"> 产品信息</a>
+                <br>
+                <a class="orange">{wc:$title}</a>
+                   <br>
+                   {wc:if !$member_dizhi}
+                <a href="{WEB_PATH}/mobile/home/upadd/{wc:$uids}/" class="orange">您还没有收货地址哦，去填一个吧！》》</a>
+                   
+                   {wc:else}	
+                   <a style="color: #03f; font-size:16px">收货信息</a>
+                   
+                   <br>
+                   <a>
+                   姓名：<b class="orange">{wc:$member_dizhi['shouhuoren']} </b>&nbsp;&nbsp;&nbsp;&nbsp;
+                   手机号：<b class="orange">{wc:$member_dizhi['mobile']}</b>
+                   </a>
+                   <br>
+                   <a>
+                   
+                   详细地址：<b class="orange">{wc:$member_dizhi['sheng']},{wc:$member_dizhi['shi']},{wc:$member_dizhi['xian']},{wc:$member_dizhi['jiedao']} </b>&nbsp;&nbsp;&nbsp;&nbsp
+			    </a>
+			      {wc:if:end}
+                   <br>
+                   {wc:if !$luckynei['company']}
+               
+                   
+                   {wc:else}	
+                   <a style="color: #03f; font-size:16px">物流信息</a>
+                   
+                   <br>
+                   <a>
+                   快递公司：<b class="orange">{wc:$luckynei['company']} </b>&nbsp;&nbsp;&nbsp;&nbsp;
+                   快递单号：<b class="orange">{wc:$luckynei['company_code']}</b>
+                   </a>
+                   
+			      {wc:if:end}
+                   <br>
+                  <a style="color: #03f; font-size:16px">状态</a>
+                  <br>
+                  {wc:if $luckynei['pass']==''}
+                  <a class="orange">待发货</a>
+                   {wc:if:end}
+                  {wc:if $luckynei['pass']==1}
+                  <a class="orange">待发货</a>
+                   {wc:if:end}
+                   {wc:if $luckynei['pass']==2}	
+                   <a class="orange">待收货</a>
+                   <br>
+                    <a style="color:red" href="{WEB_PATH}/mobile/lucky/shouhuo/{wc:$id}">确认收货</a>
+                   {wc:if:end}
+                  
+                   {wc:if $luckynei['pass']==3}	
+                   <a class="orange">已收货</a>
+                   
+                   <br>
+                  
+			      {wc:if:end}
+                   </dd>
+            </div>
+            </div>
+            </div> 
+            </section>
+</div>
+{wc:templates "mobile/index","footer"}
+</body>
+</html>

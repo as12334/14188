@@ -1,0 +1,443 @@
+{wc:templates "index","header"}
+<link href="{G_TEMPLATES_STYLE}/newcss/member_x.css?v=150728" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/js.min.js"></script>
+
+
+<div class="p-center-main clrfix">
+            <!--左边导航-->
+            
+  	{wc:templates "member","left"}
+            <div class="sidebar_main clrfix fr">
+            
+            <div class="g-obtain-title clrfix">
+                    <ul id="ul_menu">
+                        <li class="curr"><a href="javascript:;">绑定支付宝账号</a></li>
+                        <li><a href="javascript:;">绑定银行卡账号</a></li>
+                    </ul>
+            </div>
+            <!--绑定支付宝账号-->  
+            <div  class="fri-req-wrap" > 
+            
+               
+               <div class="z-content">
+                    <div class="add-wrap">
+                         <div class="data-menu">
+                            <span class="u-name">姓名</span>
+                            <span class="u-tel">手机</span>
+                            <span class="u-address">支付宝账号</span>
+                            <span class="u-code"></span>
+                            <span class="u-option">操作</span>
+                        </div>
+                         {wc:if $member_number['id']!=''}
+                        <ul class="add-list" id="ul_addresslist">                      
+                        <li>
+                        <span class="u-name" id="shr_{wc:$member_number['id']}">{wc:$member_number['username']}</span>
+                        <span class="u-tel" id="mob_{wc:$member_number['id']}">{wc:$member_number['linkphone']}</span>
+                        <span class="u-address" id="dizh_{wc:$member_number['id']}">{wc:$member_number['banknumber']}</span><span class="u-code"></span>
+                        <span class="u-option"><a href="javascript:;" name="update"  class="op-tail xiugai">不能修改</a></span>
+                        <!--<span class="u-set"><b class="is-normal">默认账号</b></span> -->
+                        </li>
+                        </ul>
+                        {wc:else}
+                       <!-- <div class="null-retips-wrapper"><div class="gth-icon transparent-png"></div><span>您还没有绑定账号哦！</span></div> -->
+                         {wc:if:end}
+                        <!--<a id="btnAddnewAddr" href="javascrit:;" style="display: ;" class="new-add-btn">绑定账号</a> -->
+                   
+                    <!--绑定账号--->
+                    {wc:if $member_number['id']==''}
+                    <div class="new-add-wrap" id="div_consignee"   >
+                    <div class="shi-address-box">
+                    <h2 class="gray3">绑定支付宝账号</h2>
+                  
+                    <ul>
+                   <li><label>您的姓名：</label><input id="username" name="username" type="text"  style="color: rgb(51, 51, 51);"><em class="f-tran f-transhr">*</em><p class="orange orangeshr"><b class="u-personal"></b>必填</p><cite class="gray9">填写后无法修改，请一定要保持和支付宝对应的名字，否则无法提现</cite></li>
+                   
+                   <li><label>支付宝号：</label><input id="banknumber" name="banknumber" type="text"  style="color: rgb(51, 51, 51);"><em class="f-tran f-trannumber">*</em><p class="orange orangenumber"><b class="u-personal"></b>必填</p><cite class="gray9">填写后无法修改，支付宝账号为邮箱或手机号</cite></li>
+                   
+                   <li><label>手机号码：</label><input id="linkphone" name="linkphone"  type="text" maxlength="11" style="color: rgb(51, 51, 51);">
+                   <em class="f-tran f-tranmob">*</em><p class="orange orangemob"><b class="u-personal"></b>必填</p><cite class="gray9">请填写真实有效的手机号码</cite>
+                   </li>
+                   
+                   <li><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><p class="orange orangeall"><b class="u-personal"></b>必填</p></li>
+                   
+                   <li class="z-save-btn">
+                   <a id="btnSaveadd" href="javascript:;" class="save">绑定</a>
+                   <!--<a id="btn_consignee_cancle" href="javascript:;" class="closes" >取消</a> --></li>
+                   </ul>
+                    </div>
+                    </div>
+                    {wc:if:end}
+                    </div>
+              </div>
+            </div>
+             
+             
+             
+           
+          <!--绑定支付宝账号--> 
+          
+         <!--绑定银行卡账号--> 
+        <div  class="fri-req-wrap"  style="display:none;"> 
+            
+               
+               <div class="z-content">
+                    <div class="add-wrap">
+                         <div class="data-menu">
+                            <span class="u-name">姓名</span>
+                            <span class="u-tel">手机</span>
+                            <span class="u-address">银行卡账号</span>
+                            <span class="u-code"></span>
+                            <span class="u-option">操作</span>
+                        </div>
+                         {wc:if $member_number2['id']!=''}
+                        <ul class="add-list" id="ul_addresslist">                      
+                        <li>
+                        <span class="u-name" id="shr_{wc:$member_number['id']}">{wc:$member_number2['username']}</span>
+                        <span class="u-tel" id="mob_{wc:$member_number['id']}">{wc:$member_number2['linkphone']}</span>
+                        <span class="u-address" id="dizh_{wc:$member_number['id']}">{wc:$member_number2['banknumber']}</span><span class="u-code"></span>
+                        <span class="u-option"><a href="javascript:;" name="update"  class="op-tail xiugai">不能修改</a></span>
+                        <!--<span class="u-set"><b class="is-normal">默认账号</b></span> -->
+                        </li>
+                        </ul>
+                        {wc:else}
+                       <!-- <div class="null-retips-wrapper"><div class="gth-icon transparent-png"></div><span>您还没有绑定账号哦！</span></div> -->
+                         {wc:if:end}
+                        <!--<a id="btnAddnewAddr" href="javascrit:;" style="display: ;" class="new-add-btn">绑定账号</a> -->
+                   
+                    <!--绑定账号--->
+                    {wc:if $member_number2['id']==''}
+                    <div class="new-add-wrap" id="div_consignee"   >
+                    <div class="shi-address-box">
+                    <h2 class="gray3">绑定银行卡账号</h2>
+                  
+                    <ul>
+                   <li><label>您的姓名：</label><input id="username2"  type="text"  style="color: rgb(51, 51, 51);"><em class="f-tran f-transhr2">*</em><p class="orange orangeshr2"><b class="u-personal"></b>必填</p><cite class="gray9">填写后无法修改，请一定要保持和银行卡对应的名字，否则无法提现</cite></li>
+                   
+                   <li><label>开户账号：</label><input id="banknumber2" type="text"  style="color: rgb(51, 51, 51);"><em class="f-tran f-trannumber2">*</em><p class="orange orangenumber2"><b class="u-personal"></b>必填</p><cite class="gray9">填写后无法修改</cite></li>
+                   
+                   <li><label>分 &nbsp;支 &nbsp;行：</label><input id="banktype" type="text"  style="color: rgb(51, 51, 51);"><em class="f-tran f-trannumber3">*</em><p class="orange orangenumber3"><b class="u-personal"></b>必填</p><cite class="gray9">填写后无法修改</cite></li>
+                   
+                   <li><label>手机号码：</label><input id="linkphone2"  type="text" maxlength="11" style="color: rgb(51, 51, 51);">
+                   <em class="f-tran f-tranmob">*</em><p class="orange orangemob2"><b class="u-personal"></b>必填</p><cite class="gray9">请填写真实有效的手机号码</cite>
+                   </li>
+                   
+                   <li><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><p class="orange orangeall2"><b class="u-personal"></b>必填</p></li>
+                   
+                   <li class="z-save-btn">
+                   <a id="btnSaveadd2" href="javascript:;" class="save">绑定</a>
+                   <!--<a id="btn_consignee_cancle" href="javascript:;" class="closes" >取消</a> --></li>
+                   </ul>
+                    </div>
+                    </div>
+                    {wc:if:end}
+                    </div>
+              </div>
+            </div>
+        <!--绑定银行卡账号--> 
+         </div>
+</div>
+
+ <script type="text/javascript">
+$(function () {
+            var base_url = "{WEB_PATH}/member/home/donumberbind";
+            var ehtml = '<p class="orange orangeall" style="display:block;"><b class="u-personal"></b>必填</p>';
+			
+		
+	
+            function checkUserName() {
+                var value = $("#username").val();
+                var length = len(value);
+				var regn = /^[A-Za-z0-9_\u4e00-\u9fa5]{2,20}$/;
+				var regE =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				
+                if (value == '' || value.length == 0) {
+					$(".f-transhr").hide();
+                    $(".orangeshr").show();
+					
+								
+                    return false;
+                }else{
+					
+				    $(".f-transhr").show();
+                    $(".orangeshr").hide();	
+                return true;
+				}
+				
+            }
+ 
+			
+            function checkbanknumbers() {
+                var value = $("#banknumber").val();
+                var length = len(value);
+				var regM = /^1\d{10}$/;
+				var regE =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				
+                if (value == '' || value.length == 0) {
+					
+                    $(".f-trannumber").hide();
+                    $(".orangenumber").show();
+                    return false;
+             
+               
+                    
+                }else{
+				    $(".f-trannumber").show();
+                    $(".orangenumber").hide();	
+                return true;
+				}
+				
+            }
+			
+			function checklinkphone() {
+                var value = $("#linkphone").val();
+                var length = len(value);
+				var regM = /^1\d{10}$/;
+				var regE =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			
+                if (value == '' || value.length == 0) {
+					
+                    $(".f-tranmob").hide();
+                    $(".orangemob").show();
+                    return false;
+                }
+                else if (!regM.test(value)) {
+                    $(".f-tranmob").hide();
+                    $(".orangemob").show();
+                    return false;
+                    
+                }else{
+				    $(".f-tranmob").show();
+                    $(".orangemob").hide();	
+                return true;
+				}
+				
+            }
+            
+			
+
+            function len(value) {
+                var total = 0;
+                for (i = 0; i < value.length; i++) {
+                    var char = value.charCodeAt(i);
+                    if ((char >= 0x0001 && char <= 0x007e) || (0xff60 <= char && char <= 0xff9f)) {
+                        total++;
+                    }
+                    else {
+                        total += 2;
+                    }
+                }
+                return total;
+            }
+
+            $("#btnSaveadd").click(function () {
+                if (checkUserName() && checkbanknumbers() && checklinkphone() ) {
+					username = $("#username").val();
+					banknumber = $("#banknumber").val();
+					
+					linkphone = $("#linkphone").val();
+					
+                 
+					$("#btnSaveadd").addClass("letter-noSpac").html("正在绑定...");
+				//	$("#registerform3").attr("action","{WEB_PATH}/member/home/updateddress/"+id);
+                    $.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {action: '1', username: username, banknumber: banknumber, linkphone: linkphone},
+                        success: function (data) {
+                            if (data != '1000') {
+                                $('.orangeall').html(ehtml + data).show();
+								$("#btnSaveadd").removeClass("letter-noSpac").html("绑定");
+                            } else {
+                                
+                              $("#btnSaveadd").addClass("letter-noSpac").html("绑定成功");
+                                    location.href = "{WEB_PATH}/member/home/numberbind";
+                            }
+                        },
+                        error: function () {
+                            $('.orangeall').html(ehtml + "数据提交失败,请重试!").show();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    
+    
+    <script type="text/javascript">
+$(function () {
+            var base_url = "{WEB_PATH}/member/home/donumberbind";
+            var ehtml = '<p class="orange orangeall" style="display:block;"><b class="u-personal"></b>必填</p>';
+			
+		
+	
+            function checkUserName() {
+                var value = $("#username2").val();
+                var length = len(value);
+				var regn = /^[A-Za-z0-9_\u4e00-\u9fa5]{2,20}$/;
+				var regE =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				
+                if (value == '' || value.length == 0) {
+					$(".f-transhr2").hide();
+                    $(".orangeshr2").show();
+					
+								
+                    return false;
+                }else{
+					
+				    $(".f-transhr2").show();
+                    $(".orangeshr2").hide();	
+                return true;
+				}
+				
+            }
+ 
+			
+            function checkbanknumbers() {
+                var value = $("#banknumber2").val();
+                var length = len(value);
+				var regM = /^1\d{10}$/;
+				var regE =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				
+                if (value == '' || value.length == 0) {
+					
+                    $(".f-trannumber2").hide();
+                    $(".orangenumber2").show();
+                    return false;
+             
+               
+                    
+                }else{
+				    $(".f-trannumber2").show();
+                    $(".orangenumber2").hide();	
+                return true;
+				}
+				
+            }
+			function checkbanktype() {
+                var value = $("#banktype").val();
+                var length = len(value);
+				var regM = /^1\d{10}$/;
+				var regE =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				
+                if (value == '' || value.length == 0) {
+					
+                    $(".f-trannumber3").hide();
+                    $(".orangenumber3").show();
+                    return false;
+             
+               
+                    
+                }else{
+				    $(".f-trannumber3").show();
+                    $(".orangenumber3").hide();	
+                return true;
+				}
+				
+            }
+			function checklinkphone() {
+                var value = $("#linkphone2").val();
+                var length = len(value);
+				var regM = /^1\d{10}$/;
+				var regE =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			
+                if (value == '' || value.length == 0) {
+					
+                    $(".f-tranmob2").hide();
+                    $(".orangemob2").show();
+                    return false;
+                }
+                else if (!regM.test(value)) {
+                    $(".f-tranmob2").hide();
+                    $(".orangemob").show();
+                    return false;
+                    
+                }else{
+				    $(".f-tranmob2").show();
+                    $(".orangemob2").hide();	
+                return true;
+				}
+				
+            }
+            
+			
+
+            function len(value) {
+                var total = 0;
+                for (i = 0; i < value.length; i++) {
+                    var char = value.charCodeAt(i);
+                    if ((char >= 0x0001 && char <= 0x007e) || (0xff60 <= char && char <= 0xff9f)) {
+                        total++;
+                    }
+                    else {
+                        total += 2;
+                    }
+                }
+                return total;
+            }
+
+            $("#btnSaveadd2").click(function () {
+                if (checkUserName() && checkbanknumbers() && checkbanktype() && checklinkphone() ) {
+					username = $("#username2").val();
+					banknumber = $("#banknumber2").val();
+					banktype = $("#banktype").val();
+					linkphone = $("#linkphone2").val();
+					
+                 
+					$("#btnSaveadd2").addClass("letter-noSpac").html("正在绑定...");
+				//	$("#registerform3").attr("action","{WEB_PATH}/member/home/updateddress/"+id);
+                    $.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {action: '2', username: username, banknumber: banknumber, banktype: banktype, linkphone: linkphone},
+                        success: function (data) {
+                            if (data != '1000') {
+                                $('.orangeall').html(ehtml + data).show();
+								$("#btnSaveadd2").removeClass("letter-noSpac").html("绑定");
+                            } else {
+                                
+                              $("#btnSaveadd2").addClass("letter-noSpac").html("绑定成功");
+                                    location.href = "{WEB_PATH}/member/home/numberbind";
+                            }
+                        },
+                        error: function () {
+                            $('.orangeall2').html(ehtml + "数据提交失败,请重试!").show();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+<script>
+$(function(){
+	$("#ul_menu li").click(function(){
+		var id=$("#ul_menu li").index(this);
+		$("#ul_menu li").removeClass().eq(id).addClass("curr");
+		$(".fri-req-wrap").hide().eq(id).show();
+	});
+	$("#ul_state li a").click(function(){
+		var id=$("#ul_state li a").index(this);
+		$("#ul_state li a").removeClass().eq(id).addClass("z-checked");
+		$(".mon-wrap").hide().eq(id).show();
+	});
+	
+$(".subMenu a").click(function(){
+		var id=$(".subMenu a").index(this);
+		$(".subMenu a").removeClass().eq(id).addClass("current");
+		$(".R-content .topic").hide().eq(id).show();
+	});
+	$("#linkApply").click(function(){
+	    $("#divSQTX").show();
+	    $("#divTip").show();
+		 $("#divSQCZ").hide();	
+	});	
+  $("#linkRecharge").click(function(){
+		  $("#divSQTX").hide();
+		  $("#divTip").hide();
+		  $("#divSQCZ").show();
+	
+	});
+})
+	</script>
+{wc:templates "index","footer"}

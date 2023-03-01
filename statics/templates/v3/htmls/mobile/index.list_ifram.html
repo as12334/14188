@@ -1,0 +1,49 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>{wc:$title} - {wc:$webname}触屏版</title>     
+    <meta content="app-id=518966501" name="apple-itunes-app" />     
+   <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+
+    <meta content="yes" name="apple-mobile-web-app-capable" />     
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />     
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css?" rel="stylesheet" type="text/css" />
+<!--<link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile/bootstrap.css"> -->
+<link rel="stylesheet" media="screen,projection,tv" href="{G_TEMPLATES_CSS}/mobile/header_footer.css?i=2205">
+<link rel="stylesheet" media="screen,projection,tv" href="{G_TEMPLATES_CSS}/mobile/main.min.css?i=2205"/>
+<link href="{G_TEMPLATES_CSS}/mobile/single.css?" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_CSS}/mobile/video.css" />
+<script src="http://video.ygqq.com/Application/App/View/Public/js/setviewport.js"></script>
+
+<body>
+<div class="c_big_box" >
+        <div class="c_video_box" >
+        <h3><p>特别精彩</p></h3>
+        <ul class="c_video_boxs" >
+        {wc:loop $qz $tiezi}
+        	<li>
+                <a class="c_video_img" href="{WEB_PATH}/mobile/group/nei/{wc:$tiezi['id']}/{wc:$uids}/" target="_blank">
+                    <img src="{G_UPLOAD_PATH}/{wc:$tiezi['image']}" height="82"/>
+                    {wc:if $tiezi['qzid']==7} <span></span>{wc:if:end}
+                </a>
+                <a class="c_video_text" href="{WEB_PATH}/mobile/group/nei/{wc:$tiezi['id']}/{wc:$uids}/" title="{wc:$tiezi['title']}" target="_blank">{wc:fun:_strcut($tiezi['title'],20)}</a>
+                <p><span>{wc:fun:date("Y-m-d",$tiezi['time'])}</span><span class="c_play_num c_play_num2">{wc:$tiezi['dianji']}</span></p>
+            </li>
+            {wc:loop:end}
+                    
+        </ul>       
+    </div>
+</div>
+</body>
+
+
+</html>

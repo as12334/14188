@@ -1,0 +1,44 @@
+上亿码酷站下载更多精品源码www.ymkuzhan.com
+
+程序支持自动安装和手动安装
+
+一、自动安装
+
+1、将代码上传到服务器或空间的网站根目录后，打开网站进行安装。
+2、【如何上传代码】买空间的商家可以用ftp工具上传，没有ftp工具可以下载一个，买服务器的商家也可以用
+ftp上传或在服务器里面打开浏览器下载，然后放到网站根目录，上传完毕。
+
+
+
+二、手动安装【1、将目录install删除】将system目录下的database.inc.php移到config目录下，然后参考教程==》数据库配置教程.doc 文档 进行配置数据库（适合不覆盖数据库安装）
+
+【已经有充值抽奖功能的商家，直接覆盖代码即可】
+
+【没有充值抽奖功能的商家，就按下面进行安装】
+
+下面如何操作数据库请参考教程==》如何操作数据库.doc 文档
+
+1、导入数据表 充值抽奖表
+
+2、在go_member表增加一个           字段名LotteryLeave  类型int      长度11 
+
+
+//////【作用于卡密充值，记录会员充值和充值时间】
+
+3、在go_member_account表增加一个   字段名cnum          类型varchar  长度21 
+
+4、在go_czk表增加一个              字段名uid           类型int      长度21 
+
+
+
+//////【作用于后台是否开启验证码】
+
+5、在go_config插入二条记录
+
+id表为38 ，name为code_admin_off，value为0，zhushi为后台验证码是否开启
+
+id表为39 ，name为code_member_off，value为0，zhushi为前台验证码是否开启
+
+id表为40 ，name为web_wx_url，value为m.58woaiduobao.com，zhushi为微信登录回调域名
+
+id表为41 ，name为code_reg_off，value为1，zhushi为注册发送验证码是否开启

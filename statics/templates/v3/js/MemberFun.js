@@ -1,0 +1,1 @@
+var EHad=null;$(function(){var skinDomain='http://'+window.location.host;$("#a_UserPhoto").hover(function(){$(this).next("p").show()},function(){$(this).next("p").hide()}).parent().bind("click",function(){location.href=skinDomain+"/index.php/member/home/userphoto";return false});})

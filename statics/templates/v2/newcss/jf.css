@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0px; padding:0px;}
+ul,li{ list-style:none;}
+a{text-decoration:none;color:#666;}
+
+#main{width:980px; height:auto;margin:0px;padding:0px;text-align:center}
+.demo{width:678px; margin:0px auto;padding:0px; text-align:center;clear:both; border:0px solid #0F0}
+.haoping40{height:120px;}
+#prize{ width:650px; margin:0px auto;padding:0px; text-align:center;clear:both; border:0px solid #00F}
+#prize li{float:left; width:79px; height:78px; line-height:80px; margin:14px; font-size:18px; text-align:center; color:#fff; cursor:pointer; margin-left:14px; padding-top:1px; }
+.boxs{height:360px; overflow:hidden;}
+#viewother,#repeat{height:40px; line-height:40px; text-align:center; font-size:18px; display:none}
+#prizes .yellow{  margin-left:275px;*margin-left:20px;  _margin-left:186px;}
+#prizes .lightgrey{  margin-left:275px;*margin-left:20px;  _margin-left:186px;}
+#prizes .darkolivegreens{  margin-left:280px;*margin-left:20px;  _margin-left:146px;}
+
+.cl{zoom:1; clear:both;}
+.right{ float:right; width:200px; color:#FFF; clear:both;}
+.right{zoom:1; clear:both;}
+.reds,.redss,.redsss{ background-color:#906;}
+.block{color:#FFF; display:block; width:75px;height:75px;}
+.boderbb{border:1px solid #fff;}
+

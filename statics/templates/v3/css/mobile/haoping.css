@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0px; padding:0px;font-size:12px;}
+.haoping_box{
+	width:100%;padding:10px 0px; text-align:center; background:#fff;  margin:0px;
+	}
+.haoping{
+	
+	background: url(../../images/mobile/lp/haoping.jpg) center no-repeat ;
+	width:100%;
+	height:447px;
+	}
+.hp_con{
+	width:300px;
+	height:447px;
+	border:1px solid red;
+	}
+ul,li{ list-style:none;}
+a{text-decoration:none;color:#666;}
+
+#main{width:100%; height:auto;margin:0px;padding:0px;text-align:center}
+.demo{width:100%; margin:0px auto;padding-left:7px; text-align:center;clear:both; border:0px solid #0F0}
+.haoping40{height:50px;}
+#prize{ width:300px;margin:0px auto; text-align:center;clear:both; border:0px solid #00F}
+#prize li{float:left; width:49px; height:49px; line-height:42px; margin:6px; font-size:24px; text-align:center; color:#fff; cursor:pointer;  padding-top:0px; }
+
+.boxs{height:10px; overflow:hidden;}
+#viewother,#repeat{height:30px; line-height:24px; text-align:center; font-size:14px; display:none}
+
+
+.hp_box{width:49px; height:49px;}
+.clee{ width:300px; margin:0px auto;padding-left:39px; text-align:center;clear:both; border:0px solid #00F}
+
+.cl{zoom:1; clear:both;}
+.right{  color:#FFF; clear:both;}
+.right{zoom:1; clear:both;}
+.reds,.redss,.redsss{ background-color:#906;}
+.block{color:#FFF; display:block; width:45px;height:45px; padding-left:2px; }
+.boderbb{border:1px solid #fff;}
+	

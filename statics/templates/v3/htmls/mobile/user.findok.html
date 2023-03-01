@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>找回密码 - {wc:$webname}触屏版</title>
+    <meta content="app-id=518966501" name="apple-itunes-app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+	<link href="{G_TEMPLATES_CSS}/mobile/login.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/js.min.js"></script>
+	<!--<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+	<script id="pageJS" data="{G_TEMPLATES_JS}/mobile/Register.js" language="javascript" type="text/javascript"></script> -->
+    <script type="text/javascript">
+
+function(){
+    try {
+            if(document.getElementById("bdmark") != null){
+                return;
+            }
+            var urlhash = window.location.hash;
+            if (!urlhash.match("fromapp")){
+                if ((navigator.userAgent.match(/(iPhone)/i))) {
+                        {wc:php:start}$getType="iPhone";{wc:php:end} 
+                }else if ((navigator.userAgent.match(/(iPod)/i))) {
+					    {wc:php:start}$getType="iPod";{wc:php:end}
+				}else if ((navigator.userAgent.match(/(Android)/i))) {
+					    {wc:php:start}$getType="Android";{wc:php:end}
+				}else if ((navigator.userAgent.match(/(ios)/i))) {
+					    {wc:php:start}$getType="ios";{wc:php:end}
+				}else if ((navigator.userAgent.match(/(iPad)/i))) {
+					    {wc:php:start}$getType="iPad";{wc:php:end}						 
+					}
+            }else {
+					{wc:php:start}$getType="pc";{wc:php:end} 
+					}
+        } catch(err){}
+	
+}
+
+
+</script>
+</head>
+<body>
+    <div class="h5-1yyg-v1" id="content">
+        
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+
+    <header class="g-header">
+        <div class="head-l">
+	        <a href="javascript:;" onClick="history.go(-1)" class="z-HReturn"><s></s><b>返回</b></a>
+        </div>
+        <h2>设置密码</h2>
+        <div class="head-r">
+	        <a href="{WEB_PATH}/mobile/mobile/?yid={wc:$uids}" class="z-Home"></a>
+        </div>
+    </header>
+
+        <section>
+        <div class="registerCon">
+	        <ul><input name="username" type="hidden" id="username" value="{wc:$username}" />
+    	        
+				<li><input type="password" id="password" placeholder="密码" class="rText"><s class="rs3"></s>
+				</li>
+                <li><input type="password" id="repassword" placeholder="确认密码" class="rText"><s class="rs3"></s>
+				</li>
+                <!--<li><input type="text" id="txtVerify" placeholder="验证码" class="rVerify"><span class="fog"><img id="checkcode" src="{WEB_PATH}/api/checkcode/image/85_27/"/></span><s class="rs3"></s>
+                </li> -->
+                <li><a id="btnNext" class="nextBtn  orgBtn">提交</a>
+                <a id="btnNexts" href="javascript:;" class="nextBtn  orgBtn grayBtn" style="display:none">正在提交，请稍后...</a></li>
+                
+            </ul>
+        </div>
+        </section>
+        
+{wc:templates "mobile/index","footer"}
+
+<script type="text/javascript">
+        $(function () {
+            var base_url = '{WEB_PATH}/member/user/dopasswordAjax/';
+            var ehtml = '<i class="passport-icon transparent-png"></i>';
+			
+			
+
+           
+            function checkPassword() {
+                var value = $("#password").val();
+                if (value == '' || value.length == 0) {
+					
+                    $(".wap-tips").html(ehtml + "你还没有输入密码哦").show();
+                     setTimeout(function () {
+					$(".wap-tips").hide();
+                                }, 2000);
+                    return false;
+                } else if (value.length < 6) {
+					
+                    $(".wap-tips").html(ehtml + "密码至少6个字符").show();
+                     setTimeout(function () {
+					$(".wap-tips").hide();
+                                }, 2000);
+                    return false;
+                } else {
+                    $(".wap-tips").hide();
+                }
+				
+                return true;
+            }
+			function checkrePassword() {
+                var value = $("#repassword").val();
+				var valp = $("#password").val();
+                if (value == '' || value.length == 0) {
+					
+                    $(".wap-tips").html(ehtml + "你还没有输入确认密码哦").show();
+                    setTimeout(function () {
+					$(".wap-tips").hide();
+                                }, 2000);
+                    return false;
+                } else if (value!=valp) {
+					
+                    $(".wap-tips").html(ehtml + "两次输入的密码不一致").show();
+                     setTimeout(function () {
+					$(".wap-tips").hide();
+                                }, 2000);
+                    return false;
+                } else {
+                    $(".repass-tips").hide();
+                }
+				$('.regrepass').addClass('correct-text');
+                return true;
+            }
+
+            function len(value) {
+                var total = 0;
+                for (i = 0; i < value.length; i++) {
+                    var char = value.charCodeAt(i);
+                    if ((char >= 0x0001 && char <= 0x007e) || (0xff60 <= char && char <= 0xff9f)) {
+                        total++;
+                    }
+                    else {
+                        total += 2;
+                    }
+                }
+                return total;
+            }
+
+
+           
+
+           
+
+            $("#btnNext").click(function () {
+                if (checkPassword() && checkrePassword()) {
+                    username = $("#username").val();
+                    password = $("#password").val();
+					repassword = $("#repassword").val();
+					getType = $("#getType").val();
+					$("#btnNext").addClass("grayBtn").html("正在提交，请稍后...");
+					$("#btnNexts").show();
+					$("#btnNext").hide();
+                    $.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {action: 'login_user', username: username, password: password, repassword: repassword, getType: getType},
+                        success: function (data) {
+							
+							if (data != '1000') {
+								$("#btnNexts").hide();
+					$("#btnNext").show();
+                    $(".wap-tips").html(ehtml + data).show();
+								$("#btnSubmit").removeClass("letter-noSpac").html("提交");
+                            } else {
+                               // $(".login-success").show();
+							//	$("#btnSubmit").addClass("letter-noSpac").html("提交成功");
+                                    location.href = "{WEB_PATH}/mobile/user/login/?yid={wc:$uids}";
+                               
+                            }
+							
+                           
+                        },
+                        error: function () {
+							$("#btnNexts").hide();
+					$("#btnNext").show();
+                    $(".wap-tips").html(ehtml + "数据提交失败,请重试!").show();
+					$("#btnNext").removeClass("grayBtn").html("提交");
+					setTimeout(function () {
+					$(".wap-tips").hide();
+                                }, 2000);
+                         
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+ 
+    </div>
+    
+    <style>
+.wap-tips{ width: 230px; height: 50px; border-radius: 10px; -webkit-border-radius: 10px; text-align: center; line-height: 50px; background: #000; color: #fff; position: absolute; top: 50%; left: 50%; font-family: "微软雅黑"; margin-top: 20px; margin-left: -112px;opacity: 0.8; }
+</style>
+     <div class="wap-tips" style="display: none">
+        
+    </div>  
+</body>
+</html>

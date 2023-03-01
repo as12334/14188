@@ -1,0 +1,82 @@
+<?php defined('G_IN_SYSTEM')or exit('No permission resources.'); ?><style>
+	.header {
+    height: 49px;
+    background: #ff6600;
+    border-bottom: 1px solid #e35b00;
+}
+
+.header h1 {
+    height: 49px;
+    display: inline;
+    background: url();
+    background-size: 55px auto;
+}
+
+.header h1 a {
+    color: #fff;
+    display: inline;
+}
+
+.header h1 a img {
+    width: 114px;
+    height: 30px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.header span {
+    display: none;
+}
+
+.header .u-slogan {
+    width: 86px;
+    height: 13px;
+    margin: 27px 0 0 9px;
+    /*background:url(../../images/1yyg-slogan.png);*/
+    background-size: 86px auto;
+}
+
+.header .head-r {
+    /*margin: 11px 6px 0 0;*/
+    float: none;
+}
+
+.header .cefenlei {
+    background: url(../../images/123456.png) center center no-repeat;
+    display: block;
+    height: 30px;
+    overflow: hidden;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    width: 30px;
+    background-size: 20px auto;
+}
+</style>
+<header class="header" style="width: 100%;z-index: 99999999;">
+
+    <h1 style="width: 100%;text-align: center;float: none;top: 0px;left: 0px;font-size: 25px;" class="fl">
+        <span style="display: block;height: 49px;line-height: 49px;">
+            <a style="font-size: 20px;line-height: 49px;" href="http://m.1ymydb.com/index.php">
+                             <?php if($item['q_end_time']!=''): ?>  揭晓结果<?php  else: ?>商品详情<?php endif; ?>
+                            </a>
+        </span>
+
+        <!--<img src="http://m.1ymydb.com/statics/uploads/banner/20161111/81610810794213.jpg"/>
+        -->
+        <!--<img src="http://m.dbqb123.com/statics/templates/yungou/images/sjlogo.png"/>
+        -->
+    </h1>
+
+    <a id="fanhui" class="cefenlei" onclick="history.go(-1)" href="javascript:;">
+        
+        <img width="30" height="30" src="<?php echo G_TEMPLATES_STYLE; ?>/images/weixin/fanhui.png">
+    </a>
+
+    <div class="fr head-r" style="position: absolute;right: 6px;top: 10px;"><div class="head-r">
+	        <a href="<?php echo WEB_PATH; ?>/mobile/mobile/" class="z-HReturn" style="color:#fff; font-size:14px;" ><img width="30" height="30" src="<?php echo G_TEMPLATES_STYLE; ?>/images/weixin/home.png"></a>
+        </div>
+
+</div>
+
+</header>

@@ -1,0 +1,271 @@
+{wc:templates "index","header"}
+<link href="{G_TEMPLATES_STYLE}/newcss/member_x.css?v=150728" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/js.min.js"></script>
+
+
+<div class="p-center-main clrfix">
+            <!--左边导航-->
+            
+{wc:templates "member","left"}
+            <div class="sidebar_main clrfix fr">
+            {wc:templates "member","shezhi"}
+                <div class="g-purchase-title bor-bot">
+					<span class="gray3">手机验证</span><a href="{WEB_PATH}/member/home/Security" class="return-btn">返回</a>
+                </div>
+                <div class="z-content">
+                     
+                    <!--发送状态-->
+                    <div class="person-wrap" id="divChecking">
+                        <ul class="person-list">
+                            <li>
+                                <span class="l-side"></span>
+                                <span class="r-side">验证码已发送至手机：<b class="blue" >{wc:$username}</b>
+                                    <a href="{WEB_PATH}/member/home/mobilechecking" class="change">更换</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="l-side">验证码：</span>
+                                <span class="r-side">
+                                    <div class="inp-wrap ">
+                                    <input name="username" type="hidden" id="username" value="{wc:$username}" />
+                                        <input id="txtCode" maxlength="6" type="text" class="code-inner" value="请输入6位验证码" />
+                                        <a id="btnSendSN" href="javascript:;" class="get-code-btn codes grayBtn">({wc:$time})重新发送</a>
+                                        <a href="javascript:;" class="get-code-btn btnSendSN" style="display:none" >重新发送</a>
+                                    </div>
+                                </span>
+                                <div id="div_tips1"></div>
+                            </li>
+                            <li>
+                                <span class="l-side"></span>
+                                <span class="r-side">
+                                    <a id="btnSubmit" href="javascript:;" class="set-save-btn">提交</a>
+                                </span>
+                            </li> 
+                        </ul>
+                    </div>
+
+                </div>
+
+                
+            </div>
+
+        </div>
+        
+            <div class='copy-tips' style="display:none;"><div class='wap-tips' ></div></div>
+    <style type="text/css">
+.copy-tips{position:fixed;z-index:999;bottom:50%;left:50%;margin:0 0 -50px -170px;background-color:rgba(0, 0, 0, 0.2);filter:progid:DXImageTransform.Microsoft.Gradient(startColorstr=#30000000, endColorstr=#30000000);padding:3px;}
+.wap-tips{padding:30px 80px;text-align:center;border:1px solid #F4D9A6;background-color:#FFFDEE;font-size:14px;vertical-align:middle; }
+
+</style>
+<script type="text/javascript">
+$(function(){
+	var A={wc:$time};
+	var B=function()
+	{
+		
+		
+		if(A==1){
+			A={wc:$time};
+			$(".codes").removeClass('grayBtn').html("({wc:$time})重新发送");
+		 $(".btnSendSN").show();
+	    $(".codes").hide();
+		
+		
+		//location.replace("{WEB_PATH}/member/home")
+	}else{
+		
+		$(".grayBtn").html("("+A+")重新发送");A--
+		}
+	};setInterval(B,1000)
+	
+})
+
+
+      $(function () {
+            var base_url = '{WEB_PATH}/member/home/mobilesuccess';
+            var ehtml = '<i class="passport-icon transparent-png"></i>';
+			
+			
+          
+
+            $(".btnSendSN").click(function () {
+               
+                    username = $("#username").val();
+                   
+                    
+                   $(".codes").show();
+							$(".btnSendSN").hide();
+					$('.codes').addClass('grayBtn');
+                    $.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {action: 'mobile', username: username},
+                        success: function (data) {
+							//alert(data);
+							//$(".btnSendSN").addClass("letter-noSpac").html("正在发送...");
+							str=data.length;
+							arr=data.split(",");
+							
+							if (str>30) {
+								$(".copy-tips").show();
+                    $(".wap-tips").html(ehtml + "验证码已发送，请查收!").show();
+					
+					setTimeout(function () {
+					$(".copy-tips").hide();
+                                }, 2000);
+                       
+							 }else if (arr[1]>1) {
+							$(".copy-tips").show();
+                            $(".wap-tips").html(ehtml + "对不起，请不要频繁获取验证码!").show();
+					
+				            	setTimeout(function () {
+									
+                                 $(".copy-tips").hide();
+                                }, 2000);
+								return false;
+                            
+                            } else {
+								$('.code-form').addClass('error-text');
+								$(".orange").html(ehtml + data).show();
+								
+                                setTimeout(function () {
+									
+                                 $(".orange").hide();
+                                }, 2000);
+								
+								return false;
+                          }
+                        },
+                        error: function () {
+							$('.code-form').addClass('error-text');
+                            $('.orange').html(ehtml + "对不起，请不要频繁获取验证码!").show();
+							return false;
+                        }
+                    });
+                
+            });
+      });
+    </script>
+    
+    
+    <script type="text/javascript">
+        $(function () {
+            var base_url = '{WEB_PATH}/member/home/mobilecheck/';
+            var ehtml = '';
+			$("#txtCode").focus(function(){		
+	     	var va1=$("#txtCode").val();
+		    if(va1=='请输入6位验证码'){
+			$("#txtCode").val("");
+		         }
+	        });
+			$("#txtCode").blur(function(){		
+	     	var va1=$("#txtCode").val();
+		    if(va1==''){
+			$("#txtCode").val("请输入6位验证码");
+		         }
+	        });
+
+            function checktxtCode() {
+                var value = $("#txtCode").val();
+                var length = len(value);
+				
+				
+                if (value == '' || value.length == 0) {
+					var ehtml = '<div class="form-orange-tips">你还没有输入验证码哦</div>';
+                    $("#div_tips1").html(ehtml).show();
+					setTimeout(function () {
+					$("#div_tips1").hide();
+                                }, 2000);
+					
+					
+                    return false;
+                }
+                else if (value.length == 6 && value != '请输入6位验证码') {
+                    $(".orange").hide();
+                } else {
+					var ehtml = '<div class="form-orange-tips">请输入验证码</div>';
+                    $("#div_tips1").html(ehtml).show();
+					setTimeout(function () {
+					$("#div_tips1").hide();
+                                }, 2000);
+					
+					
+                    return false;
+                    
+                }
+                return true;
+				
+            }
+            
+            function len(value) {
+                var total = 0;
+                for (i = 0; i < value.length; i++) {
+                    var char = value.charCodeAt(i);
+                    if ((char >= 0x0001 && char <= 0x007e) || (0xff60 <= char && char <= 0xff9f)) {
+                        total++;
+                    }
+                    else {
+                        total += 2;
+                    }
+                }
+                return total;
+            }
+
+
+            $("#txtCode").on('blur', function () {
+				$('.enter-focus').removeClass('enter-focus');
+				$('.enter-focus').addClass('click');
+                checkUserName();
+				
+            });
+			$("#txtCode").on('focus', function () {
+				$('.click').addClass('enter-focus');
+				
+               
+				
+            });
+
+           
+
+            $("#btnSubmit").click(function () {
+                if (checktxtCode()) {
+                    username = $("#username").val();
+                    txtCode = $("#txtCode").val();
+					
+					$("#btnSubmit").addClass("letter-noSpac").html("正在提交...");
+                    $.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {action: 'mobile', username: username, txtCode: txtCode},
+                        success: function (data) {
+                            if (data != '1000') {
+                               var ehtml = '<div class="form-orange-tips">'+ data +'</div>';
+                                $('#div_tips1').html(ehtml).show();
+								setTimeout(function () {
+									$("#div_tips1").hide();
+                                }, 2000);
+								$("#btnSubmit").removeClass("letter-noSpac").html("提交");
+                            } else {
+                             $(".copy-tips").show();
+                    $(".wap-tips").html(ehtml + "认证成功!").show();
+					
+					setTimeout(function () {
+					$(".copy-tips").hide();
+                                }, 2000);
+                                    location.href = "{WEB_PATH}/member/home/modify";
+                               
+                            }
+                        },
+                        error: function () {
+							$('.code-form').addClass('error-text');
+					            $(".orange").html(ehtml + "数据提交失败,请重试").show();
+                           
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+{wc:templates "index","footer"}

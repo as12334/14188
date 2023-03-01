@@ -1,0 +1,117 @@
+{wc:templates "index","header"}
+<link href="{G_TEMPLATES_STYLE}/newcss/member_x.css?v=150728" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/layout-topic.css"/>
+<script>
+$(function(){
+	$("#ul_menu li").click(function(){
+		var id=$("#ul_menu li").index(this);
+		$("#ul_menu li").removeClass().eq(id).addClass("curr");
+		$(".fri-req-wrap").hide().eq(id).show();
+	});
+})
+function tiezi(id){
+	if(confirm("您确认要删除该条信息吗？")){
+		window.location.href="{WEB_PATH}/member/home/tiezidel/"+id;
+	}
+}
+function hueifu(id){
+	if(confirm("您确认要删除该条信息吗？")){
+		window.location.href="{WEB_PATH}/member/home/tiezidel/"+id;
+	}
+}
+</script>
+
+<div class="p-center-main clrfix">
+            <!--左边导航-->
+            
+  	{wc:templates "member","left"}
+            <div class="sidebar_main clrfix fr">
+                <div class="g-obtain-title clrfix">
+                    <ul id="ul_menu">
+                        <li class="curr"><a href="javascript:;">加入的圈子</a></li>
+                        <li><a href="javascript:;">发表的话题</a></li>
+                        <li><a href="javascript:;">回复的话题</a></li>
+                    </ul>
+                </div>
+
+                <div id="div_grouplist" class="fri-req-wrap">
+                    <div class="qz-wrap">
+                        {wc:if $group==null}
+                        <ul class="reply-list"><div class="null-retips-wrapper"><div class="gth-icon transparent-png"></div><span>您还没有加入的圈子哦！</span></div></ul>
+                        
+                        {wc:else}
+                        <ul class="qz-list">
+                        {wc:loop $group $v}
+                        <li><a href="{WEB_PATH}/group/show/{wc:$v['id']}" target="_blank" class="h-pic"><img src="{G_UPLOAD_PATH}/{wc:$v['img']}" width="80px" height="80"></a><div class="q-info"><a href="{WEB_PATH}/group/show/{wc:$v['id']}" target="_blank">{wc:$v['title']}</a><p class="person">成员：{wc:$v['chengyuan']}&nbsp;&nbsp;&nbsp;&nbsp;话题：{wc:$v['tiezi']}</p><p class="tail">{wc:$v['jianjie']}</p></div></li>
+                        {wc:loop:end}
+                        </ul>
+                        
+                        {wc:if:end}
+                        
+                    </div>
+                </div>
+                <div id="div_publishtopic" style="display: none;" class="fri-req-wrap">
+                    <div class="report-wrap">
+                        <div class="list-tab topic" style="display: block;">
+		{wc:if !$tiezi}
+		<ul class="reply-list"><div class="null-retips-wrapper"><div class="gth-icon transparent-png"></div><span>您还没有发表话题哦！</span></div></ul>
+		{wc:else}
+		<ul class="listTitle">
+			<li class="w400">话题</li>
+			<li class="w100">所属圈子</li>
+			<li class="w130">时间</li>
+			<li class="w85">回复/人气</li>
+			<li class="w85 fr">操作</li>
+		</ul>
+		{wc:loop $tiezi $tz}
+		<ul class="listCon">
+			<li class="w400"><a href="{WEB_PATH}/group/nei/{wc:$tz['id']}" target="_blank" class="gray01">{wc:$tz['title']}</a></li>
+			<li class="w100"><a href="{WEB_PATH}/group/show/{wc:$tz['qzid']}" target="_blank" class="blue">{wc:fun:quanzid($tz['qzid'])}</a></li>
+			<li class="w130 gray03">{wc:fun:date("Y-m-d H:i:s",$tz['time'])}</li>
+			<li class="w85 gray03">{wc:$tz['hueifu']}/{wc:$tz['dianji']}</li>
+			<li class="w85 fr">
+				<a href="{WEB_PATH}/group/nei/{wc:$tz['id']}" target="_blank" class="blue">编辑</a>&nbsp;&nbsp;
+				<a name="delete" href="javascript:;" onclick="tiezi({wc:$tz['id']})" class="blue">删除</a>
+			</li>
+		</ul>
+		{wc:loop:end}
+		{wc:if:end}
+	</div>
+                       
+                    </div>
+                </div>
+                <div id="div_replaytopic" style="display: none;" class="fri-req-wrap">
+                    <div class="reply-wrap">
+                        <div class="list-tab topic">
+		{wc:if !$hueifu}
+		<ul class="reply-list"><div class="null-retips-wrapper"><div class="gth-icon transparent-png"></div><span>您还没有回复话题哦！</span></div></ul>
+		{wc:else}
+		<ul class="listTitle">
+			<li class="w630">回复内容</li>
+			<li class="w50 fr">操作</li>
+		</ul>
+		{wc:loop $hueifu $hf}
+        
+        {wc:php:start}
+                           
+                           $tiezi = $hf['tiezi'];
+                           $tzhueifu=$this->db->GetOne("select * from `@#_quanzi_tiezi` where `id`='$tiezi' and shenhe='Y'");  
+                            
+                          {wc:php:end}
+		<ul class="listCon">
+			<li class="w630" style="padding:10px;"><div class="listConT">{wc:fun:date("Y年m月d日 H:i",$hf['time'])}对话题“
+			<a href="{WEB_PATH}/group/nei/{wc:$tzhueifu['id']}" target="_blank" class="blue">{wc:$tzhueifu['title']}</a>
+			”进行了回复：</div>{wc:$hf['neirong']}</li>
+			<li class="w50 fr"><a name="delete" onclick="hueifu({wc:$hf['id']})" href="javascript:;" class="blue">删除</a></li>
+		</ul>
+		{wc:loop:end}
+		{wc:if:end}
+	</div>
+                        <ul class="reply-list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+{wc:templates "index","footer"}

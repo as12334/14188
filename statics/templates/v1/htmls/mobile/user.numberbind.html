@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <title>{wc:$title} - {wc:$webname}触屏版</title>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/newComm.css" rel="stylesheet" type="text/css" />
+    
+	<link href="{G_TEMPLATES_CSS}/mobile/other.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="h5-1yyg-v11">
+    
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+
+    <header class="g-header">
+        <div class="head-l">
+	        <a  href="{WEB_PATH}/mobile/home/?yid={wc:$uids}" class="z-HReturn"><s></s><b>返回</b></a>
+        </div>
+        <h2>{wc:$title}</h2>
+        <div class="head-r">
+	      {wc:if $member_number['id']==''} <a href="{WEB_PATH}/mobile/home/numberadd/{wc:$uids}/" class="upadd" style="color:#fff; font-size:14px; line-height:30px;">绑定</a> {wc:if:end}
+        </div>
+    </header>
+<section>
+     
+	  <div class="main">
+        <div class="app">
+        {wc:if $member_number['id']==''}
+            <div class="mt10 f-Recharge-btn">
+		          <a id="btnSubmit" href="{WEB_PATH}/mobile/home/numberadd/{wc:$uids}/" class="orgBtn">绑定支付宝</a>
+	             </div>
+           {wc:else}
+            <ul id="my-address" class="my-address" >
+           
+                                <li class="normal">
+                    
+                    <span class="name">{wc:$member_number['username']}</span>
+                    <span class="phone">{wc:$member_number['linkphone']}</span>
+                    
+                                            <!--<span class="default">默认</span> -->
+                                        <br>
+                    <span class="address">
+                  支付宝账号： {wc:$member_number['banknumber']}                    </span>
+                   
+                </li>
+              
+                            </ul>
+                            
+                 
+               {wc:if:end}	 
+
+            {wc:if  $member_number2['id']==''}
+            <div class="mt10 f-Recharge-btn">
+		          <a id="btnSubmit" href="{WEB_PATH}/mobile/home/numberadd2/{wc:$uids}/" class="orgBtn">绑定银行卡</a>
+	             </div>
+           {wc:else}
+            <ul id="my-address" class="my-address" >
+           
+                                <li class="normal">
+                    
+                    <span class="name">{wc:$member_number2['username']}</span>
+                    <span class="phone">{wc:$member_number2['linkphone']}</span>
+                    
+                                            
+                                        <br>
+                    <span class="address">
+                  银行卡账号： {wc:$member_number2['banknumber']}                    </span>
+                   
+                </li>
+              
+                            </ul>
+                            
+                
+               {wc:if:end}	
+            <!--<button id="delAddress" class="delAddress" data-addr_id="49097">删除地址</button> -->
+            
+
+
+{wc:templates "mobile/index","footer"}
+        </div>
+    </div>  
+
+</section>
+</div>
+</body>
+</html>

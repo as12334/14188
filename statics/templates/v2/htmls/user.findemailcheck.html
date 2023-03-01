@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>找回密码-{wc:fun:_cfg("web_name")}</title>
+    <link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/newcss/sslComm.css?date=150713" />
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/Comm.css">
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/register.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="g-logo-top g-logo-width">
+      <a rel="nofollow" href="{G_WEB_PATH}"><img src="{G_UPLOAD_PATH}/{wc:fun:Getlogo()}"></a>
+      <span class="fr"><a href="{G_WEB_PATH}">返回首页</a></span>
+  </div>
+
+<div class="login_layout">    
+	<div class="login_title">
+		<h2>密码忘了？不要着急，通过以下方式即可帮您顺利的找回来！</h2>
+	</div>
+	<div class="login_Content">		
+		<div id="divError" class="login_CMobile_Complete hidden">
+			<p><span class="orange Fb">请稍候，系统正在发送邮件...</span></p>
+		</div>
+		<div id="divNormal" class="login_CMobile_Complete">
+			<p>{wc:fun:_cfg('web_name_two')}已向您的 <span class="orange">{wc:$info['email']}</span> 邮箱发送了一封验证邮件，请前往收信，完成验证！</p>
+			<a id="hylinkMails" class="login_Email_but" href="http://mail.{wc:$emailurl[1]}" target="_blank">登录邮箱完成验证</a>
+		</div>
+		<div class="login_Explain">
+			<h2>没收到验证邮件？</h2>
+			<p>1.查看邮箱的垃圾箱或广告箱，邮件有可能被误认为垃圾邮件。</p>
+			<p>2.如果在10分钟后仍未收到验证邮件，请点击 <a id="retrySend" href="{WEB_PATH}/member/finduser/findsendemail/{wc:$enname}" class="login_SendoutbutClick">重新发送</a> </p>
+		</div>	
+	</div>
+</div>
+        <!-- 底部版权 -->
+<div class="footer">
+	<div class="footer_links">
+		<a href="{WEB_PATH}">首页</a>
+		<b></b>
+		{wc:fun:Getheader('foot')}
+  	</div>
+	<div class="copyright">{wc:fun:_cfg("web_copyright")}</div>
+</div>

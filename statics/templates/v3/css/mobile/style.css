@@ -1,0 +1,84 @@
+
+/*this is banner start*/
+.area{ margin: 0 auto;
+    max-width: 640px;
+    overflow: hidden;
+    position: relative;}
+.area:after{ content: "";
+    display: block;
+    padding-top: 38%;
+    width: 100%;}
+.area ul {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.area ul li{
+    height: 100%;
+    left: 0;
+    list-style: outside none none;
+    position: absolute;
+    top: 0;
+    width: 100%;}
+.area img{max-width:100%;display:block;}
+.area .adType{
+    position: absolute;
+    left:0;
+    bottom:5px;
+	overflow:hidden;
+	z-index:10;
+	width:100%;
+	text-align:center;}
+.area .adType a{background:#fff;
+    border-radius: 10px;
+    cursor: pointer;
+    display:inline-block;
+    height: 8px;
+    margin:0 3px;
+    overflow: hidden;
+    width: 8px;opacity:.5;}
+.area .adType a.current{opacity:1;background:#fff;}
+/*this is banner end*/
+
+.area1{ margin: 0 auto;
+    max-width: 640px;
+    overflow: hidden;
+    position: relative;}
+.area1:after{ content: "";
+    display: block;
+    padding-top: 38%;
+    width: 100%;}
+.area1 ul {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.area1 ul li{
+    height: 100%;
+    left: 0;
+    list-style: outside none none;
+    position: absolute;
+    top: 0;
+    width: 100%;}
+.area1 img{max-width:100%;display:block;}
+.area1 .adType{
+    position: absolute;
+    left:0;
+    bottom:5px;
+	overflow:hidden;
+	z-index:10;
+	width:100%;
+	text-align:center;}
+.area1 .adType a{background:#fff;
+    border-radius: 10px;
+    cursor: pointer;
+    display:inline-block;
+    height: 8px;
+    margin:0 3px;
+    overflow: hidden;
+    width: 8px;opacity:.5;}
+.area1 .adType a.current{opacity:1;background:#fff;}

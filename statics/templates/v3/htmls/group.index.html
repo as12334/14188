@@ -1,0 +1,189 @@
+{wc:templates "index","header"}
+<link href="{G_TEMPLATES_STYLE}/newcss/groups.css" rel="stylesheet" type="text/css" />
+
+    <div class="g-main-con clrfix">
+        <div class="groupsCon w1190">
+	        <div class="g-groups-left">
+		        <div class="groups-title gray3">{wc:fun:_cfg('web_name_two')}圈</div>	        
+		        <div class="groups-list clearfix">
+		           <ul>
+		               {wc:loop $quanzi $v}
+			                   <li>
+				                <div class="groups-img"><a rel="nofollow" href="{WEB_PATH}/group/show/{wc:$v['id']}" target="_blank" class="fl-img">
+                                {wc:if $v['img']==null}
+					<img src="{G_UPLOAD_PATH}/quanzi/prmimg.jpg" title="{wc:$v['title']}" border="0" alt="">
+					{wc:else}
+					<img src="{G_UPLOAD_PATH}/{wc:$v['img']}" title="{wc:$v['title']}" border="0" alt="">
+					{wc:if:end}
+                                </a></div>
+				                <div class="groups-info">
+					                <p class="groups-name"><a href="{WEB_PATH}/group/show/{wc:$v['id']}" target="_blank" title="{wc:$v['title']}" class="blue">{wc:$v['title']}</a></p>
+					                <p class="groups-class gray9">成员：{wc:$v['chengyuan']}&nbsp;&nbsp;&nbsp;&nbsp;话题：{wc:$v['tiezi']}</p>
+					                <p class="groups-intro gray9">{wc:fun:_strcut($v['jianjie'],52)}</p>
+				                </div>
+			                </li>
+			             {wc:loop:end}  
+			                   
+			               
+		           </ul>
+		        </div>
+                <div class="groups-summary">
+                     <div class="m-groups-tab">
+                         <span {wc:if $t==''} class="curr" {wc:if:end}><a href="{WEB_PATH}/group/">推荐</a></span><span {wc:if $t=='1'} class="curr" {wc:if:end}><a href="{WEB_PATH}/group/?t=1"> 最新</a></span><span {wc:if $t=='2'} class="curr" {wc:if:end}> <a href="{WEB_PATH}/group/?t=2">热门</a></span>
+                     </div>
+                     <div class="m-groups-list">
+                          {wc:loop $tiezi_zd $v}
+                          {wc:php:start}
+                           $id = $v['qzid'];
+                           $qzi=$this->db->GetOne("select * from `@#_quanzi` where `id`='$id'"); 
+                           $tzid = $v['id'];
+                           $tzhueifu=$this->db->GetCount("select * from `@#_quanzi_tiezi` where `tiezi`='$tzid' and shenhe='Y'");   
+                          {wc:php:end}
+                                  <dl>
+                            	     <dt>
+                                	    <span><a href="{WEB_PATH}/group/nei/{wc:$v['id']}" target="_blank">{wc:$v['title']}</a></span>
+                                        <cite>{wc:if $v['zhiding']=="Y"}<b class='f-group-icon'></b>{wc:if:end}
+                                        {wc:if $v['jinghua']=="Y"}<s class='f-group-icon'></s>{wc:if:end}</cite>
+                                        <em>{wc:fun:date("Y-m-d H:i",$v['time'])}</em>
+                                     </dt>
+                                     <dd>
+                                	   <span>
+                                         <a target="_blank" href="{WEB_PATH}/uname/{wc:fun:idjia($v['zuihou'])}" class="f-group-name">{wc:fun:get_user_name($v['zuihou'],'username')}</a>
+                                         来自：<a href="{WEB_PATH}/group/show/{wc:$qzi['id']}" target="_blank">{wc:$qzi['title']}</a></span>
+                                         <cite><a href="{WEB_PATH}/group/nei/{wc:$v['id']}" target="_blank" rel="nofollow">回复({wc:$tzhueifu})</a>
+                                         <a href="{WEB_PATH}/group/nei/{wc:$v['id']}" target="_blank" rel="nofollow">人气({wc:$v['dianji']})</a></cite>
+                                     </dd>
+                                  </dl>
+                           {wc:loop:end}     
+                           
+                          {wc:loop $tiezi $v}
+                          {wc:php:start}
+                           $id = $v['qzid'];
+                           $qzi=$this->db->GetOne("select * from `@#_quanzi` where `id`='$id'"); 
+                           $tzid = $v['id'];
+                           $tzhueifu=$this->db->GetCount("select * from `@#_quanzi_tiezi` where `tiezi`='$tzid' and shenhe='Y'");   
+                          {wc:php:end}
+                                  <dl>
+                            	     <dt>
+                                	    <span><a href="{WEB_PATH}/group/nei/{wc:$v['id']}" target="_blank">{wc:$v['title']}</a></span>
+                                        <cite>{wc:if $v['zhiding']=="Y"}<b class='f-group-icon'></b>{wc:if:end}
+                                        {wc:if $v['jinghua']=="Y"}<s class='f-group-icon'></s>{wc:if:end}</cite>
+                                        <em>{wc:fun:date("Y-m-d H:i",$v['time'])}</em>
+                                     </dt>
+                                     <dd>
+                                	   <span>
+                                         <a target="_blank" href="{WEB_PATH}/uname/{wc:fun:idjia($v['zuihou'])}" class="f-group-name">{wc:fun:get_user_name($v['zuihou'],'username')}</a>
+                                         来自：<a href="{WEB_PATH}/group/show/{wc:$qzi['id']}" target="_blank">{wc:$qzi['title']}</a></span>
+                                         <cite><a href="{WEB_PATH}/group/nei/{wc:$v['id']}" target="_blank" rel="nofollow">回复({wc:$tzhueifu})</a>
+                                         <a href="{WEB_PATH}/group/nei/{wc:$v['id']}" target="_blank" rel="nofollow">人气({wc:$v['dianji']})</a></cite>
+                                     </dd>
+                                  </dl>
+                           {wc:loop:end}         
+                              
+                                  
+                               
+                     </div>
+                 </div>               
+	        </div>
+	        <div class="groups-right groups-right-new">
+	    {wc:if uidcookie('uid')}        
+<div class="groupsR-con">
+    <div class="grhead-img">
+         <ul>
+            <li class="fl-img"><a href="{WEB_PATH}/uname/{wc:fun:idjia(uidcookie('uid'))}" title="13420842451" target="_blank">
+            {wc:if userid(uidcookie('uid'),'img')==null}
+		<img src="{G_TEMPLATES_STYLE}/images/prmimg.jpg" border="0" />
+		{wc:else}
+		<img  src="{G_UPLOAD_PATH}/{wc:fun:userid(uidcookie('uid'),'img')}"  border="0"/>
+		{wc:if:end}	<i class="transparent-png"></i></a></li>
+            <li>
+                <b><a href="{WEB_PATH}/uname/{wc:fun:idjia(uidcookie('uid'))}" rel='nofollow' target="_blank">{wc:fun:get_user_name(uidcookie('uid'),'username')}</a></b>
+                <span class="class-icon0{wc:$dengji_1['groupid']}"><s></s>{wc:$dengji_1['name']}</span>
+            </li>
+         </ul>
+    </div>
+    <div class="grhead-info">
+         <ul>
+             <li><em class="gray6">{wc:$m_huati}</em>话题</li>
+             <li><em class="gray6">{wc:$m_hueifu}</em>回复</li>
+             <li id="liGroup" class="join-groups">
+                 <p id="pJionGroup"><em>{wc:if qznum()==null}0{wc:else}{wc:fun:qznum()}{wc:if:end}</em>加入圈子<b></b></p>
+                 <div id="divGroupList" class="joinClist-con" style="display:none;">
+                     <div id="divShowList" class="grhead-joinClist" ></div>
+                 </div>
+             </li>
+         </ul>
+    </div>
+</div>
+{wc:else}
+<div class="groupsR-con">
+     <div class="groups-login">
+          <p>登录查看您的圈子吧！</p>
+          <p>没账号？ <span><a href="{WEB_PATH}/member/user/register" target="_blank">简单注册 快捷方便！</a></span></p>
+          <a id="btnLogin" href="{WEB_PATH}/member/user/login" class="f-group-login">立即登录</a>
+     </div>                        
+</div>
+{wc:if:end}
+<input id="hidIsLogin" type="hidden" value="1" />
+
+
+
+
+                
+        <div class="blank10"></div>
+        <div id="divHotTopic" class="groups-section clearfix">
+            <div class="R-grtit"><h3>热门话题</h3></div>
+    {wc:loop $tiezi $v}
+                          {wc:php:start}
+                           $id = $v['qzid'];
+                           $qzi=$this->db->GetOne("select * from `@#_quanzi` where `id`='$id'"); 
+                           $tzid = $v['id'];
+                           $tzhueifu=$this->db->GetCount("select * from `@#_quanzi_tiezi` where `tiezi`='$tzid' and shenhe='Y'");   
+                          {wc:php:end}
+        <div class="Topic-list">
+            <div class="groups-Rimg"><a type="showCard"  href="{WEB_PATH}/uname/{wc:fun:idjia($v['hueiyuan'])}" target="_blank">
+            {wc:if userid($v['hueiyuan'],'img')==null}
+			<img src="{G_TEMPLATES_STYLE}/images/prmimg.jpg" border="0"/>
+			{wc:else}
+			<img id="imgUserPhoto" src="{G_UPLOAD_PATH}/{wc:fun:userid($v['hueiyuan'],'img')}" border="0"/>
+			{wc:if:end}<i class="transparent-png"></i></a></div>
+            <div class="groups-Rinfo">
+	            <p class="groups-ht"><a href='{WEB_PATH}/group/show/{wc:$qzi['id']}' title='{wc:$qzi['title']}' target="_blank">{wc:$v['title']}</a></p>
+	            <p class="groups-c gray9">{wc:$qzi['title']}<span> | </span>{wc:$tzhueifu}条回复</p>
+            </div>
+        </div>
+    {wc:loop:end} 
+       
+    
+        </div>
+    
+
+        <div class="blank10"></div>
+        <div class="groups-section clearfix">
+            <div class="R-grtit"><h3>活跃成员</h3></div>
+            <div class="Member-active clearfix">
+                <ul id="ulMember">
+    {wc:getlist sql="select * from `@#_quanzi_tiezi` group by hueiyuan order by id DESC limit 12" return="hueifu"}
+			{wc:loop $hueifu $hf}
+        <li><a type="showCard"  href="{WEB_PATH}/uname/{wc:fun:idjia($hf['hueiyuan'])}" target="_blank" class="blue">
+        <span>{wc:if userid($hf['hueiyuan'],'img')==null}
+				<img src="{G_TEMPLATES_STYLE}/images/prmimg.jpg"  border="0"/>
+				{wc:else}
+				<img id="imgUserPhoto" src="{G_UPLOAD_PATH}/{wc:fun:userid($hf['hueiyuan'],'img')}"  border="0"/>
+				{wc:if:end}	<b class="transparent-png"></b></span><i>{wc:fun:get_user_name($hf['hueiyuan'],'username')}</i></a></li>
+            {wc:loop:end}
+	{wc:getlist:end}   
+    
+        
+    
+                </ul>
+            </div>
+        </div>
+    
+
+	        </div>
+        </div>
+    </div>
+   
+    <!--底部-->
+ {wc:templates "index","footer"}

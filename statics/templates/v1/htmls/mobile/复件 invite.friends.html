@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>邀请管理 - {wc:$webname}触屏版</title>
+<meta content="app-id=518966501" name="apple-itunes-app" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link href="{G_TEMPLATES_CSS}/mobile/comm.css?v=130715" rel="stylesheet" type="text/css" />
+
+<link href="{G_TEMPLATES_CSS}/mobile/invite.css?v=130726" rel="stylesheet" type="text/css" />
+
+
+<link href="{G_TEMPLATES_CSS}/weixin/invit/comm.css?v=130715" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_CSS}/weixin/invit/invite.css?v=151105" rel="stylesheet" type="text/css" />
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+   <script>
+ wx.config({
+   debug:  false,  //调式模式，设置为ture后会直接在网页上弹出调试信息，用于排查问题
+   appId: '{wc:$appId}',
+   timestamp: '{wc:$timestamp}',
+   nonceStr: '{wc:$nonceStr}',
+   signature: '{wc:$signature}',
+   jsApiList: [  //需要使用的网页服务接口
+       'checkJsApi',  //判断当前客户端版本是否支持指定JS接口
+       'onMenuShareTimeline', //分享给好友
+       'onMenuShareAppMessage', //分享到朋友圈
+       'onMenuShareQQ',  //分享到QQ
+       'onMenuShareWeibo' //分享到微博
+   ]
+ });
+ wx.ready(function (){  
+        //分享到朋友圈  
+        var shareData = {  
+            title: '1元微购是一种很有意思的新型购物模式，1元就可能买到iPhone 6S，快来试试吧！"',     //标题       
+            desc: '1元微购是一种很有意思的新型购物模式，1元就可能买到iPhone 6S，快来试试吧！',    //文案 
+            link: '{WEB_PATH}/mobile/mobile/?yid={wc:$uids}',    //链接 
+            imgUrl: 'http://www.58woaiduobao.com/statics/templates/v3/images/weixin/shop1.jpg'  //图片 
+        };  
+		//发送给朋友
+        var shareData1 = {  
+            title: '1元微购是一种很有意思的新型购物模式，1元就可能买到iPhone 6S，快来试试吧！"',     //标题       
+            desc: '1元微购是一种很有意思的新型购物模式，1元就可能买到iPhone 6S，快来试试吧！',    //文案 
+            link: '{WEB_PATH}/mobile/mobile/?yid={wc:$uids}',    //链接 
+            imgUrl: 'http://www.58woaiduobao.com/statics/templates/v3/images/weixin/shop1.jpg'  //图片 
+        }; 
+		//发送给QQ
+        var shareDataq = {  
+            title: '1元微购是一种很有意思的新型购物模式，1元就可能买到iPhone 6S，快来试试吧！"',     //标题       
+            desc: '1元微购是一种很有意思的新型购物模式，1元就可能买到iPhone 6S，快来试试吧！',    //文案 
+            link: '{WEB_PATH}/mobile/mobile/?yid={wc:$uids}',    //链接 
+            imgUrl: 'http://www.58woaiduobao.com/statics/templates/v3/images/weixin/shop1.jpg'  //图片 
+        };  
+        wx.onMenuShareAppMessage(shareData1);  
+        wx.onMenuShareTimeline(shareData); 
+		wx.onMenuShareQQ(shareDataq);  
+    });  
+wx.error(function (res) {
+// alert(res.errMsg);  //打印错误消息。及把 debug:false,设置为debug:ture就可以直接在网页上看到弹出的错误提示
+});
+</script>
+</head>
+<body class="g-acc-bg">
+
+    <div id="wrapper" >
+        <div class="inv-ad">
+            <img src="{G_TEMPLATES_IMAGE}/weixin/inv-ad.png" />
+        </div>
+
+        
+
+        
+            <p class="sha-txt"><span id="p_prcode">邀请好友成功参与夺宝后，按购买数量返利佣金</span></p>
+            
+            <div class="inv-con gray9">
+                <a id="btnShare" href="javascript:;" class="orangeBtn" onClick="index()">立即赚钱</a>
+                
+            </div>
+
+            <div class="inv-count clearfix">
+                <ul>
+                    <li>
+                        <em class="orange">
+                            {wc:$involvedtotal}</em>
+                        <i class="colorbbb">邀请好友</i>
+                    </li>
+                    <li>
+                        <em class="orange" id="emMoney">￥{wc:$cashouthdtotal}</em>
+                        <i class="colorbbb">佣金余额</i>
+                    </li>
+                </ul>
+            </div>
+<div class="R-content" style="background:#fff">
+          <!-- <div id="divInviteInfo" class="get-tips gray01" style="">成功邀请 <span class="orange">{wc:$involvedtotal}</span> 位会员注册，已有 <span class="orange">{wc:$involvednum}</span> 位会员参与{wc:fun:_cfg('web_name_two')}</div> -->
+            <div id="divList" class="list-tab SuccessCon"><ul class="listTitle"><li class="w200">用户名</li><li class="w200">时间</li><li class="w200">邀请编号</li><li class="w200">消费状态</li></ul>
+                {wc:if $involvedtotal!=0}
+                {wc:loop $invifriends $key $val}
+                <ul class="listcon"><li class="w200">  <a href="{WEB_PATH}/mobile/mobile/userindex/{wc:$val['uid']}/{wc:$uids}/" target="_blank" class="blue">{wc:$val['sqlname']}</a></li>
+                    <li class="w200">{wc:fun:date('Y.m.d H:i:s',$val['time'])}</li>
+                    <li class="w200">{wc:fun:idjia($val['uid'])}</li>
+                    <li class="w200">{wc:$records[$val['uid']]}</li>
+                </ul>
+                {wc:loop:end}
+                {wc:else}
+               
+                {wc:if:end}
+            </div>
+    {wc:if $involvedtotal==0}
+    <section class="clearfix">
+        <ul >
+	      <div class="haveNot z-minheight"><s></s><p>您还未有邀请谁哦！</p></div>
+        </ul>
+    </section>
+    {wc:if:end}
+    </div>
+
+            <div class="pro_foot">
+                <ul>
+                    <li id="liMention1" class="border-orange-Btn"><a href="{WEB_PATH}/mobile/invite/recordlist/{wc:$uids}/">佣金提现</a></li>
+                    <li id="liRechagre1"><a href="{WEB_PATH}/mobile/invite/recordlist/{wc:$uids}/" class="orangeBtn">转入账户</a></li>
+                </ul>
+            </div>
+            
+
+            <div class="weixin-mask" style="display: none;"></div>
+        
+
+        
+<input id="hidPageType" type="hidden" value="-1" />
+<input id="hidIsHttps" type="hidden" value="0" />
+<input id="hidSiteVer" type="hidden" value="v21" />
+<input id="hidOpenID" type="hidden" value=""/>
+<script type="text/javascript">
+function index()
+{
+   var add=document.getElementById("add");
+   add.style.display="block";
+   
+}
+
+function indexout()
+{
+   var add=document.getElementById("add");
+   add.style.display="none";
+   
+  
+}
+</script>
+<style>
+.m_popUp {
+width: 100%;
+height: 100%;
+position: fixed;
+top: 0;
+z-index: 1000;
+}
+.m_guide {
+display: block;
+width: 100%;
+height: 100%;
+background: #000;
+opacity: 0.8;
+filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+position: absolute;
+top: 0;
+left: 0;
+z-index: 98;
+}
+.m_popUp cite {
+display: block;
+background: url({G_TEMPLATES_IMAGE}/weixin/share_03.png?v=1105) top right no-repeat;
+background-size: 273px auto;
+height: 230px;
+margin: 10px 10px 0 0;
+position: relative;
+z-index: 99;
+}
+</style>
+<div class="m_popUp" style=" display: none;" id="add" onClick="indexout()"><div class="m_guide"></div><cite></cite></div>
+<script type="text/javascript">
+    var Base = {
+        head: document.getElementsByTagName("head")[0] || document.documentElement,
+        Myload: function (B, A) {
+            this.done = false;
+            B.onload = B.onreadystatechange = function () {
+                if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                    this.done = true;
+                    A();
+                    B.onload = B.onreadystatechange = null;
+                    if (this.head && B.parentNode) {
+                        this.head.removeChild(B)
+                    }
+                }
+            }
+        },
+        getScript: function (A, C) {
+            var B = function () { };
+            if (C != undefined) {
+                B = C;
+            }
+            var D = document.createElement("script");
+            D.setAttribute("language", "javascript");
+            D.setAttribute("type", "text/javascript");
+            D.setAttribute("src", A);
+            this.head.appendChild(D);
+            this.Myload(D, B);
+        },
+        getStyle: function (A, B) {
+            var B = function () { };
+            if (callBack != undefined) {
+                B = callBack;
+            }
+            var C = document.createElement("link");
+            C.setAttribute("type", "text/css");
+            C.setAttribute("rel", "stylesheet");
+            C.setAttribute("href", A);
+            this.head.appendChild(C);
+            this.Myload(C, B);
+        }
+    }
+    function GetVerNum() {
+        var D = new Date();
+        return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0' : D.getMinutes().toString().substring(0, 1));
+    }
+    $(document).ready(function () {
+        var _SkinDomain = $("#hidIsHttps").val() == "1" ? "{G_TEMPLATES_JS}/" : "{G_TEMPLATES_JS}/";
+        Base.getScript(_SkinDomain+'/weixin/Bottom.js?v=' + GetVerNum(), function () {
+            var _pagetype = $("#hidPageType").val();
+            var _footer = $("div.footer");
+            var _cartpay = $("#mycartpay");
+            var _cartlist = 0;//$("li", "#cartBody");
+            var _saysome = $("div.saysome");
+            var _curpage = window.location.href.toLowerCase();
+            
+            var _ishide = false;
+            if (_cartpay.length > 0 && _cartlist.length > 0) {
+                _footer = _cartpay;
+                _pagetype = "1";
+                _ishide = true;
+            }
+            else if (_saysome.length > 0)
+            {
+                _footer = _saysome;
+                _pagetype = "1";
+            }
+            //弹出输入法是否隐藏底部导航
+            if (_curpage.indexOf('/member/recharge.do')>0 || _curpage.indexOf('/member/goodsbuydetail-')>0)
+            {
+                _ishide = true;
+            }
+
+            var _hh = parseInt($(window).height());
+            var _ww=$(window).width();
+            if (_pagetype != "-1" && _footer.length>0) {
+                var SetFooterPos = function () {
+                    var j = 0;
+                    var _setObj;
+                    _setObj = setInterval(function (){
+                        var _hh1 = parseInt($(window).height());
+                        var _hh2 = _hh - _hh1;
+
+                        if (_hh1 > 200) {
+                            if (_hh2 > 0) {
+                                if (parseInt($(window).width()) != parseInt(_ww)) {
+                                    _footer.css("bottom", 0).show();
+                                }
+                            }
+                            else {
+                                _footer.css("bottom", 0).show();
+                            }
+                            j++;
+                           //$("#mycarttest").html(_hh1 + "||" + _hh2 + "||" + $(window).width());
+                            if (j == 3) {
+                                clearInterval(_setObj);
+                            }
+                        }
+                    }, 100);
+                }
+
+                SetFooterPos();
+
+                window.onresize = function () {
+                    if (_ishide) {
+                        _footer.hide();
+                    }
+                    SetFooterPos();
+                };
+            }
+        });
+    });
+</script>
+
+    </div>
+</body>
+</html>

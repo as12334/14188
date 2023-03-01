@@ -1,0 +1,64 @@
+
+
+{wc:if $id==6 || $id==7  || $id==8}
+
+
+       
+        
+        {wc:loop $qz $tiezi}
+        	<li>
+                <a class="c_video_img" href="{WEB_PATH}/mobile/group/nei/{wc:$tiezi['id']}/{wc:$uids}/">
+                    <img src="{G_UPLOAD_PATH}/{wc:$tiezi['image']}" width="100%"  />
+                    {wc:if $tiezi['qzid']==7  || $tiezi['qzid']==8} <span></span>{wc:if:end}
+                </a>
+                <a class="c_video_text" href="{WEB_PATH}/mobile/group/nei/{wc:$tiezi['id']}/{wc:$uids}/" title="{wc:$tiezi['title']}">{wc:fun:_strcut($tiezi['title'],54)}</a>
+                <p><span>{wc:fun:date("Y-m-d",$tiezi['time'])}</span><span class="c_play_num c_play_num2">{wc:$tiezi['dianji']}</span></p>
+            </li>
+            {wc:loop:end}
+                    
+              
+   
+    
+
+<!--<iframe src="{WEB_PATH}/mobile/group/list_ifram/{wc:$id}" id="iframepage" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onLoad="iFrameHeight()"></iframe>
+
+
+<script type="text/javascript" language="javascript">   
+function iFrameHeight() {   
+var ifm= document.getElementById("iframepage");   
+var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;   
+if(ifm != null && subWeb != null) {
+   ifm.height = subWeb.body.scrollHeight;
+   ifm.width = subWeb.body.scrollWidth;
+}   
+}   
+</script> -->
+
+{wc:else}    
+
+      <ul class="c_pay_way c_person_details" id="dicoverList">
+{wc:loop $qz $tiezi}
+      <a href="{WEB_PATH}/mobile/group/nei/{wc:$tiezi['id']}/{wc:$uids}/"> 
+       <li class="c_add_topborder c_newadd_topborder " style="height:100px;background-position: 95% center; border-bottom:1px dashed #f3f3f3;">
+       
+                    
+               
+                
+                {wc:if userid($tiezi['hueiyuan'],'img')==null}
+				<img src="{G_TEMPLATES_STYLE}/images/prmimg.jpg" class="IImg"/>
+				{wc:else}
+				<img id="imgUserPhoto" src="{G_UPLOAD_PATH}/{wc:fun:userid($tiezi['hueiyuan'],'img')}" class="IImg" border="0"/>
+				{wc:if:end}
+       
+       <div class="wz1">{wc:fun:_strcut($tiezi['title'],22)}<br/><em class="wz2">
+       {wc:php:start}
+                         $neirong = strip_tags($tiezi['neirong']);  
+                         $hueifu=$this->db->GetOne("select * from `@#_quanzi_tiezi` WHERE tiezi='$tiezi[id]' and `shenhe` = 'Y' order by id DESC");                  
+                       {wc:php:end}
+       {wc:fun:_strcut($neirong,54)}</em></div>
+       </li>
+       </a>
+      {wc:loop:end}
+       </ul> 
+   
+ {wc:if:end}

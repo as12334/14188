@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>找回密码_{wc:fun:_cfg("web_name")}</title>
+    <meta name="Description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/newcss/sslComm.css?date=11" />
+
+    <link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/newcss/layout.css?date=11" />
+    <script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/js.min.js"></script>
+    <script type="text/javascript">
+
+function(){
+    try {
+            if(document.getElementById("bdmark") != null){
+                return;
+            }
+            var urlhash = window.location.hash;
+            if (!urlhash.match("fromapp")){
+                if ((navigator.userAgent.match(/(iPhone)/i))) {
+                        {wc:php:start}$getType="iPhone";{wc:php:end} 
+                }else if ((navigator.userAgent.match(/(iPod)/i))) {
+					    {wc:php:start}$getType="iPod";{wc:php:end}
+				}else if ((navigator.userAgent.match(/(Android)/i))) {
+					    {wc:php:start}$getType="Android";{wc:php:end}
+				}else if ((navigator.userAgent.match(/(ios)/i))) {
+					    {wc:php:start}$getType="ios";{wc:php:end}
+				}else if ((navigator.userAgent.match(/(iPad)/i))) {
+					    {wc:php:start}$getType="iPad";{wc:php:end}						 
+					}
+            }else {
+					{wc:php:start}$getType="pc";{wc:php:end} 
+					}
+        } catch(err){}
+	
+}
+
+
+</script>
+</head>
+<body>
+    <div class="wrapper">
+       
+        <div class="g-logo-top">
+            <a rel="nofollow" href="{G_WEB_PATH}"><img src="{G_UPLOAD_PATH}/{wc:fun:Getlogo()}"></a>
+            <span class="fr">想起来了？<a id="hylinkLoginPage" class="blue" href="{WEB_PATH}/login">立即登录</a></span>
+        </div>
+
+        <div class="g-contentCon clrfix">
+
+            <div class="m-main clrfix">
+                <h2 class="gray3">设置密码</h2>
+                <div class="register-form-con clrfix">
+                    <ul><input name="username" type="hidden" id="username" value="{wc:$username}" />
+                        
+                        <li class="regpass">
+                            <input id="password" type="password" maxlength="20" placeholder="密码"/>
+                            <b class="passport-icon login-password transparent-png"></b>
+                            <em style="display: none;">设置登录密码</em>
+                            <span class="orange pass-tips" style="display: none;"></span>
+                            <s class="passport-icon" style="display: none;"></s>
+                            <span id="pwdStrength" style="display: none;"></span>
+
+                        </li>
+                        <li class="regrepass">
+                            <input id="repassword" type="password" maxlength="20" placeholder="确认密码"/>
+                            <b class="passport-icon login-password transparent-png"></b>
+                            <em style="display: none;">确认密码</em>
+                            <span class="orange repass-tips" style="display: none;"></span>
+                            <s class="passport-icon" style="display: none;"></s>
+                        </li>
+                        <!--<li>
+                    	    <div class="z-code clrfix">
+                        	    <input id="txtCode" type="text" maxlength="6">
+                                <b class="passport-icon verification-code transparent-png"></b>
+                                <em style="display:none;">验证码</em>
+                                <img src="/api/regsn.html" alt="" id="imgCode" />
+                                <a href="javascript:;" id="btnChangeCode">换一张</a>
+                            </div>
+                            <span class="orange"></span>
+                        </li> -->
+                   
+                    </ul>
+                </div>
+                <div class="link-con clrfix">
+                    <a id="btn_login" href="javascript:;" class="z-agreeBtn">提交</a>
+                    <a id="btn_logins" href="javascript:;" class="z-agreeBtn" style="display:none">正在提交，请稍后...</a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!--版权-->
+        
+        <div class="footer">
+	<div class="footer_links">
+		<a href="{WEB_PATH}">首页</a>
+		<b></b>
+		{wc:fun:Getheader('foot')}
+  	</div>
+	<div class="copyright"><a href="http://www.miibeian.gov.cn/" target="_blank">{wc:fun:_cfg("web_copyright")}</a></div>
+</div>
+</div>
+<div class='copy-tips' style="display:none;"><div class='wap-tips' ></div></div>
+<style type="text/css">
+.copy-tips{position:fixed;z-index:999;bottom:50%;left:50%;margin:0 0 -50px -170px;background-color:rgba(0, 0, 0, 0.2);filter:progid:DXImageTransform.Microsoft.Gradient(startColorstr=#30000000, endColorstr=#30000000);padding:3px;}
+.wap-tips{padding:30px 80px;text-align:center;border:1px solid #F4D9A6;background-color:#FFFDEE;font-size:14px;vertical-align:middle; }
+
+</style>
+<script type="text/javascript">
+        $(function () {
+            var base_url = '{WEB_PATH}/member/user/dopasswordAjax/';
+            var ehtml = '<i class="passport-icon transparent-png"></i>';
+			
+			
+
+            
+            function checkPassword() {
+                var value = $("#password").val();
+                if (value == '' || value.length == 0) {
+					$('.regpass').addClass('error-text');
+					$('.regpass').removeClass('correct-text');
+                    $(".pass-tips").html(ehtml + "你还没有输入密码哦").show();
+                     setTimeout(function () {
+					$(".pass-tips").hide();
+                                }, 2000);
+                    return false;
+                } else if (value.length < 6) {
+					$('.regpass').addClass('error-text');
+					$('.regpass').removeClass('correct-text');
+                    $(".pass-tips").html(ehtml + "密码至少6个字符").show();
+                     setTimeout(function () {
+					$(".pass-tips").hide();
+                                }, 2000);
+                    return false;
+                } else {
+                    $(".pass-tips").hide();
+                }
+				$('.regpass').addClass('correct-text');
+                return true;
+            }
+			function checkrePassword() {
+                var value = $("#repassword").val();
+				var valp = $("#password").val();
+                if (value == '' || value.length == 0) {
+					$('.regrepass').addClass('error-text');
+					$('.regrepass').removeClass('correct-text');
+                    $(".repass-tips").html(ehtml + "你还没有输入确认密码哦").show();
+                    setTimeout(function () {
+					$(".repass-tips").hide();
+                                }, 2000);
+                    return false;
+                } else if (value!=valp) {
+					$('.regrepass').addClass('error-text');
+					$('.regrepass').removeClass('correct-text');
+                    $(".repass-tips").html(ehtml + "两次输入的密码不一致").show();
+                     setTimeout(function () {
+					$(".repass-tips").hide();
+                                }, 2000);
+                    return false;
+                } else {
+                    $(".repass-tips").hide();
+                }
+				$('.regrepass').addClass('correct-text');
+                return true;
+            }
+
+            function len(value) {
+                var total = 0;
+                for (i = 0; i < value.length; i++) {
+                    var char = value.charCodeAt(i);
+                    if ((char >= 0x0001 && char <= 0x007e) || (0xff60 <= char && char <= 0xff9f)) {
+                        total++;
+                    }
+                    else {
+                        total += 2;
+                    }
+                }
+                return total;
+            }
+
+
+           
+               
+				
+       
+
+            $("#password").on('blur', function () {
+				$('.regpass').removeClass('enter-focus');
+				
+                checkPassword();
+            });
+			$("#password").on('focus', function () {
+				$('.regpass').addClass('enter-focus');	
+            });
+			
+			$("#repassword").on('blur', function () {
+				$('.regrepass').removeClass('enter-focus');
+				
+                checkrePassword();
+            });
+			$("#repassword").on('focus', function () {
+				$('.regrepass').addClass('enter-focus');	
+            });
+
+            $("#btn_login").click(function () {
+                if (checkPassword() && checkrePassword()) {
+                    username = $("#username").val();
+                    password = $("#password").val();
+					repassword = $("#repassword").val();
+					
+					$("#btn_login").addClass("letter-noSpac").html("正在提交，请稍后...");
+					$("#btn_logins").show();
+					            $("#btn_login").hide();
+                    $.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {action: 'login_user', username: username, password: password, repassword: repassword},
+                        success: function (data) {
+							
+							if (data != '1000') {
+								 $("#btn_logins").hide();
+					$("#btn_login").show();
+                                $(".copy-tips").show();
+                    $(".wap-tips").html(ehtml + data).show();
+								$("#btnSubmit").removeClass("letter-noSpac").html("提交");
+                            } else {
+                               // $(".login-success").show();
+							//	$("#btnSubmit").addClass("letter-noSpac").html("提交成功");
+                                    location.href = "{WEB_PATH}/member/user/findok1";
+                               
+                            }
+							
+                           
+                        },
+                        error: function () {
+							$("#btn_logins").hide();
+					$("#btn_login").show();
+							$(".copy-tips").show();
+                    $(".wap-tips").html(ehtml + "数据提交失败,请重试!").show();
+					$("#btn_login").removeClass("letter-noSpac").html("提交");
+					setTimeout(function () {
+					$(".copy-tips").hide();
+                                }, 2000);
+                         
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

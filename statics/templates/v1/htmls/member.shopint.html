@@ -1,0 +1,161 @@
+{wc:templates "index","header"}
+<link href="{G_TEMPLATES_STYLE}/js/style.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_STYLE}/js/demo.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_STYLE}/newcss/reg_shop.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_STYLE}/newcss/check_shop.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/jquery.Validform.min.js"></script>
+<script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/passwordStrength-min.js"></script>
+
+<script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/js.min.js"></script>
+    <script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/underscore.js"></script>
+<script type="text/javascript">
+$(function(){		
+	var demo=$(".login_ConInput").Validform({
+		tiptype:2,
+		usePlugin:{
+			passwordstrength:{
+				minLen:6,
+				maxLen:20,
+				trigger:function(obj,error){
+					if(error){
+						obj.parent().next().find(".Validform_checktip").show();
+						obj.parent().next().find(".passwordStrength").hide();
+					}else{
+						obj.parent().next().find(".Validform_checktip").hide();
+						obj.parent().next().find(".passwordStrength").show();	
+					}
+				}
+			}
+		}
+
+	});	
+})
+</script>
+<style>
+        .code{ font-size:16px}
+		 .goods-message li .select-01{ width: 250px; font-size: 12px;}
+ .content-landing li { width: 650px;}
+ .content-landing li .txt {
+  border-color: #e5e5e5; 
+  border-style: solid;
+  border-width: 1px;
+  color: #333;
+ 
+  font-size: 12px;
+  height: 34px;
+  padding-left: 5px;
+  line-height: 34px\9;
+  background: #fff;
+  border-radius: 2px;
+  border:1px solid #c6c6c6;
+}
+#tburl{border:1px solid #c6c6c6;}
+
+.content-landing li .txt-02{ width: 550px}
+
+.content-landing li .txt-01{ width: 250px}
+#codebg{ background:url({G_TEMPLATES_STYLE}/newimages/houzhe/emp.jpg) no-repeat; width:639px; height:217px;}
+.codep{ padding:19px 0px 0px 313px;}
+.ling{ line-height:30px;}
+        </style>
+<div class="login_layouts">
+	<div class="login_title">
+		<h2>新商家入驻</h2>
+		<ul class="login_process">
+			<li ><b>1</b>商家入驻须知</li>
+			<li class="login_arrow"></li>
+			<li ><b>2</b>验证商家身份</li>
+			<li class="login_arrow"></li>
+			<li><b>3</b>{wc:fun:_cfg('web_name_two')}平台审核</li>
+            <li class="login_arrow"></li>
+			<li ><b>4</b>交纳保证金</li>
+            <li class="login_arrow"></li>
+			<li class="login_processCur"><b>5</b>入驻成功</li>
+		</ul>
+		<!--<span>已经是商家？<a id="hylinkLoginPage" class="blue Fb" href="{WEB_PATH}/member/user/login">进入>></a></span> -->
+	</div>
+	<div class="prompt orange" >
+  
+       <div style="font-size:20px; color:#000;vertical-align:middle; height:40px; line-height:40px; text-align:center; padding-top:50px;"><span class="hd" >
+      <img src="{G_TEMPLATES_STYLE}/newimages/houzhe/success.jpg" width="40" style="vertical-align:middle"/> 恭喜您！入驻成功
+       </span>
+       
+       </div>
+            
+            
+            
+       
+
+    
+   
+
+    </div>
+	
+	
+</div><div class="clear" style="clear:0"></div>
+<script type="text/javascript">
+        $(function () {
+            var base_url = '{WEB_PATH}/member/home/check_Ajax';
+             var ehtml = '<i><img src="{G_TEMPLATES_STYLE}/newimages/tips-ico.png" width="15" sytle="vertical-align:middle"/></i> ';
+			 
+			 function checktburl() {
+                var value = $("#tburl").val();
+                var length = len(value);
+				
+				alert(1);
+                if (value == '' || value.length == 0) {
+					
+                    $(".wap-tips").html(ehtml + "你还没有输商品链接哦~").show();
+                    return false;
+                }
+                
+               
+                return true;
+				
+            }
+			 
+			
+			$("#tburl").on('blur', function () {
+				
+                checktburl();
+				
+            });
+			
+            $("#btn_auth").click(function () {
+                
+                    shopid = $("#shopid").val();
+                    tburl = $("#tburl").val();
+					code = $("#code").val();
+					 mobile = $("#mobile").val();
+					emails = $("#emails").val();
+					$("#btn_login").addClass("letter-noSpac").html("正在提交...");
+                    $.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {type: 'tburl', shopid: shopid, tburl: tburl, code: code, mobile: mobile, emails: emails},
+                        success: function (data) {
+							
+							$("#tb_auth").html('<p class="content" style=" text-align:content; padding:0px 0px 0px 50px;"><img src="{G_TEMPLATES_STYLE}/newimages/houzhe/loading.gif" /></p>').show(); 
+							
+                            if (data != '1000') {
+                                $('.wap-tips').html(ehtml + data).show();
+								$("#btn_login").removeClass("letter-noSpac").html("提交");
+                            } else {
+								 $(".wap-tips").hide();
+                                $(".login-success").show();
+								
+                                setTimeout(function () {
+                                    location.href = "{WEB_PATH}";
+                                }, 2000);
+                            }
+                        },
+                        error: function () {
+                            $('.wap-tips').html(ehtml + "数据提交失败,请重试!").show();
+                        }
+                    });
+				
+            });
+        });
+    </script>
+{wc:templates "index","footer"}

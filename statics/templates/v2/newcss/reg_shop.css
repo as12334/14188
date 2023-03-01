@@ -1,0 +1,17 @@
+@charset "utf-8";
+.login_layouts {
+	width: 1190px;
+	zoom: 1;
+	border: 1px solid #E3E3E3;
+	height:500px;
+}
+.prompt{
+position: absolute;
+margin: 20px 0 0 140px;
+border: 0px solid #FD9; 
+font-size:14px; 
+line-height:30px; 
+clear:both; 
+width:980px;
+}
+

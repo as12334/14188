@@ -1,0 +1,17 @@
+<ul class="mana-req-m">
+                                    <li>现金余额 <span class="yu">￥{wc:if $moneycount==''}
+                0
+                {wc:else}
+                {wc:$moneycount}
+                {wc:if:end}</span><i></i></li>
+                                    <li>累计收入&nbsp;&nbsp;<span>￥{wc:if $moneycount2==''}
+                0
+                {wc:else}
+                {wc:$moneycount2}
+                {wc:if:end}</span><i></i></li>
+                                    <li>累计(提现、充值)&nbsp;&nbsp;<span>￥{wc:if $moneycounts==''}
+                0
+                {wc:else}
+                {wc:$moneycounts}
+                {wc:if:end}</span></li>
+                                </ul>

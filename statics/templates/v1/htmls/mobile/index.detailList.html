@@ -1,0 +1,22 @@
+<article class="m-share-comment m-round">
+                <h3>共<span id="ReplyCount"  class="z-user orange">{wc:$total}</span>条评论 &nbsp;&nbsp;<em>{wc:$shaidan['sd_read_num']}</em>人阅读</h3>
+                <ul id="replyList">
+					{wc:loop $shaidan_hueifu $sdhf}
+					<li>
+						<a class="fl u-comment-img" href="{WEB_PATH}/mobile/mobile/userindex/{wc:$sdhf['sdhf_userid']}">
+							{wc:if userid($sdhf['sdhf_userid'],'img')==null}
+							<img src="{G_TEMPLATES_STYLE}/images/prmimg.jpg"  />
+							{wc:else}
+							<img id="imgUserPhoto" src="{G_UPLOAD_PATH}/{wc:fun:userid($sdhf['sdhf_userid'],'img')}"  border="0"/>
+							{wc:if:end}		
+						</a>
+						<div class="u-comment-r">
+							<p class="z-comment-name"><a href="{WEB_PATH}/mobile/mobile/userindex/{wc:$sdhf['sdhf_userid']}" class="blue">{wc:fun:get_user_name($sdhf['sdhf_userid'],'username')}</a></p>
+							<p class="gray6"><span>{wc:$sdhf['sdhf_content']}</span><b>{wc:fun:date("Y-m-d H:i",$sdhf['sdhf_time'])}</b></p>
+						</div>
+					</li>
+					{wc:loop:end}
+				</ul>
+                <!-- <a id="btnLoadMore" class="loading" href="javascript:void(0);" style="display:none;">点击加载更多</a>
+                <div id="divLoading" class="loading"style="display:none;"><b></b>正在加载</div> -->
+            </article>
