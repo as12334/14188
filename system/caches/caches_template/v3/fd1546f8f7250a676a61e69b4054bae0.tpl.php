@@ -1,0 +1,431 @@
+<?php defined('G_IN_SYSTEM')or exit('No permission resources.'); ?><?php include templates("index","header");?>
+<link href="<?php echo G_TEMPLATES_STYLE; ?>/newcss/member_x.css?v=150728" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="<?php echo G_TEMPLATES_STYLE; ?>/js/js.min.js"></script>
+<!--    <script type="text/javascript" src="<?php echo G_TEMPLATES_STYLE; ?>/js/underscore.js"></script> -->
+<script type="text/javascript" src="<?php echo G_TEMPLATES_STYLE; ?>/js/area.js"></script>
+<script type="text/javascript">
+$(function(){		
+	var demo=$(".registerform").Validform({
+		tiptype:2,
+		datatype:{
+			"tel":/^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/,
+		},
+	});	
+	demo.tipmsg.w["tel"]="请正确输入电话号码(区号、号码必填，用“-”隔开)";
+	demo.addRule([
+	{
+		ele:"#txt_ship_tel",
+		datatype:"tel",
+	}]);
+});
+$(function(){
+	$("#btnAddnewAddr").click(function(){
+		$("#div_consignee").show();
+		$("#btnAddnewAddr").hide();
+	});
+	$("#btn_consignee_cancle").click(function(){
+		$("#div_consignee").hide();
+		$("#btnAddnewAddr").show();
+	});
+});
+$(function(){
+	$(".xiugai").click(function(){
+		$("#btnAddnewAddr").hide();
+		$("#div_consignee").hide();
+	});
+	$("#btn_consignee_cancle2").click(function(){
+		$("#div_consignee2").hide();
+		$("#btnAddnewAddr").show();
+	});
+});
+
+
+function update(id){	
+$("#btnAddnewAddr").hide();
+	$("#div_consignee2").show;
+	setup3();
+$(function () {
+            var base_url = "<?php echo WEB_PATH; ?>/member/home/updateddress/"+id;
+            var ehtml = '<p class="orange orangeall" style="display:block;"><b class="u-personal"></b>必填</p>';
+			
+            function checktown() {
+                var value = $("#county3").val();
+                if (value == '' || value.length == 0) {
+					$(".f-trancounty3").hide();
+                    $(".orangecounty3").show();
+                    return false;
+              
+                } else {
+					$(".f-trancounty3").show();
+                    $(".orangecounty3").hide();
+					return true;
+                }
+                
+            }
+			function checkaddr() {
+                var value = $("#dizh2").val();
+                if (value == '' || value.length == 0) {
+					$(".f-trandizh2").hide();
+                    $(".orangedizh2").show();
+                    return false;
+              
+                } else {
+					$(".f-trandizh2").show();
+                    $(".orangedizh2").hide();
+					return true;
+                }
+                
+            }			
+	
+            function checkUserName() {
+                var value = $("#shr2").val();
+                var length = len(value);
+				var regn = /^[A-Za-z0-9_\u4e00-\u9fa5]{2,20}$/;
+				var regE =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				
+                if (value == '' || value.length == 0) {
+					$(".f-transhr2").hide();
+                    $(".orangeshr2").show();
+					
+								
+                    return false;
+                }else{
+				    $(".f-transhr2").show();
+                    $(".orangeshr2").hide();	
+                return true;
+				}
+				
+            }
+ 
+			
+            function checkmobile() {
+                var value = $("#mob2").val();
+                var length = len(value);
+				var regM = /^1\d{10}$/;
+				var regE =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				
+                if (value == '' || value.length == 0) {
+					
+                    $(".f-tranmob2").hide();
+                    $(".orangemob2").show();
+                    return false;
+                }
+                else if (!regM.test(value)) {
+                    $(".f-tranmob2").hide();
+                    $(".orangemob2").show();
+                    return false;
+                    
+                }else{
+				    $(".f-tranmob2").show();
+                    $(".orangemob2").hide();	
+                return true;
+				}
+				
+            }
+            
+			
+
+            function len(value) {
+                var total = 0;
+                for (i = 0; i < value.length; i++) {
+                    var char = value.charCodeAt(i);
+                    if ((char >= 0x0001 && char <= 0x007e) || (0xff60 <= char && char <= 0xff9f)) {
+                        total++;
+                    }
+                    else {
+                        total += 2;
+                    }
+                }
+                return total;
+            }
+
+            $("#btnSave").click(function () {
+                if (checkUserName() && checkmobile() && checktown() && checkaddr()) {
+					province3 = $("#province3").val();
+					city3 = $("#city3").val();
+					county3 = $("#county3").val();
+                    dizh2 = $("#dizh2").val();
+					mob2 = $("#mob2").val();
+					shr2 = $("#shr2").val();
+					defaults = $("#defaults").val();
+                 
+					$("#btnSave").addClass("letter-noSpac").html("正在保存...");
+				//	$("#registerform3").attr("action","<?php echo WEB_PATH; ?>/member/home/updateddress/"+id);
+                    $.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {action: 'eidt', shouhuoren: shr2, mobile: mob2, sheng: province3, shi: city3, xian: county3, jiedao: dizh2, defaults: defaults},
+                        success: function (data) {
+                            if (data != '1000') {
+                                $('.orangeall').html(ehtml + data).show();
+								$("#btnSave").removeClass("letter-noSpac").html("保存");
+                            } else {
+                                
+                                setTimeout(function () {
+									$("#btnSave").addClass("letter-noSpac").html("保存成功");
+                                    location.href = "<?php echo WEB_PATH; ?>/member/home/address";
+                                }, 2000);
+                            }
+                        },
+                        error: function () {
+                            $('.wap-tips').html(ehtml + "数据提交失败,请重试!").show();
+                        }
+                    });
+                }
+            });
+        });
+	
+	var str=$("#dizh_"+id).html();
+	var spl=str.split(" ");
+	$("#province3").append('<option selected value="'+spl[0]+'">'+spl[0]+'</option>');
+	$("#city3").append('<option selected value="'+spl[1]+'">'+spl[1]+'</option>');
+	$("#county3").append('<option selected value="'+spl[1]+'">'+spl[1]+'</option>');
+	$("#dizh2").val(spl[3]);
+	$("#mob2").val($("#mob_"+id).html());
+	//$("#yb2").val($("#yb_"+id).html());
+	$("#shr2").val($("#shr_"+id).html());
+	$("#div_consignee2").show();	
+	
+};
+
+function dell(id){
+	if (confirm("您确认要删除该条信息吗？")){
+		window.location.href="<?php echo WEB_PATH; ?>/member/home/deladdress/"+id;
+	}
+}
+
+
+</script>
+
+<div class="p-center-main clrfix">
+            <!--左边导航-->
+            
+  	<?php include templates("member","left");?>
+            <div class="sidebar_main clrfix fr">
+            
+            <?php include templates("member","shezhi");?>
+              
+
+               <div class="z-content">
+                    <div class="add-wrap">
+                        <div class="data-menu">
+                            <span class="u-name">收货人</span>
+                            <span class="u-tel">手机</span>
+                            <span class="u-address">详细地址</span>
+                            <span class="u-code"></span>
+                            <span class="u-option">操作</span>
+                        </div>
+                        <ul class="add-list" id="ul_addresslist">
+                        <?php $ln=1;if(is_array($member_dizhi)) foreach($member_dizhi AS $v): ?>
+                        <li><span class="u-name" id="shr_<?php echo $v['id']; ?>"><?php echo $v['shouhuoren']; ?></span><span class="u-tel" id="mob_<?php echo $v['id']; ?>"><?php echo $v['mobile']; ?></span><span class="u-address" id="dizh_<?php echo $v['id']; ?>"><?php echo $v['sheng']; ?> <?php echo $v['shi']; ?> <?php echo $v['xian']; ?> <?php echo $v['jiedao']; ?></span><span class="u-code"></span>
+                        <?php if($v['default']=='Y'): ?>
+			<span class="u-option"><a href="javascript:;" name="update" id="update<?php echo $v['id']; ?>" onclick="update(<?php echo $v['id']; ?>)" class="op-tail xiugai">修改</a></span><span class="u-set"><b class="is-normal">默认地址</b></span>
+			<?php  else: ?>
+			<span class="u-option"><a href="javascript:;" name="update" onclick="update(<?php echo $v['id']; ?>)" class="op-tail xiugai">修改</a><a href="javascript:;" name="delete" onclick="dell(<?php echo $v['id']; ?>)"  class="op-tail">删除</a></span><span class="u-set"><b class="set-normal" id="2810631"><a  href="<?php echo WEB_PATH; ?>/member/home/morenaddress/<?php echo $v['id']; ?>">设为默认地址</a></b></span>
+			<?php endif; ?>
+                        </li>
+                        <?php  endforeach; $ln++; unset($ln); ?>
+                       
+                        
+                        </ul>
+                        <a id="btnAddnewAddr" href="javascrit:;" style="display: ;" class="new-add-btn">添加新地址</a>
+                    </div>
+                    <!--添加收货地址--->
+                    <div class="new-add-wrap" id="div_consignee" style="display:none;">
+                    <div class="shi-address-box">
+                    <h2 class="gray3">添加收货地址</h2>
+                    <script>var s2=["province2","city2","county2"];</script>
+                    <ul><li class="select-list"><label>所在地区：</label>
+                    <div class="fl clrfix" id="div_area"><select datatype="*" nullmsg="请选择有效的省市区" class="gray3" id="province2" runat="server" name="sheng"><option value="请选择有效的省"></option></select>
+				<select datatype="*" nullmsg="请选择有效的省市区" id="city2" runat="server" name="shi"></select>
+				<select datatype="*" nullmsg="请选择有效的省市区" id="county2" runat="server" name="xian"></select><em  class="f-tran f-trancounty2">*</em> <p class="orange orangecounty2"><b class="u-personal"></b>必填</p>
+					
+				<script type="text/javascript">setup2()</script>
+                </div>
+                 </li>
+                   <li class="z-address">
+                   <label>详细地址：</label><input id="dizh" name="jiedao" type="text" maxlength="200" style="color: rgb(51, 51, 51);" datatype="*1-100"  errormsg="范围在100之间！"><em class="f-tran f-trandizh" >*</em><p class="orange orangedizh" ><b class="u-personal"></b>必填</p><cite class="gray9">无需重复填写所在地区</cite></li>
+                  
+                   <li><label>收<i>货</i>人：</label><input id="shr" name="shouhuoren" type="text" maxlength="5" style="color: rgb(51, 51, 51);"><em class="f-tran f-transhr">*</em><p class="orange orangeshr"><b class="u-personal"></b>必填</p><cite class="gray9">请填写真实有效的姓名，否则将无法进行配送</cite></li>
+                   
+                   <li><label>手机号码：</label><input id="mob" name="mobile"  type="text" maxlength="11" style="color: rgb(51, 51, 51);"><em class="f-tran f-tranmob">*</em><p class="orange orangemob" ><b class="u-personal"></b>请填写真实有效的手机号码</p></li>
+                   
+                   <li><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><p class="orange orangeall"><b class="u-personal"></b>必填</p></li>
+                   
+                   <li class="z-save-btn">
+                   <a id="btnSaveadd" href="javascript:;" class="save">保存</a>
+                   <a id="btn_consignee_cancle" href="javascript:;" class="closes" >取消</a></li>
+                   </ul>
+                    </div>
+                    </div>
+                    <!--修改地址--->
+                    <div class="new-add-wrap" id="div_consignee2" style="display:none;">
+                    <div class="shi-address-box">
+                    <h2 class="gray3">修改收货地址</h2>
+                    <script>var s3=["province3","city3","county3"];</script>
+                    <ul>
+                    <form   id="registerform3" method="post" >
+                    <li class="select-list"><label>所在地区：</label>
+                    <div class="fl clrfix" id="div_area"><select datatype="*" nullmsg="请选择有效的省市区" class="select" id="province3" runat="server" name="sheng"></select>
+				<select datatype="*" nullmsg="请选择有效的省市区" id="city3" runat="server" name="shi"></select>
+				<select datatype="*" nullmsg="请选择有效的省市区" id="county3" runat="server" name="xian"></select><em id="ship_address_valid_msg" class="f-tran f-trancounty3">*</em> <p class="orange orangecounty3"><b class="u-personal"></b>必填</p>
+					
+				<script type="text/javascript">setup3()</script>
+                </div>
+                 </li>
+                   <li class="z-address">
+                   <label>详细地址：</label><input id="dizh2" name="jiedao" type="text" maxlength="200" style="color: rgb(51, 51, 51);" datatype="*1-100"  errormsg="范围在100之间！"><em class="f-tran f-trandizh2" >*</em><p class="orange orangedizh2" ><b class="u-personal"></b>必填</p><cite class="gray9">无需重复填写所在地区</cite></li>
+                  
+                   <li><label>收<i>货</i>人：</label><input id="shr2" name="shouhuoren" type="text" maxlength="5" style="color: rgb(51, 51, 51);"><em class="f-tran f-transhr2">*</em><p class="orange orangeshr2"><b class="u-personal"></b>必填</p><cite class="gray9">请填写真实有效的姓名，否则将无法进行配送</cite></li>
+                   
+                   <li><label>手机号码：</label><input id="mob2" name="mobile"  type="text" maxlength="11" style="color: rgb(51, 51, 51);"><em class="f-tran f-tranmob2">*</em><p class="orange orangemob2" ><b class="u-personal"></b>请填写真实有效的手机号码</p></li>
+                   <input type="hidden" name="defaults" id="defaults" value="<?php if($dizhi['default']=='Y'): ?>1<?php  else: ?>0<?php endif; ?>"/>
+                   <li><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><p class="orange orangeall"><b class="u-personal"></b>必填</p></li>
+                   <li class="z-save-btn">
+                   <!--<input style="margin-right:20px;" name="submit" type="submit"  class="savesubmit" id="btn_consignee_save" value="保存" title="保存"> -->
+                   <a id="btnSave" href="javascript:;" class="save">保存</a>
+                   <a id="btn_consignee_cancle2" href="javascript:;" class="closes">取消</a></li>
+                   </form>
+                   </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+</div>
+
+ <script type="text/javascript">
+$(function () {
+            var base_url = "<?php echo WEB_PATH; ?>/member/home/useraddress";
+            var ehtml = '<p class="orange orangeall" style="display:block;"><b class="u-personal"></b>必填</p>';
+			
+            function checktown() {
+                var value = $("#county2").val();
+                if (value == '' || value.length == 0) {
+					$(".f-trancounty2").hide();
+                    $(".orangecounty2").show();
+                    return false;
+              
+                } else {
+					$(".f-trancounty2").show();
+                    $(".orangecounty2").hide();
+					return true;
+                }
+                
+            }
+			function checkaddr() {
+                var value = $("#dizh").val();
+                if (value == '' || value.length == 0) {
+					$(".f-trandizh").hide();
+                    $(".orangedizh").show();
+                    return false;
+              
+                } else {
+					$(".f-trandizh").show();
+                    $(".orangedizh").hide();
+					return true;
+                }
+                
+            }			
+	
+            function checkUserName() {
+                var value = $("#shr").val();
+                var length = len(value);
+				var regn = /^[A-Za-z0-9_\u4e00-\u9fa5]{2,20}$/;
+				var regE =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				
+                if (value == '' || value.length == 0) {
+					$(".f-transhr").hide();
+                    $(".orangeshr").show();
+					
+								
+                    return false;
+                }else{
+				    $(".f-transhr").show();
+                    $(".orangeshr").hide();	
+                return true;
+				}
+				
+            }
+ 
+			
+            function checkmobile() {
+                var value = $("#mob").val();
+                var length = len(value);
+				var regM = /^1\d{10}$/;
+				var regE =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				
+                if (value == '' || value.length == 0) {
+					
+                    $(".f-tranmob").hide();
+                    $(".orangemob").show();
+                    return false;
+                }
+                else if (!regM.test(value)) {
+                    $(".f-tranmob").hide();
+                    $(".orangemob").show();
+                    return false;
+                    
+                }else{
+				    $(".f-tranmob").show();
+                    $(".orangemob").hide();	
+                return true;
+				}
+				
+            }
+            
+			
+
+            function len(value) {
+                var total = 0;
+                for (i = 0; i < value.length; i++) {
+                    var char = value.charCodeAt(i);
+                    if ((char >= 0x0001 && char <= 0x007e) || (0xff60 <= char && char <= 0xff9f)) {
+                        total++;
+                    }
+                    else {
+                        total += 2;
+                    }
+                }
+                return total;
+            }
+
+            $("#btnSaveadd").click(function () {
+                if (checkUserName() && checkmobile() && checktown() && checkaddr()) {
+					province2 = $("#province2").val();
+					city2 = $("#city2").val();
+					county2 = $("#county2").val();
+                    dizh = $("#dizh").val();
+					mob = $("#mob").val();
+					shr = $("#shr").val();
+                 
+					$("#btnSaveadd").addClass("letter-noSpac").html("正在保存...");
+				//	$("#registerform3").attr("action","<?php echo WEB_PATH; ?>/member/home/updateddress/"+id);
+                    $.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {action: 'add', shouhuoren: shr, mobile: mob, sheng: province2, shi: city2, xian: county2, jiedao: dizh},
+                        success: function (data) {
+                            if (data != '1000') {
+                                $('.orangeall').html(ehtml + data).show();
+								$("#btnSaveadd").removeClass("letter-noSpac").html("保存");
+                            } else {
+                                
+                                setTimeout(function () {
+									$("#btnSaveadd").addClass("letter-noSpac").html("保存成功");
+                                    location.href = "<?php echo WEB_PATH; ?>/member/home/address";
+                                }, 2000);
+                            }
+                        },
+                        error: function () {
+                            $('.wap-tips').html(ehtml + "数据提交失败,请重试!").show();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+<?php include templates("index","footer");?>

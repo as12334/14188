@@ -1,0 +1,150 @@
+<?php defined('G_IN_SYSTEM')or exit('No permission resources.'); ?><!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <title>手机号码验证 触屏版</title>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="<?php echo G_TEMPLATES_CSS; ?>/mobile/comm.css?v=130715" rel="stylesheet" type="text/css" />
+    <link href="<?php echo G_TEMPLATES_CSS; ?>/mobile/login.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="<?php echo G_TEMPLATES_STYLE; ?>/js/js.min.js"></script>
+</head>
+<body>
+<div class="h5-1yyg-v11"> 
+<!-- 栏目页面顶部 -->
+<!-- 内页顶部 -->
+
+    <header class="g-header">
+        <div class="head-l">
+	        <a href="javascript:;" onclick="history.go(-1)" class="z-HReturn"><s></s><b>返回</b></a>
+        </div>
+        <h2>手机号码绑定</h2>
+        <div class="head-r">
+	        <a href="<?php echo WEB_PATH; ?>/mobile/mobile" class="z-Home"></a>
+        </div>
+    </header>
+<div class="main-content clearfix">
+
+<section>
+<div class="registerCon">
+<ul class="form">
+<li>
+<input name="txtMobile" id="txtMobile" type="text" placeholder="请输入您的手机号" value="" style="padding-left: 80px;">
+<span style="border: none;height: 34px;width: 80px;background-position: 0 -25px;position: absolute;top: 12px;left: 5px;">手机号码：</span>
+</li>
+<li>
+<a href="javascript:;" id="butSubmit" class="nextBtn orgBtn">提交</a>
+</li>
+</ul>
+</div>
+</section>
+
+</div>
+<script type="text/javascript">
+        $(function () {
+            var base_url = '<?php echo WEB_PATH; ?>/member/home/mobilesuccess';
+            var ehtml = '';
+			
+			
+
+            function checktxtMobile() {
+                var value = $("#txtMobile").val();
+				var regM = /^1\d{10}$/;
+				
+                if (value == '请输入手机号码' || value.length == 0) {
+					$(".wap-tips").html(ehtml + "请输入手机号码").show();
+					setTimeout(function () {
+					$(".wap-tips").hide();
+                                }, 2000);
+                    return false;
+                } else if (!regM.test(value)) {
+					$(".wap-tips").html(ehtml + "请输入正确的手机").show();
+					setTimeout(function () {
+					$(".wap-tips").hide();
+                                }, 2000);
+                    return false;
+                } else {
+                    $("#div_tips1").hide();
+					return true;
+                }
+                
+            }
+			 
+            function len(value) {
+                var total = 0;
+                for (i = 0; i < value.length; i++) {
+                    var char = value.charCodeAt(i);
+                    if ((char >= 0x0001 && char <= 0x007e) || (0xff60 <= char && char <= 0xff9f)) {
+                        total++;
+                    }
+                    else {
+                        total += 2;
+                    }
+                }
+                return total;
+            }
+
+
+          
+
+            $("#butSubmit").click(function () {
+                if (checktxtMobile() ) {
+                    txtMobile = $("#txtMobile").val();
+                    
+                   
+					$("#butSubmit").addClass("letter-noSpac").html("正在发送...");
+                    $.ajax({
+                        url: base_url,
+                        async : true,
+		                addidvalue: true,
+                        data: {action: 'mobile', username: txtMobile},
+                        success: function (data) {
+							
+                            str=data.length;
+							arr=data.split(",");
+							
+							
+							if (str>30) {
+								location.href = "<?php echo WEB_PATH; ?>/mobile/home/mobiles2/"+txtMobile;
+							
+							}else if (arr[1]>=1) {
+								$(".wap-tips").html(ehtml + "系统还没开通短信套餐！").show();
+					setTimeout(function () {
+					$(".wap-tips").hide();
+                                }, 2000);
+								
+								$("#butSubmit").removeClass("letter-noSpac").html("发送");	
+								
+                            } else {
+								$(".wap-tips").html(data).show();
+					setTimeout(function () {
+					$(".wap-tips").hide();
+                                }, 2000);
+								$("#butSubmit").removeClass("letter-noSpac").html("发送");
+                            }
+                        },
+                        error: function () {
+							$(".wap-tips").html(ehtml + "系统还没开通短信套餐！").show();
+					setTimeout(function () {
+					$(".wap-tips").hide();
+                                }, 2000);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+<?php include templates("mobile/index","footer");?>
+
+ 
+</div>
+<style>
+.wap-tips{ width: 230px; height: 50px; border-radius: 10px; -webkit-border-radius: 10px; text-align: center; line-height: 50px; background: #000; color: #fff; position: absolute; top: 50%; left: 50%; font-family: "微软雅黑"; margin-top: 20px; margin-left: -112px;opacity: 0.8; }
+</style>
+    <div class="wap-tips" style="display: none">
+        
+    </div>  
+</body></html>

@@ -1,0 +1,870 @@
+<?php defined('G_IN_SYSTEM')or exit('No permission resources.'); ?><?php include templates("index","header");?>
+<script type="text/javascript" src="<?php echo G_TEMPLATES_STYLE; ?>/js/cloud-zoom.min.js"></script>
+
+<script type="text/javascript">
+       
+            var base_url_yaoqing = "<?php echo WEB_PATH; ?>/member/user/regAjax/<?php echo $yid; ?>";
+            var ehtml = '';
+			//$("#commentList").html(ehtml).show();
+
+
+
+            var getAllp = function(){
+                    
+				//	$("#commentList").html(ehtml);
+                    $.ajax({
+                        url: base_url_yaoqing,
+                        async : true,
+		                addidvalue: true,
+                        data: {action: 'login_user'},
+                        success: function (data) {
+                          $('#commentList').html(data).show();
+                        },
+                        error: function () {
+                            $('#commentList').html("数据加载失败,请重试!").show();
+                        }
+                    });
+             	
+};
+getAllp();
+        
+    </script>
+<body id="loadingPicBlock" class="home" rf="1" >
+<SCRIPT language=javascript>
+<!--
+window.onerror=function(){return true;}
+// -->
+</SCRIPT>
+<style>  
+ .g-snow-con {
+position: relative;
+top: 130px;
+z-index: 1001;
+margin-bottom: -30px;
+}
+.g-snow {
+background:none;
+height: 30px;
+_width: 1211px;
+_margin: 0 auto;
+}
+.g-snow2 {
+background:none;
+height: 30px;
+_width: 1012px;
+_margin: 0 auto;
+display: none;
+} 
+    .d {
+ 
+ top: 0px;
+ margin-top: 0px;
+ padding-top:0px;
+ margin-right: auto;
+ margin-bottom: 0;
+ margin-left: auto;
+ background-color: #fff;
+ background-repeat: no-repeat;
+ background-position: center top; 
+} </style>
+
+<!--自动置顶导航&GOTOP按钮
+<style>
+#goTopBtn {position: fixed;line-height:38px;width:38px;bottom:35px;height:38px;cursor:pointer;display:none;
+
+</style>
+<div id="goTopBtn" style=""></div>
+<script type="text/javascript">
+  $(window).scroll(function(){
+           var sc=$(window).scrollTop();
+           var rwidth=$(window).width()
+          if(sc>150){
+                $("#goTopBtn").css("display","block");
+                $("#goTopBtn").css("left",(rwidth-138)+"px")
+
+                $("#fixednav").css("position","fixed");
+                $("#fixednav").css("top","0px");
+                $("#fixednav").css("left","0px");
+                $("#fixednav").css("right","0px");
+                $("#fixednav").css("margin-left","auto");
+                $("#fixednav").css("margin-right","auto");
+                $("#fixednav").css("z-index","999");
+                $("#fixednav").css("background","#fff");
+
+                $("#navline").css("position","fixed");
+                $("#navline").css("top","53px");
+                $("#navline").css("z-index","1000");
+
+                }else{
+            $("#goTopBtn").css("display","none");
+
+            $("#fixednav").css("position","relative");
+            $("#fixednav").css("z-index","");
+
+            $("#navline").css("position","absolute");
+            $("#navline").css("top","195px");
+            $("#navline").css("z-index","9");
+                }
+          })
+            
+      $("#goTopBtn").click(function(){
+          var sc=$(window).scrollTop();
+         $('body,html').animate({scrollTop:0},500);
+          })        
+</script>
+自动置顶导航/-->
+
+
+
+
+            <!-- 导航 end -->
+
+
+
+
+
+
+<!--end所有商品下拉特效-->
+
+
+<link rel="stylesheet" type="text/css" href="<?php echo G_TEMPLATES_STYLE; ?>/newcss/GoodsDetail.css"/> 
+<link rel="stylesheet" type="text/css" href="<?php echo G_TEMPLATES_STYLE; ?>/newcss/header.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo G_TEMPLATES_STYLE; ?>/js/cloud-zoom.css"/> 
+
+<script type="text/javascript">
+$.fn.CloudZoom.defaults = {
+	zoomWidth: '400',
+	zoomHeight: '310',
+	position: 'right',
+	tint: false,
+	tintOpacity: 0.5,
+	lensOpacity: 0.5,
+	softFocus: false,
+	smoothMove: 7,
+	showTitle: false,
+	titleOpacity: 0.5,
+	adjustX: 0,
+	adjustY: 0
+};
+</script>
+<style type="text/css">
+.zoom-section{clear:both;margin-top:20px;}
+.zoom-small-image{ float:left;margin-bottom:20px; width:363px; height:383px;padding:0 10px;}
+.zoom-small-image img{ width:363px; height:363px;}
+.zoom-desc{float:left;width:378px; height:52px;margin-bottom:20px; overflow:hidden;padding:0 10px;}
+.zoom-desc p{ width:370px; height:42px; float:left; display:block; position:absolute; top:0; z-index:3; overflow:hidden;}
+.zoom-desc label{ width:40px; height:42px; margin:0 6px 0 0; _margin-right:4px; display:block; float:left; overflow:hidden;}
+.zoom-tiny-image{border:1px solid #CCC;margin:0px; width:38px; height:38px;}
+.zoom-tiny-image:hover{border:1px solid #f60;}
+.current {
+border-color: #f60;
+}
+</style>
+<div class="Current_nav">
+	<a href="<?php echo WEB_PATH; ?>">首页</a> <span>&gt;</span> 
+	<a href="<?php echo WEB_PATH; ?>/goods_list/<?php echo $item['cateid']; ?>">
+	<?php echo $category['name']; ?>
+	</a><span>&gt;</span> 
+	<a href="<?php echo WEB_PATH; ?>/goods_list/<?php echo $item['cateid']; ?>e<?php echo $item['brandid']; ?>">
+	<?php echo $brand['name']; ?>
+	</a> <span>&gt;</span>商品详情
+</div>
+<div class="show_content">
+	<!-- 商品期数 -->
+
+	<div id="divPeriodList" class="show_Period" style="max-height:99px;">		
+		<div class="period_Open"><a class="gray02" click="off" id="btnOpenPeriod" href="javascript:void(0);">展开<i></i></a></div>
+		<?php echo $loopqishu; ?>
+	</div>
+	<script>
+		$("#btnOpenPeriod").click(function(){
+				var ui_obj = $("#divPeriodList > ul");
+				if($(this).attr("click")=='off'){
+					$("#divPeriodList").css("max-height",ui_obj.length*33+"px");	
+					$(this).attr("click","on");
+					$(this).html("收起<s></s>");
+					
+				}else{
+					$("#divPeriodList").css("max-height","99px");	
+					$(this).attr("click","off");
+					$(this).html("展开<i></i>");
+				}			
+		});
+	</script>	
+	<div id="divMain" class="ng-main-wrapper">
+            <!--期数-->
+            
+
+            <!--商品信息 begin-->
+            <div id="divMainInfo" class="ng-main clearfix">
+                <!--图片展示-->
+                <div class="Pro_Detleft">
+			<div class="zoom-small-image">
+				<span href="<?php echo G_UPLOAD_PATH; ?>/<?php echo $item['thumb']; ?>" class = 'cloud-zoom' id='zoom1' rel="adjustX:10, adjustY:-2">
+                <img width="80px" height="80px" src="<?php echo G_UPLOAD_PATH; ?>/<?php echo $item['thumb']; ?>" /></span>
+			</div>
+
+			<div class="zoom-desc"> 
+				<!--<div class="jcarousel-prev jcarousel-prev" style=" display:none"></div> -->
+				<div class="jcarousel-clip" >
+				<p>
+					<?php $ln=1;if(is_array($item['picarr'])) foreach($item['picarr'] AS $imgtu): ?>                  
+					<label href="<?php echo G_UPLOAD_PATH; ?>/<?php echo $imgtu; ?>" class='cloud-zoom-gallery'  rel="useZoom: 'zoom1', smallImage: '<?php echo G_UPLOAD_PATH; ?>/<?php echo $imgtu; ?>'">
+					<img class="zoom-tiny-image" src="<?php echo G_UPLOAD_PATH; ?>/<?php echo $imgtu; ?>" /></label>			
+					<?php  endforeach; $ln++; unset($ln); ?> 
+				</p>
+				</div>
+				<!--<div class="jcarousel-next jcarousel-next" style=" display:none"></div> -->
+			</div>
+            
+			<script>
+				var si=$(".jcarousel-clip label").size();
+				var label=si*55;
+				$(".jcarousel-clip p").css({width:label,left:"0"});
+				if(label>395){
+					$(".jcarousel-prev,.jcarousel-next").show();
+				}else{
+					$(".jcarousel-prev,.jcarousel-next").hide();
+				}
+				$(".jcarousel-prev").click(function(){
+					var le=$(".jcarousel-clip p").css("left");
+					var le2=le.replace(/px/,"");
+					if(le!='0px'){
+						$(".jcarousel-clip p").css({left:le2*1+55});
+					}						
+				})
+				$(".jcarousel-next").click(function(){
+					var le=$(".jcarousel-clip p").css("left");
+					var le2=le.replace(/px/,"");
+					var max_next=-(si-7)*55+"px";
+					if(le!=max_next){						
+						$(".jcarousel-clip p").css({left:le2*1-55});
+					}
+				})
+			</script>			
+			<div class="clear"></div>
+			<div class="share" style="text-align:center; padding-left:14px; ">
+						<span class="fen">分享到：</span>
+						<!-- Baidu Button BEGIN -->
+						<div class="bdsharebuttonbox" data-tag="share_1">
+	<!--<a class="bds_mshare" data-cmd="mshare"></a> -->
+    <a class="bds_sqq" data-cmd="sqq"></a>
+	<a class="bds_qzone" data-cmd="qzone" href="#"></a>
+    <a class="bds_weixin" data-cmd="weixin" href="#"></a>
+	<a class="bds_tsina" data-cmd="tsina"></a>
+	<a class="bds_baidu" data-cmd="baidu"></a>
+	
+	<a class="bds_tqq" data-cmd="tqq"></a>
+    <a class="bds_renren" data-cmd="renren"></a>
+	<a class="bds_more" data-cmd="more"></a>
+	<a class="bds_count" data-cmd="count"></a>
+</div>
+<script>
+	window._bd_share_config = {
+		common : {
+			bdText : '<?php echo $item['title']; ?>',	
+			bdDesc : '<?php echo $item['title2']; ?>',	
+			bdUrl : '<?php echo WEB_PATH; ?>/goods/<?php echo $itemid; ?>/<?php echo $uids; ?>/', 	
+			bdPic : '<?php echo G_UPLOAD_PATH; ?>/<?php echo $item['thumb']; ?>'
+		},
+		share : [{
+			"bdSize" : 16
+		}],
+		slide : [{	   
+			bdImg : 0,
+			bdPos : "left",
+			bdTop : 100
+		}],
+		image : [{
+			viewType : 'list',
+			viewPos : 'top',
+			viewColor : 'black',
+			viewSize : '16',
+			viewList : ['sqq','qzone','tsina','huaban','tqq','renren','weixin']
+		}],
+		selectShare : [{
+			"bdselectMiniList" : ['sqq','qzone','weixin','tqq','kaixin001','bdxc','tqf']
+		}]
+	}
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+						<!-- Baidu Button END -->
+					</div>
+                    <div class="clear"></div>
+                    <div style="text-align:left; padding-left:14px; color:red">分享产品，朋友成功注册有佣金哦</div>
+		</div>
+
+                <!--正在进行中-->
+                
+                    
+
+                            				                            
+							<!-- 限时揭晓 -->
+            			
+<!--显示揭晓动画 start-->
+			<?php if(($q_showtime=='Y')): ?>
+				<?php include templates("index","item_animation");?>
+			<?php  else: ?>
+				<?php include templates("index","item_contents");?>
+			<?php endif; ?>
+			<!--显示揭晓动画 end-->	
+
+
+                
+            
+                <!--揭晓倒计时-->
+                
+          
+                <!--右侧：<?php echo _cfg('web_name_two'); ?>记录-->
+<!--新加商家-->
+                <div class="ng-goods-shop">
+                <div id="J_ShopInfo" class="tb-shop-info tb-shop-info-gold-border" data-spm="1000126" data-creditscore="2103" data-creditflag="blue" data-rateurl="" data-spm-max-idx="13">
+<img width="228" src="<?php echo G_TEMPLATES_STYLE; ?>/newimages/jinpai.png">
+  <div class="tb-shop-info-wrap">
+      <div class="tb-shop-info-hd">
+          <div class="tb-shop-name">
+              <dl>
+                  <dd>
+                     <strong> <?php echo $item_dealer['shopname']; ?></strong>
+                  </dd>
+              </dl>
+          </div> 
+          <!--<div class="tb-shop-rank tb-rank-blue">
+                  <dl>
+                      <!--<dt>信誉：</dt> 
+                      <dd>
+                          <a href="javascript:;">
+                              
+                                  <i></i>
+                              
+                                  <i></i>
+                              
+                                  <i></i>
+                              
+                                  <i></i>
+                              
+                          </a>
+                      </dd>
+                  </dl>
+              </div> -->
+         
+          <div class="tb-shop-seller">
+              <dl>
+                  <dt>商家：</dt>
+                  <dd><a class="tb-seller-name" href="javascript:;" title="<?php echo $item['description']; ?>" data-spm-anchor-id="2013.1.1000126.4"><?php echo $item['description']; ?>
+                      </a>
+                  </dd>
+              </dl>
+          </div>
+         <!-- <div class="tb-shop-ww">
+              <dl>
+                  <dt>联系：</dt>
+                  <dd>
+                      <span class="ww-light ww-large" data-nick="" data-tnick="%E6%97%B6E4%BB%%E9%83%BD%E5%B8%82%E5%85%AC%E9%A6%86" data-encode="true"><a href="" target="_blank" class="ww-inline ww-online" title="，或相互交流网购体验，还支持语音视频噢。" data-spm-anchor-id="2013.1.1000126.5"><span></span></a></span>
+                  </dd>
+              </dl>
+          </div> -->
+         
+              <div class="tb-shop-icon">
+                  <dl>
+                      <dt>资质：</dt>
+                      <dd>
+                          
+                              <a class="tb-icon tb-icon-alipay-persion-auth" href="javascript:;" title="支付宝已认证" data-spm="d12" ></a>
+                          
+                              <a class="tb-seller-bail" href="javascript:;" title="已缴纳<?php echo $item_dealer['shopbzj']; ?>微币保证金" >
+                                  <span class="tb-icon tb-icon-bail"></span>
+                                  <span class="tb-seller-bail-text">
+                                      <?php echo $item_dealer['shopbzj']; ?><span class="tb-seller-bail-unit">微币</span>
+                                  </span>
+                              </a>
+                          
+                      </dd>
+                  </dl>
+              </div>
+          
+      </div>
+      <div class="tb-shop-info-bd">
+          
+              <div class="tb-shop-rate">
+                  <dl>
+                      <dt>描述</dt>
+                      
+                      <dd class="tb-rate-higher">
+                          <?php echo $item_dealer['shopmiaoshu']; ?> 
+                      </dd>
+                  </dl>
+                  <dl>
+                      <dt>服务</dt>
+                      
+                      <dd class="tb-rate-higher">
+                          <?php echo $item_dealer['shopfuwu']; ?> 
+                      </dd>
+                  </dl>
+                  <dl>
+                      <dt>物流</dt>
+                      
+                      <dd class="tb-rate-higher">
+                          <?php echo $item_dealer['shopwuliu']; ?> 
+                      </dd>
+                  </dl>
+              </div>
+       </div>
+      <div class="renzhen" >
+      <?php echo _cfg('web_name_two'); ?>认证金牌商家   
+      </div>
+      
+  </div>
+</div>
+                </div>
+ <!--新加商家结束-->               
+                <div class="ng-goods-buy">
+                    <!--进行中状态-->
+                  
+                        <div class="ng-buy-list">
+                            <div id="div_buynav" class="ng-buy-nav">
+                                <a href="javascript:;" title="最新<?php echo _cfg('web_name_two'); ?>记录" class="ng-fl current">最新微购记录</a>
+                                <a href="<?php echo WEB_PATH; ?>/member/home/userbuylist" title="我的<?php echo _cfg('web_name_two'); ?>记录" class="ng-fr">我的微购记录</a>
+					
+								
+                                <div class="b-line"></div>
+                            </div>
+
+                            <div id="div_goodsrecord" class="list-wrap">
+							
+                                <div class="my-list">
+                                 <ul style="margin-top: 0px;" id="UserBuyNewList" class="list">
+                                <?php $ln=1;if(is_array($us)) foreach($us AS $user): ?>
+						
+									<li>
+									<a rel="nofollow" href="<?php echo WEB_PATH; ?>/uname/<?php echo idjia($user['uid']); ?>" title="<?php echo $user['username']; ?>" target="_blank" class="buy-name">
+									
+									<i class="head-s-pic">
+																		<?php if(!empty($user['uphoto'])): ?>
+							<img src="<?php echo G_UPLOAD_PATH; ?>/<?php echo $user['uphoto']; ?>" border="0" alt="" width="22" height="22">
+						<?php  else: ?>
+							<img src="<?php echo G_UPLOAD_PATH; ?>/photo/member.jpg" border="0" alt="" width="22" height="22">
+						<?php endif; ?>
+																		</i><?php echo $user['username']; ?></a>
+									<span class="buy-num"><?php echo $user['gonumber']; ?></span>人次</li>
+                                    
+						<?php  endforeach; $ln++; unset($ln); ?>
+								        </ul>                            
+									                                    
+									                                </div>
+							
+                                <a id="btnUserBuyMore" href="javascript:;" style="" class="select-all">查看全部</a>
+				<!--我的<?php echo _cfg('web_name_two'); ?>记录-->
+				<div class="My_Record hide" style="display:none;">
+                   
+									
+					<ul>				
+										
+						 
+					</ul>
+									</div>
+				<!--/我的<?php echo _cfg('web_name_two'); ?>记录-->
+                            </div>
+
+                            
+                        </div>
+                    
+
+                    <!--结束状态-->
+                    
+                </div>
+                <!--清除浮动-->
+                <div class="clear"></div>
+            </div>
+        </div>
+	<script> 
+						function autoScroll(obj){  
+							$(obj).find("#UserBuyNewList").animate({  
+								marginTop : "-49px"  
+							},500,function(){  
+								$(this).css({marginTop : "0px"}).find("li:first").appendTo(this);  
+							})  
+						}  
+						$(function(){  
+							setInterval('autoScroll(".my-list")',3000)  
+						})  
+					</script>
+			<script>
+				var si=$(".jcarousel-clip label").size();
+				var label=si*55;
+				$(".jcarousel-clip p").css({width:label,left:"0"});
+				if(label>395){
+					$(".jcarousel-prev,.jcarousel-next").show();
+				}else{
+					$(".jcarousel-prev,.jcarousel-next").hide();
+				}
+				$(".jcarousel-prev").click(function(){
+					var le=$(".jcarousel-clip p").css("left");
+					var le2=le.replace(/px/,"");
+					if(le!='0px'){
+						$(".jcarousel-clip p").css({left:le2*1+55});
+					}						
+				})
+				$(".jcarousel-next").click(function(){
+					var le=$(".jcarousel-clip p").css("left");
+					var le2=le.replace(/px/,"");
+					var max_next=-(si-7)*55+"px";
+					if(le!=max_next){						
+						$(".jcarousel-clip p").css({left:le2*1-55});
+					}
+				})
+			</script>			
+			
+<!-- 商品信息导航 -->
+<div class="ProductTabNav">
+	<div id="divProductNav" class="DetailsT_Tit">
+		<div class="DetailsT_TitP">
+			<ul>
+				<li class="Product_DetT DetailsTCur"><span class="DetailsTCur">商品详情</span></li>
+				<li id="liUserBuyAll" class="All_RecordT"><span class="">所有参与记录</span></li>
+				<li class="Single_ConT"><span class="">晒单</span></li>
+			</ul>
+			<!-- <p><a id="btnAdd2Cart" href="javascript:;" class="white DetailsT_Cart"><s></s>加入购物车</a></p> -->
+		</div>
+	</div>
+</div>
+
+<!--补丁3.1.6_b.0.1-->
+<div id="divContent" class="Product_Content">
+	<!-- 商品内容 -->
+	<div class="Product_Con">
+    
+    <p style="text-align: center; width:800px; margin:0px auto; padding-top:10px; color:#333;"><?php echo $item['content']; ?></p>
+    
+    <!--<p style="margin-top: 0px; margin-bottom: 0px; white-space: normal; widows: auto; padding: 20px 0px 5px 5px; color: rgb(102, 102, 102); font-family: 微软雅黑; font-size: 18px; line-height: 25px; background-color: rgb(255, 255, 255);">重要说明：</p><p style="margin-top: 0px; margin-bottom: 0px; white-space: normal; widows: auto; padding: 0px 0px 5px 5px; color: rgb(102, 102, 102); font-family: 微软雅黑; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);">1、<?php echo _cfg('web_name_two'); ?>将在商品到货后第一时间按订单顺序发出，颜色随机发货。</p><p style="margin-top: 0px; margin-bottom: 0px; white-space: normal; widows: auto; padding: 0px 0px 5px 5px; color: rgb(102, 102, 102); font-family: 微软雅黑; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);">2、商品获得者拥有【<?php echo $item['title']; ?>】 10年免费使用权。</p><p style="margin-top: 0px; margin-bottom: 0px; white-space: normal; widows: auto; padding: 0px 0px 5px 5px; color: rgb(102, 102, 102); font-family: 微软雅黑; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);">3、<?php echo _cfg('web_name_two'); ?>对本商品使用权在法律范围内拥有最终解释权。</p><p><br/></p> --></div>
+    <!-- 商品内容 -->
+    
+    <!-- 购买记录20条 -->
+	<div id="bitem" class="AllRecordCon">
+		<iframe id="iframea_bitem" g_src="<?php echo WEB_PATH; ?>/go/goods/go_record_ifram/<?php echo $itemid; ?>/20" style="width:1188px; border:none;height:100%" frameborder="0" scrolling="no"></iframe>		
+	</div>	
+   <!-- /购买记录20条 -->
+    
+	<!-- 晒单 -->
+	<div id="divPost" class="Single_Content">
+		<iframe id="iframea_divPost" g_src="<?php echo WEB_PATH; ?>/go/shaidan/itmeifram/<?php echo $itemid; ?>" style="width:1188px; border:none;height:100%" frameborder="0" scrolling="no"></iframe>
+	</div>
+    <!-- 晒单 -->	
+</div>
+</div>
+<!--补丁3.1.6_b.0.1-->
+
+
+<script type="text/javascript">
+<!--补丁3.1.6_b.0.2-->
+function set_iframe_height(fid,did,height){	
+	$("#"+fid).css("height",height);	
+}
+
+$(function(){
+	$("#ulRecordTab li").click(function(){
+		var add=$("#ulRecordTab li").index(this);
+		$("#ulRecordTab li").removeClass("Record_titCur").eq(add).addClass("Record_titCur");
+		$(".Pro_Record .hide").hide().eq(add).show();
+	});
+	
+	var DetailsT_TitP = $(".DetailsT_TitP ul li");
+	var divContent    = $("#divContent div");	
+	DetailsT_TitP.click(function(){
+		var index = $(this).index();
+			DetailsT_TitP.removeClass("DetailsTCur").eq(index).addClass("DetailsTCur");
+	
+			var iframe = divContent.hide().eq(index).find("iframe");
+			if (typeof(iframe.attr("g_src")) != "undefined") {
+			  	 iframe.attr("src",iframe.attr("g_src"));
+				 iframe.removeAttr("g_src");
+			}
+			divContent.hide().eq(index).show();
+	});
+	<!--补丁3.1.6_b.0.2-->
+		
+	$("#btnUserBuyMore").click(function(){
+		$("#liUserBuyAll").click();
+		$("html,body").animate({scrollTop:941},1500);
+	});
+	$(window).scroll(function(){
+		if($(window).scrollTop()>=941){
+			$("#divProductNav").addClass("nav-fixed");
+		}else if($(window).scrollTop()<941){
+			$("#divProductNav").removeClass("nav-fixed");
+		}
+	});
+})
+var shopinfo={'shopid':<?php echo $item['id']; ?>,'money':<?php echo $item['yunjiage']; ?>,'shenyu':<?php echo $syrs; ?>};
+
+	
+$(function(){
+	function baifenshua(aa,n){
+	n = n || 2;
+	return ( Math.round( aa * Math.pow( 10, n + 2 ) ) / Math.pow( 10, n ) ).toFixed( n ) + '%';
+}
+	var shopnum = $("#num_dig");
+		var ten_per = Math.floor(parseInt(<?php echo $item['zongrenshu']; ?>)) || 1;
+	var max_num = (ten_per > parseInt(shopinfo['shenyu'])) ? parseInt(shopinfo['shenyu']) : ten_per;
+	shopnum.keyup(function(){
+		if(shopnum.val()>=max_num){
+			shopnum.val(max_num);
+		}
+		var numshop=shopnum.val();
+		if(numshop==<?php echo $item['zongrenshu']; ?>){
+			var baifenbi='100%';
+		}else{
+			var showbaifen=numshop/<?php echo $item['zongrenshu']; ?>;
+			var baifenbi=baifenshua(showbaifen,2);
+		}
+		$(".mine-prob").css("display","block");
+		$("#chance").html("获得机率"+baifenbi+"<i></i>");
+		setTimeout(function () {
+					$(".mine-prob").hide();
+                                }, 2000);
+	});
+	$("#num10").click(function(){
+		var shopnum = $("#num_dig");
+			var resshopnump='';
+			var ten_per = Math.floor(parseInt(<?php echo $item['zongrenshu']; ?>)) || 1;
+			var max_num = (ten_per > parseInt(shopinfo['shenyu'])) ? parseInt(shopinfo['shenyu']) : ten_per;
+			var num = parseInt(shopnum.val());
+			if(num >= max_num){
+				shopnum.val(max_num);
+				resshopnump = max_num;
+			}else{
+				resshopnump=10;
+				shopnum.val(resshopnump);
+			}
+			if(resshopnump==<?php echo $item['zongrenshu']; ?>){
+				var baifenbi='100%';
+			}else{
+				var showbaifen=resshopnump/<?php echo $item['zongrenshu']; ?>;
+				var baifenbi=baifenshua(showbaifen,2);
+			}
+			$(".mine-prob").css("display","block");
+		$("#chance").html("获得机率"+baifenbi+"<i></i>");
+		setTimeout(function () {
+					$(".mine-prob").hide();
+                                }, 2000);
+	});
+	$("#num50").click(function(){
+		var shopnum = $("#num_dig");
+			var resshopnump='';
+			var ten_per = Math.floor(parseInt(<?php echo $item['zongrenshu']; ?>)) || 1;
+			var max_num = (ten_per > parseInt(shopinfo['shenyu'])) ? parseInt(shopinfo['shenyu']) : ten_per;
+			var num = parseInt(shopnum.val());
+			if(num >= max_num){
+				shopnum.val(max_num);
+				resshopnump = max_num;
+			}else{
+				resshopnump=50;
+				shopnum.val(resshopnump);
+			}
+			if(resshopnump==<?php echo $item['zongrenshu']; ?>){
+				var baifenbi='100%';
+			}else{
+				var showbaifen=resshopnump/<?php echo $item['zongrenshu']; ?>;
+				var baifenbi=baifenshua(showbaifen,2);
+			}
+			$(".mine-prob").css("display","block");
+		$("#chance").html("获得机率"+baifenbi+"<i></i>");
+		setTimeout(function () {
+					$(".mine-prob").hide();
+                                }, 2000);
+	});
+	$("#num100").click(function(){
+		var shopnum = $("#num_dig");
+			var resshopnump='';
+			var ten_per = Math.floor(parseInt(<?php echo $item['zongrenshu']; ?>)) || 1;
+			var max_num = (ten_per > parseInt(shopinfo['shenyu'])) ? parseInt(shopinfo['shenyu']) : ten_per;
+			var num = parseInt(shopnum.val());
+			if(num >= max_num){
+				shopnum.val(max_num);
+				resshopnump = max_num;
+			}else{
+				resshopnump=100;
+				shopnum.val(resshopnump);
+			}
+			if(resshopnump==<?php echo $item['zongrenshu']; ?>){
+				var baifenbi='100%';
+			}else{
+				var showbaifen=resshopnump/<?php echo $item['zongrenshu']; ?>;
+				var baifenbi=baifenshua(showbaifen,2);
+			}
+			$(".mine-prob").css("display","block");
+		$("#chance").html("获得机率"+baifenbi+"<i></i>");
+		setTimeout(function () {
+					$(".mine-prob").hide();
+                                }, 2000);
+	});
+	$("#num200").click(function(){
+		var shopnum = $("#num_dig");
+			var resshopnump='';
+			var ten_per = Math.floor(parseInt(<?php echo $item['zongrenshu']; ?>)) || 1;
+			var max_num = (ten_per > parseInt(shopinfo['shenyu'])) ? parseInt(shopinfo['shenyu']) : ten_per;
+			var num = parseInt(shopnum.val());
+			if(num >= max_num){
+				shopnum.val(max_num);
+				resshopnump = max_num;
+			}else{
+				resshopnump=200;
+				shopnum.val(resshopnump);
+			}
+			if(resshopnump==<?php echo $item['zongrenshu']; ?>){
+				var baifenbi='100%';
+			}else{
+				var showbaifen=resshopnump/<?php echo $item['zongrenshu']; ?>;
+				var baifenbi=baifenshua(showbaifen,2);
+			}
+			$(".mine-prob").css("display","block");
+		$("#chance").html("获得机率"+baifenbi+"<i></i>");
+		setTimeout(function () {
+					$(".mine-prob").hide();
+                                }, 2000);
+	});
+	
+	$("#baowei").click(function(){
+		var shopnum = $("#num_dig");
+			var resshopnump='';
+			var ten_per = Math.floor(parseInt(<?php echo $item['zongrenshu']; ?>)) || 1;
+			var max_num = (ten_per > parseInt(shopinfo['shenyu'])) ? parseInt(shopinfo['shenyu']) : ten_per;
+			var num = parseInt(shopnum.val());
+			if(num >= max_num){
+				shopnum.val(max_num);
+				resshopnump = max_num;
+			}else{
+				resshopnump=<?php echo $syrs; ?>;
+				shopnum.val(resshopnump);
+			}
+			if(resshopnump==<?php echo $item['zongrenshu']; ?>){
+				var baifenbi='100%';
+			}else{
+				var showbaifen=resshopnump/<?php echo $item['zongrenshu']; ?>;
+				var baifenbi=baifenshua(showbaifen,2);
+			}
+			$(".mine-prob").css("display","block");
+		$("#chance").html("获得机率"+baifenbi+"<i></i>");
+		setTimeout(function () {
+					$(".mine-prob").hide();
+                                }, 2000);
+	});
+
+	$("#shopadd").click(function(){
+		var shopnum = $("#num_dig");
+			var resshopnump='';
+			var ten_per = Math.floor(parseInt(<?php echo $item['zongrenshu']; ?>)) || 1;
+			var max_num = (ten_per > parseInt(shopinfo['shenyu'])) ? parseInt(shopinfo['shenyu']) : ten_per;
+			var num = parseInt(shopnum.val());
+			if(num >= max_num){
+				shopnum.val(max_num);
+				resshopnump = max_num;
+			}else{
+				resshopnump=parseInt(shopnum.val())+1;
+				shopnum.val(resshopnump);
+			}
+			if(resshopnump==<?php echo $item['zongrenshu']; ?>){
+				var baifenbi='100%';
+			}else{
+				var showbaifen=resshopnump/<?php echo $item['zongrenshu']; ?>;
+				var baifenbi=baifenshua(showbaifen,2);
+			}
+			$(".mine-prob").css("display","block");
+		$("#chance").html("获得机率"+baifenbi+"<i></i>");
+		setTimeout(function () {
+					$(".mine-prob").hide();
+                                }, 2000);
+	});
+	
+	
+	$("#shopsub").click(function(){
+		var shopnum = $("#num_dig");
+		var num = parseInt(shopnum.val());
+		if(num<2){
+			shopnum.val(1);			
+		}else{
+			shopnum.val(parseInt(shopnum.val())-1);
+		}
+		var shopnums=parseInt(shopnum.val());
+		if(shopnums==<?php echo $item['zongrenshu']; ?>){
+				var baifenbi='100%';
+			}else{
+				var showbaifen=shopnums/<?php echo $item['zongrenshu']; ?>;
+				var baifenbi=baifenshua(showbaifen,2);
+			}
+			$(".mine-prob").css("display","block");
+		$("#chance").html("获得机率"+baifenbi+"<i></i>");
+		setTimeout(function () {
+					$(".mine-prob").hide();
+                                }, 2000);
+	});
+});
+
+$(function(){
+$(".Det_Cart").click(function(){ 
+	//添加到购物车动画
+	var src=$("#zoom1 img").attr('src');  
+	var $shadow = $('<img id="cart_dh" style="display: none; border:1px solid #aaa; z-index: 99999;" width="400" height="400" src="'+src+'" />').prependTo("body"); 
+	var $img = $(".mousetrap").first("img");
+	$shadow.css({ 
+	   'width' : $img.css('width'), 
+	   'height': $img.css('height'),
+	   'position' : 'absolute',      
+	   'top' : $img.offset().top,
+	   'left' : $img.offset().left, 
+	   'opacity' :1    
+	}).show();
+	var $cart =$("#btnMyCart");
+	var numdig=$(".num_dig").val();
+	$shadow.animate({   
+		width: 1, 
+		height: 1, 
+		top: $cart.offset().top, 
+		left: $cart.offset().left,
+		opacity: 0
+	},500,function(){
+		Cartcookie(false);
+	});		
+});
+	$(".Det_Shopbut").click(function(){	
+		Cartcookie(true);
+	});	
+});
+
+
+
+function Cartcookie(cook){
+	var shopid=shopinfo['shopid'];
+	var number=parseInt($("#num_dig").val());
+	if(number<=1){number=1;}
+	var Cartlist = $.cookie('Cartlist');
+	if(!Cartlist){
+		var info = {};
+	}else{
+		var info = $.evalJSON(Cartlist);
+		if((typeof info) !== 'object'){
+			var info = {};
+		}
+	}		
+	if(!info[shopid]){
+		var CartTotal=$("#sCartTotal").text();
+			$("#sCartTotal").text(parseInt(CartTotal)+1);
+			$("#btnMyCart em").text(parseInt(CartTotal)+1);
+	}	
+	info[shopid]={};
+	info[shopid]['num']=number;
+	info[shopid]['shenyu']=shopinfo['shenyu'];
+	info[shopid]['money']=shopinfo['money'];
+	info['MoenyCount']='0.00';	
+	$.cookie('Cartlist',$.toJSON(info),{expires:7,path:'/'});
+	if(cook){
+		window.location.href="<?php echo WEB_PATH; ?>/member/cart/cartlist/"+new Date().getTime();//+new Date().getTime()
+	}
+}  
+</script> 
+
+<?php include templates("index","footer");?>
+
+ </body>
+</html>

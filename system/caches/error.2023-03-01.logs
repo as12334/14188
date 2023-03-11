@@ -80,3 +80,67 @@
  in D:\WORK\php\14188\system\config\global.php on line 304
 [01-Mar-2023 09:30:49 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
  in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:30:55 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:30:55 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:31:00 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:31:00 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:31:05 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:31:05 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:31:11 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:31:11 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:31:12 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:31:17 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:31:20 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:31:23 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:31:23 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:31:29 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:31:32 Asia/Shanghai] PHP Warning:  file_get_contents(http://58woaiduobao.com/index.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\WORK\php\14188\system\config\global.php on line 304
+[01-Mar-2023 09:34:03 Asia/Shanghai] PHP Warning:  file_get_contents() [<a href='function.file-get-contents'>function.file-get-contents</a>]: Filename cannot be empty in D:\WORK\php\14188\system\modules\0admins1314\index.action.php on line 83
+[01-Mar-2023 09:38:16 Asia/Shanghai] PHP Fatal error:  Unsupported operand types in D:\WORK\php\14188\system\funcs\global.fun.php on line 457
+[01-Mar-2023 09:38:20 Asia/Shanghai] PHP Fatal error:  Unsupported operand types in D:\WORK\php\14188\system\funcs\global.fun.php on line 457
+[01-Mar-2023 09:38:41 Asia/Shanghai] PHP Fatal error:  Unsupported operand types in D:\WORK\php\14188\system\funcs\global.fun.php on line 457
+[01-Mar-2023 09:38:45 Asia/Shanghai] PHP Fatal error:  Unsupported operand types in D:\WORK\php\14188\system\funcs\global.fun.php on line 457
+[01-Mar-2023 09:38:48 Asia/Shanghai] PHP Fatal error:  Unsupported operand types in D:\WORK\php\14188\system\funcs\global.fun.php on line 457
+[01-Mar-2023 09:38:53 Asia/Shanghai] PHP Fatal error:  Unsupported operand types in D:\WORK\php\14188\system\funcs\global.fun.php on line 457
+[01-Mar-2023 09:38:58 Asia/Shanghai] PHP Fatal error:  Unsupported operand types in D:\WORK\php\14188\system\funcs\global.fun.php on line 457
+[01-Mar-2023 09:43:36 Asia/Shanghai] PHP Fatal error:  Call to a member function GetOne() on a non-object in D:\WORK\php\14188\system\caches\caches_template\v3\8138ee4216da0862987f732fa2771506.tpl.php on line 3
+[01-Mar-2023 09:43:37 Asia/Shanghai] PHP Fatal error:  Call to a member function GetOne() on a non-object in D:\WORK\php\14188\system\caches\caches_template\v3\8138ee4216da0862987f732fa2771506.tpl.php on line 3
+[01-Mar-2023 09:43:38 Asia/Shanghai] PHP Fatal error:  Call to a member function GetOne() on a non-object in D:\WORK\php\14188\system\caches\caches_template\v3\8138ee4216da0862987f732fa2771506.tpl.php on line 3
+[01-Mar-2023 09:43:40 Asia/Shanghai] PHP Fatal error:  Call to a member function GetOne() on a non-object in D:\WORK\php\14188\system\caches\caches_template\v3\8138ee4216da0862987f732fa2771506.tpl.php on line 3
+[01-Mar-2023 09:43:40 Asia/Shanghai] PHP Fatal error:  Call to a member function GetOne() on a non-object in D:\WORK\php\14188\system\caches\caches_template\v3\8138ee4216da0862987f732fa2771506.tpl.php on line 3
+[01-Mar-2023 09:43:41 Asia/Shanghai] PHP Fatal error:  Call to a member function GetOne() on a non-object in D:\WORK\php\14188\system\caches\caches_template\v3\8138ee4216da0862987f732fa2771506.tpl.php on line 3
+[01-Mar-2023 09:43:42 Asia/Shanghai] PHP Fatal error:  Call to a member function GetOne() on a non-object in D:\WORK\php\14188\system\caches\caches_template\v3\8138ee4216da0862987f732fa2771506.tpl.php on line 3
+[01-Mar-2023 09:46:17 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:17 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:17 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:17 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:18 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:18 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:22 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:22 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:22 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:22 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:33 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:33 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:35 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:35 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:56 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:56 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:57 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 09:46:57 Asia/Shanghai] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in D:\WORK\php\14188\system\libs\db_mysql.class.php on line 188
+[01-Mar-2023 16:16:38 Asia/Shanghai] PHP Warning:  file_get_contents() [<a href='function.file-get-contents'>function.file-get-contents</a>]: Filename cannot be empty in D:\WORK\php\14188\system\modules\0admins1314\index.action.php on line 83

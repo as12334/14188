@@ -1,0 +1,100 @@
+<?php defined('G_IN_SYSTEM')or exit('No permission resources.'); ?><!--揭晓倒计时-->
+        <div id="divLotteryTimer" class="Countdown-con">
+            <div class="g-Countdown">
+                <p class="orange">已满员，揭晓结果即将公布</p>
+                <div>
+                    <cite>
+                        <span><i id="liMinute1">0</i><i id="liMinute2">0</i></span>
+                        <em>:</em>
+                        <span><i id="liSecond1">0</i><i id="liSecond2">0</i></span>
+                        <em>:</em>
+                        <span><i id="liMilliSecond1">0</i><i id="last">0</i></span>
+                    </cite>
+                </div>
+            </div>
+        </div>
+
+        <div id="divLotteryTime" class="Countdown-con"><div class="g-Countdown"><p class="orange">正在计算中，结果马上揭晓...</p><div class="loading-progress"><span class="loading-pgbar"><span class="loading-pging"></span></span></div></div></div>
+         <!-- 产品信息 -->
+        <div class="pro_info">
+            <h2 class="gray6">
+                
+                (第<?php echo $item['qishu']; ?>期)
+                <?php echo $item['title']; ?><span class="o-info" style="<?php echo $item['title_style']; ?>"><?php echo $item['title2']; ?></span>
+            </h2>
+           <div class="purchase-txt gray9 clearfix">
+                价值：￥<?php echo $item['money']; ?>
+            </div>
+            <div class="clearfix">
+                
+                <div class="gRate">
+                    
+                </div>
+            </div>
+            <!--本商品已结束-->
+        <script type="text/javascript">	 
+function show_date_time_location(){
+	window.setTimeout(function(){
+		$("#divLotteryTimer").hide();
+		$("#divLotteryTime").show();	
+		$.post("<?php echo WEB_PATH; ?>/api/getshop/lottery_shop_set/",{"lottery_sub":"true","gid":<?php echo $item['id']; ?>},null);
+		
+		window.setTimeout(function(){window.location.href="<?php echo WEB_PATH; ?>/mobile/mobile/dataserver/<?php echo $item['id']; ?>";},5000);},1000);}
+function show_date_time(endTime,obj){	
+$("#divLotteryTime").hide();
+	if(!this.endTime){this.endTime=endTime;this.obj=obj;}	
+	rTimeout = window.setTimeout("show_date_time()",30);	
+	timeold = this.endTime-(new Date().getTime());
+	if(timeold <= 0){		
+		$("#liMinute1").attr("class","Code_0");
+		$("#liMinute2").attr("class","Code_0");
+		$("#liSecond1").attr("class","Code_0");
+		$("#liSecond2").attr("class","Code_0");
+		$("#liMilliSecond1").attr("class","Code_0");
+		$("#last").attr("class","Code_0");	
+		rTimeout && clearTimeout(rTimeout);	
+		show_date_time_location();	
+		return;
+	}	
+	sectimeold=timeold/1000
+	secondsold=Math.floor(sectimeold); 
+	msPerDay=24*60*60*1000
+	e_daysold=timeold/msPerDay 	
+	daysold=Math.floor(e_daysold); 				//天	
+	e_hrsold=(e_daysold-daysold)*24; 
+	hrsold=Math.floor(e_hrsold); 				//时
+	e_minsold=(e_hrsold-hrsold)*60;	
+	//分
+	minsold=Math.floor((e_hrsold-hrsold)*60);
+	minsold = (minsold<10?'0'+minsold:minsold)
+	minsold = new String(minsold);
+	minsold_1 = minsold.substr(0,1);
+	minsold_2 = minsold.substr(1,1);	
+
+	//秒
+	e_seconds = (e_minsold-minsold)*60;	
+	seconds=Math.floor((e_minsold-minsold)*60);
+	seconds = (seconds<10?'0'+seconds:seconds)
+	seconds = new String(seconds);
+	seconds_1 = seconds.substr(0,1);
+	seconds_2 = seconds.substr(1,1);	
+	//毫秒	
+	ms = e_seconds-seconds;
+	ms = new String(ms)
+	ms_1 = ms.substr(2,1);
+	ms_2 = ms.substr(3,1);
+	
+	$("#liMinute1").html(minsold_1);
+	$("#liMinute2").html(minsold_2);
+	$("#liSecond1").html(seconds_1);
+	$("#liSecond2").html(seconds_2);
+	$("#liMilliSecond1").html(ms_1);
+	$("#last").html(ms_2);
+	//this.obj.innerHTML=daysold+"天"+(hrsold<10?'0'+hrsold:hrsold)+"小时"+(minsold<10?'0'+minsold:minsold)+"分"+(seconds<10?'0'+seconds:seconds)+"秒."+ms;
+}
+
+$(function(){
+	$.ajaxSetup({async:false});
+	$.post("<?php echo WEB_PATH; ?>/api/getshop/lottery_shop_get",{"lottery_shop_get":true,"gid":<?php echo $item['id']; ?>,"times":Math.random()},function(sdata){	
+	if(sdata!='no'){show_date_time((new Date().getTime())+(parseInt(sdata))*1000,null);}});});
+</script>

@@ -21,12 +21,12 @@ return array(
 'admindir' => '0admins1314',//后台管理文件夹
 'qq' => '921043084',//qq
 'cell' => '80808080',//联系电话
-'web_logo' => 'banner/20160706/35431014771394.png',//logo
+'web_logo' => 'banner/20160902/19440982812282.jpg',//logo
 'web_copyright' => 'Copyright @ 2011 - 2016, 版权所有 粤ICP备15045441号',//版权
 'web_name_two' => '微购',//短网站名
 'qq_qun' => '348678790',//QQ群
 'goods_end_time' => '180',//开奖动画秒数(单位秒)
-'mob_logo' => 'banner/20160904/19395292919252.png',//手机logo
+'mob_logo' => 'banner/20160902/19440982812282.jpg',//手机logo
 'wx' => 'banner/20160902/19440982812282.jpg',//logo
 'code_admin_off' => '0',//后台验证码是否开启
 'code_member_off' => '0',//前台验证码是否开启

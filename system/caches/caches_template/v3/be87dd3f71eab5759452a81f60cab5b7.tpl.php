@@ -130,30 +130,30 @@ border-radius: 50%;
 		                </a>
 		                <span><a href="<?php echo WEB_PATH; ?>/mobile/shaidan/?yid=<?php echo $uids; ?>/">晒单</a></span>
 			        </li>
-                    <li>
-		                <a href="<?php echo WEB_PATH; ?>/mobile/home/reg_shop/<?php echo $uids; ?>/" class="u-lott-pic">
-		                    <img src="<?php echo G_TEMPLATES_IMAGE; ?>/weixin/shop1.jpg" alt="" border="0">
-		                </a>
-		                <span><a href="<?php echo WEB_PATH; ?>/mobile/home/reg_shop/<?php echo $uids; ?>/">商家入驻</a></span>
-			        </li>
-                    <li>
-		                <a href="<?php echo WEB_PATH; ?>/mobile/group/?yid=<?php echo $uids; ?>/" class="u-lott-pic">
-		                    <img src="<?php echo G_TEMPLATES_IMAGE; ?>/weixin/huodong.png" alt="" border="0">
-		                </a>
-		                <span><a href="<?php echo WEB_PATH; ?>/mobile/group/?yid=<?php echo $uids; ?>/">发现</a></span>
-			        </li>
-                    <li>
-		                <a href="<?php echo WEB_PATH; ?>/mobile/group/show/7/<?php echo $uids; ?>/" class="u-lott-pic">
-		                    <img src="<?php echo G_TEMPLATES_IMAGE; ?>/weixin/tv.png" alt="" border="0">
-		                </a>
-		                <span><a href="<?php echo WEB_PATH; ?>/mobile/group/show/7/<?php echo $uids; ?>/">精彩视频</a></span>
-			        </li>
-                    <li>
-		                <a href="<?php echo WEB_PATH; ?>/mobile/lottery/?yid=<?php echo $uids; ?>/" class="u-lott-pic">
-		                    <img src="<?php echo G_TEMPLATES_IMAGE; ?>/weixin/nava2.png" alt="" border="0">
-		                </a>
-		                <span><a href="<?php echo WEB_PATH; ?>/mobile/lottery/?yid=<?php echo $uids; ?>/">充值抽奖</a></span>
-			        </li>
+<!--                    <li>-->
+<!--		                <a href="<?php echo WEB_PATH; ?>/mobile/home/reg_shop/<?php echo $uids; ?>/" class="u-lott-pic">-->
+<!--		                    <img src="<?php echo G_TEMPLATES_IMAGE; ?>/weixin/shop1.jpg" alt="" border="0">-->
+<!--		                </a>-->
+<!--		                <span><a href="<?php echo WEB_PATH; ?>/mobile/home/reg_shop/<?php echo $uids; ?>/">商家入驻</a></span>-->
+<!--			        </li>-->
+<!--                    <li>-->
+<!--		                <a href="<?php echo WEB_PATH; ?>/mobile/group/?yid=<?php echo $uids; ?>/" class="u-lott-pic">-->
+<!--		                    <img src="<?php echo G_TEMPLATES_IMAGE; ?>/weixin/huodong.png" alt="" border="0">-->
+<!--		                </a>-->
+<!--		                <span><a href="<?php echo WEB_PATH; ?>/mobile/group/?yid=<?php echo $uids; ?>/">发现</a></span>-->
+<!--			        </li>-->
+<!--                    <li>-->
+<!--		                <a href="<?php echo WEB_PATH; ?>/mobile/group/show/7/<?php echo $uids; ?>/" class="u-lott-pic">-->
+<!--		                    <img src="<?php echo G_TEMPLATES_IMAGE; ?>/weixin/tv.png" alt="" border="0">-->
+<!--		                </a>-->
+<!--		                <span><a href="<?php echo WEB_PATH; ?>/mobile/group/show/7/<?php echo $uids; ?>/">精彩视频</a></span>-->
+<!--			        </li>-->
+<!--                    <li>-->
+<!--		                <a href="<?php echo WEB_PATH; ?>/mobile/lottery/?yid=<?php echo $uids; ?>/" class="u-lott-pic">-->
+<!--		                    <img src="<?php echo G_TEMPLATES_IMAGE; ?>/weixin/nava2.png" alt="" border="0">-->
+<!--		                </a>-->
+<!--		                <span><a href="<?php echo WEB_PATH; ?>/mobile/lottery/?yid=<?php echo $uids; ?>/">充值抽奖</a></span>-->
+<!--			        </li>-->
                     
 <?php  
 $urls    = $_SERVER['HTTP_HOST']; 
@@ -163,12 +163,12 @@ $txt     = "app";
 $app     = strstr($urls,$txt);
 if(!$app){
  ?>
-                    <li>
-		                <a href="<?php echo $appurl; ?>" class="u-lott-pic">
-		                    <img src="<?php echo G_TEMPLATES_IMAGE; ?>/weixin/app10.png" alt="" border="0">
-		                </a>
-		                <span><a href="<?php echo $appurl; ?>">下载APP</a></span>
-			        </li>
+<!--                    <li>-->
+<!--		                <a href="<?php echo $appurl; ?>" class="u-lott-pic">-->
+<!--		                    <img src="<?php echo G_TEMPLATES_IMAGE; ?>/weixin/app10.png" alt="" border="0">-->
+<!--		                </a>-->
+<!--		                <span><a href="<?php echo $appurl; ?>">下载APP</a></span>-->
+<!--			        </li>-->
                     
 <?php 
 } 

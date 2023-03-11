@@ -54,5 +54,5 @@ function indexing(){
 		}else{}
 }
 
-indexing();
+//indexing();
 ?>

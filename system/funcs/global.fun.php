@@ -454,7 +454,9 @@ function _sendmobile($mobiles='',$content=''){
 	}	
 	$sends->send();
 	$sendarr=array($sends->error,$sends->v);
-	return $sendarr;
+    $t=array();
+    $t[0]=1;
+	return $t;
 }
 
 /**

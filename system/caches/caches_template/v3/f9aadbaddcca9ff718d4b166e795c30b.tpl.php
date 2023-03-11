@@ -579,7 +579,7 @@ var getAllNum = function(){
 							au += '</div>';
                             if (aI != 0 && (aI + 1) % 3 == 0) {
                                 az = az + 12;
-                                aA = '<div class="roll" style="right:' + az + 'px;">,</div>' + aA
+                                aA = '<div class="roll" style="right:' + az + 'px;"></div>' + aA
                             }
                             aF = aA + aF + au}
                          H.html(aF + au);

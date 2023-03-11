@@ -28,7 +28,7 @@
         <div class="head-l">
 	        <a href="javascript:;" onClick="history.go(-1)" class="z-HReturn"><s></s><b>返回</b></a>
         </div>
-        <h2>注册</h2>
+        <h2>注册1111111</h2>
         <div class="head-r">
 	        <a href="<?php echo WEB_PATH; ?>/mobile/mobile/<?php echo $uids; ?>/" class="z-Home"></a>
         </div>
